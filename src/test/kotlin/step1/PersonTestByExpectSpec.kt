@@ -4,7 +4,7 @@ import io.kotest.core.spec.style.ExpectSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
 
-class PersonTestByBehaviorSpec : ExpectSpec({
+class PersonTestByExpectSpec : ExpectSpec({
     context("Person 객체로 이름 붙인 인자 테스트") {
         expect("서로 다르게 생성된 세 객체의 이름이 모두 같다.") {
             val people = listOf(
