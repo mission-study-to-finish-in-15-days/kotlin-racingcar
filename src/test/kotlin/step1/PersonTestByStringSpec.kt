@@ -13,8 +13,8 @@ class PersonTestByStringSpec : StringSpec({
         )
 
         people.forAll {
-            it.name shouldBe "김효진"
-            it.age shouldBe 28
+            it.officialProfile.name shouldBe "김효진"
+            it.officialProfile.age shouldBe 28
             it.nickName shouldBe "hyo"
         }
     }
@@ -27,8 +27,8 @@ class PersonTestByStringSpec : StringSpec({
 
     "기본 인자가 잘 동작하는지 확인한다" {
         val person = Person.of(age = 28)
-        person.name shouldBe "김효진"
-        person.age shouldBe 28
+        person.officialProfile.name shouldBe "김효진"
+        person.officialProfile.age shouldBe 28
         person.nickName shouldBe null
     }
 

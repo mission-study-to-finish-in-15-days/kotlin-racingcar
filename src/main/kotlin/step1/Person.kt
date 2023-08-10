@@ -1,8 +1,7 @@
 package step1
 
 data class Person(
-    val name: String?,
-    val age: Int,
+    val officialProfile: OfficialProfile,
     val nickName: String?
 ) {
     companion object {
@@ -10,6 +9,12 @@ data class Person(
             name: String = "김효진",
             age: Int,
             nickName: String? = null,
-        ) = Person(name, age, nickName)
+        ) = Person(
+            officialProfile = OfficialProfile.of(
+                name = name,
+                age = age,
+            ),
+            nickName = nickName,
+        )
     }
 }
