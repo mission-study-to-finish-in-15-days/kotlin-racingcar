@@ -15,7 +15,7 @@ class PersonBehaviorTest : BehaviorSpec({
             }
         }
 
-        xgiven("context.xtest 실행 하지 않는 테스트") {
+        xand("xand 실행 하지 않는 테스트") {
             testFunction()
         }
     }
