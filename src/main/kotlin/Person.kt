@@ -5,22 +5,21 @@ data class Person(
     private val _age: Int,
     private val _nickname: String? = "종인막",
 ) {
-    val name: String get() = nameInfo
-        .name
-        .value
-    val nickname: String? get() = nameInfo
-        .nickname
-        .value
+    val name: String get() = nameInfo.name
+    val nickname: String? get() = nameInfo.nickname
     val age: Int get() = ageDto.value
 
-    private val nameInfo: NameInfo = NameInfo(name = Name(_name), nickname = Nickname(_nickname))
+    private val nameInfo: NameInfo = NameInfo(_name = Name(_name), _nickname = Nickname(_nickname))
     private val ageDto: Age = Age(_age)
 }
 
 data class NameInfo(
-    val name: Name,
-    val nickname: Nickname,
-)
+    val _name: Name,
+    val _nickname: Nickname,
+) {
+    val name: String get() = _name.value
+    val nickname: String? get() = _nickname.value
+}
 
 @JvmInline
 value class Name(
