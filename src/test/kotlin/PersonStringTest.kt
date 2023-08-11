@@ -1,9 +1,9 @@
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 
-class PersonTest : StringSpec({
+class PersonStringTest : StringSpec({
 
-    "이름 있는 인자" {
+    "이름 있는 인자".config(enabled = true, invocations = 2) {
         val perple = listOf(
             Person("김종인", 33, "종인막"),
             Person("김종인", 33, nickname = "종인막"),
