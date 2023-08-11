@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "1.8.10"
+    id("org.jlleitschuh.gradle.ktlint") version "10.3.0"
 }
 
 group = "com.example"
@@ -24,5 +25,8 @@ tasks {
     }
     test {
         useJUnitPlatform()
+    }
+    ktlint {
+        verbose.set(true)
     }
 }
