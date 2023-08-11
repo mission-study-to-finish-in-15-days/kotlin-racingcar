@@ -11,9 +11,9 @@ repositories {
 }
 
 dependencies {
-    testImplementation("org.junit.jupiter", "junit-jupiter", "5.8.2")
-    testImplementation("org.assertj", "assertj-core", "3.22.0")
-    testImplementation("io.kotest", "kotest-runner-junit5", "5.2.3")
+    testImplementation(group = "org.junit.jupiter", name = "junit-jupiter", version = "5.8.2")
+    testImplementation(group = "org.assertj", name = "assertj-core", version = "3.22.0")
+    testImplementation(group = "io.kotest", name = "kotest-runner-junit5", version = "5.6.2")
 }
 
 tasks {
