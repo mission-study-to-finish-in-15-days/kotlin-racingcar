@@ -7,8 +7,8 @@ class PersonExpectTest : ExpectSpec({
         expect("이름 있는 경우") {
             val perple = listOf(
                 Person("김종인", 33, "종인막"),
-                Person("김종인", 33, nickname = "종인막"),
-                Person(name = "김종인", nickname = "종인막", age = 33),
+                Person("김종인", 33, _nickname = "종인막"),
+                Person(_name = "김종인", _nickname = "종인막", _age = 33),
             )
 
             perple.forEach {

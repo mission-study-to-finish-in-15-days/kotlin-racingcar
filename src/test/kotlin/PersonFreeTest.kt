@@ -1,6 +1,4 @@
 import io.kotest.core.spec.style.FreeSpec
-import io.kotest.core.spec.style.StringSpec
-import io.kotest.core.spec.style.WordSpec
 import io.kotest.matchers.shouldBe
 
 class PersonFreeTest : FreeSpec({
@@ -9,8 +7,8 @@ class PersonFreeTest : FreeSpec({
         "이름 있는 경우" {
             val perple = listOf(
                 Person("김종인", 33, "종인막"),
-                Person("김종인", 33, nickname = "종인막"),
-                Person(name = "김종인", nickname = "종인막", age = 33),
+                Person("김종인", 33, _nickname = "종인막"),
+                Person(_name = "김종인", _nickname = "종인막", _age = 33),
             )
 
             perple.forEach {
