@@ -1,4 +1,4 @@
-import io.kotest.core.spec.style.*
+import io.kotest.core.spec.style.AnnotationSpec
 import io.kotest.matchers.shouldBe
 
 class PersonAnnotationTest : AnnotationSpec() {
@@ -14,6 +14,5 @@ class PersonAnnotationTest : AnnotationSpec() {
         perple.forEach {
             it.name shouldBe "김종인"
         }
-
     }
 }

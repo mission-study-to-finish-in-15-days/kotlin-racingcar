@@ -1,6 +1,4 @@
 import io.kotest.core.spec.style.DescribeSpec
-import io.kotest.core.spec.style.FunSpec
-import io.kotest.core.spec.style.ShouldSpec
 
 class PersonDescribeTest : DescribeSpec({
     it("이름 있는 인자 ") {
@@ -22,6 +20,4 @@ class PersonDescribeTest : DescribeSpec({
             testFunction()
         }
     }
-
 })
-

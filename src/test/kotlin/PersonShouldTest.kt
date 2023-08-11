@@ -1,4 +1,4 @@
-import io.kotest.core.spec.style.FunSpec
+
 import io.kotest.core.spec.style.ShouldSpec
 
 class PersonShouldTest : ShouldSpec({
@@ -21,6 +21,4 @@ class PersonShouldTest : ShouldSpec({
             testFunction()
         }
     }
-
 })
-

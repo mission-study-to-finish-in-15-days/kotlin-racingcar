@@ -20,6 +20,4 @@ class PersonFuncTest : FunSpec({
             testFunction()
         }
     }
-
 })
-

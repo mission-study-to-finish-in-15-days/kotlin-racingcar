@@ -38,5 +38,4 @@ class PersonFeatureTest : FeatureSpec({
             person1 shouldBe person2
         }
     }
-
 })

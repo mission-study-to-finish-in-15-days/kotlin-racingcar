@@ -1,4 +1,4 @@
-import io.kotest.core.spec.style.*
+import io.kotest.core.spec.style.ExpectSpec
 import io.kotest.matchers.shouldBe
 
 class PersonExpectTest : ExpectSpec({
@@ -38,5 +38,4 @@ class PersonExpectTest : ExpectSpec({
             person1 shouldBe person2
         }
     }
-
 })

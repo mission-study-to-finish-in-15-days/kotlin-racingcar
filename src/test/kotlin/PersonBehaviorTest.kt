@@ -1,7 +1,4 @@
 import io.kotest.core.spec.style.BehaviorSpec
-import io.kotest.core.spec.style.DescribeSpec
-import io.kotest.core.spec.style.FunSpec
-import io.kotest.core.spec.style.ShouldSpec
 
 class PersonBehaviorTest : BehaviorSpec({
     given("이름 있는 인자 ") {
@@ -25,6 +22,4 @@ class PersonBehaviorTest : BehaviorSpec({
             testFunction()
         }
     }
-
 })
-

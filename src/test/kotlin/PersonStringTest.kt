@@ -34,5 +34,4 @@ class PersonStringTest : StringSpec({
         val person2 = Person("김종인", 33)
         person1 shouldBe person2
     }
-
 })
