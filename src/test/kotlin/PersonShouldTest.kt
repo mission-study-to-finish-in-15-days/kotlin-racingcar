@@ -3,10 +3,10 @@ import io.kotest.matchers.shouldBe
 
 class PersonShouldTest : ShouldSpec({
     should("데이터 클래스 componentN") {
-        val person = Person(name = "문구화", age = 28)
+        val (name, age, nickname) = Person(name = "문구화", age = 28)
 
-        person.component1() shouldBe "문구화"
-        person.component2() shouldBe 28
-        person.component3() shouldBe "구아과"
+        name shouldBe "문구화"
+        age shouldBe 28
+        nickname shouldBe "구아과"
     }
 })
