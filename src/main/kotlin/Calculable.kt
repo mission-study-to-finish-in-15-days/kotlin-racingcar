@@ -80,7 +80,7 @@ data class SymbolAndNumberQueue(private val inputString: String) {
     }
 
     private fun popSymbol(): SymbolType {
-        return SymbolType.symbolOf(
+        return SymbolType.charOf(
             symbolAndNumArray.removeAt(0)
         )
     }
@@ -104,15 +104,15 @@ object StringCalculator {
     fun calculate(inputString: String? = null): String {
         requireNotNull(inputString) { "null 이면 안됩니다." }
 
-        return divideAndCalc(SymbolAndNumberQueue(inputString)).toString()
+        return divideAndCalculate(SymbolAndNumberQueue(inputString)).toString()
     }
 
-    private fun divideAndCalc(queue: SymbolAndNumberQueue, result: Number = Number(0)): Number {
+    private fun divideAndCalculate(queue: SymbolAndNumberQueue, result: Number = Number(0)): Number {
         if (queue.size == 0) return result
 
         val (symbolType: SymbolType, number: Number) = queue.popSymbolAndNumber()
         val calculable: Calculable = CalculableSelector.select(symbolType)
-        return divideAndCalc(queue, calculable.calculate(result, number))
+        return divideAndCalculate(queue, calculable.calculate(result, number))
     }
 }
 
@@ -124,7 +124,7 @@ enum class SymbolType(private val symbolChar: Char) {
     ;
 
     companion object {
-        fun symbolOf(inputChar: Char): SymbolType {
+        fun charOf(inputChar: Char): SymbolType {
             return values().firstOrNull { it.symbolChar == inputChar }
                 ?: throw IllegalArgumentException("사칙 연산 기호 이외에는 들어오면 안됩니다.(c=$inputChar)")
         }
