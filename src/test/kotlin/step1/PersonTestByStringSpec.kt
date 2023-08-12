@@ -22,7 +22,6 @@ class PersonTestByStringSpec : StringSpec({
     "nickName이 null 타입인지 확인한다" {
         val person = Person.of(age = 28, nickName = null)
         person.nickName shouldBe null
-
     }
 
     "기본 인자가 잘 동작하는지 확인한다" {
