@@ -6,11 +6,11 @@ class PersonKoTest : StringSpec({
     "이름 붙인 인자" {
         val people = listOf(
             Person("문구화", 28, "구아과"),
-            Person("문구화", 28, nickname = "구아과"),
+            Person("문구화", 28, _nickname = "구아과"),
             Person(
-                name = "문구화",
-                nickname = "구아과",
-                age = 28
+                _name = "문구화",
+                _nickname = "구아과",
+                _age = 28
             )
         )
 

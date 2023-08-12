@@ -1,1 +1,22 @@
-data class Person(val name: String, var age: Int, val nickname: String? = "구아과")
+data class Name(var name: String)
+data class Age(var age: Int)
+data class Nickname(var nickname: String?)
+
+data class Person(
+    private val _name: String,
+    private val _age: Int,
+    private val _nickname: String? = "구아과"
+) {
+    private val nameWrapper = Name(_name)
+    private val ageWrapper = Age(_age)
+    private val nicknameWrapper = Nickname(_nickname)
+
+    val name: String
+        get() = nameWrapper.name
+
+    val age: Int
+        get() = ageWrapper.age
+
+    val nickname: String?
+        get() = nicknameWrapper.nickname
+}
