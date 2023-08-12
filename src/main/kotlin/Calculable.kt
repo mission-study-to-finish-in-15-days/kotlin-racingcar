@@ -49,11 +49,20 @@ data class SymbolAndNumberQueue(private val inputString: String) {
         symbolAndNumArray = filteredBlankList
     }
 
-    fun pop(): Char {
-        return symbolAndNumArray.removeAt(0)
+    fun popSymbolAndNumber(): SymbolNumber {
+        return SymbolNumber(
+            symbolType = popSymbol(),
+            number = popInt(),
+        )
     }
 
-    fun popInt(): Int {
+    private fun popSymbol(): SymbolType {
+        return SymbolType.symbolOf(
+            symbolAndNumArray.removeAt(0)
+        )
+    }
+
+    private fun popInt(): Int {
         return symbolAndNumArray
             .removeAt(0)
             .digitToInt()
@@ -61,6 +70,11 @@ data class SymbolAndNumberQueue(private val inputString: String) {
 
     val size: Int get() = symbolAndNumArray.size
 }
+
+data class SymbolNumber(
+    val symbolType: SymbolType,
+    val number: Int,
+)
 
 object StringCalculator {
 
@@ -70,19 +84,12 @@ object StringCalculator {
         return divideAndCalc(SymbolAndNumberQueue(inputString)).toString()
     }
 
-    private val numberRegex: Regex = "\\d".toRegex()
     private fun divideAndCalc(queue: SymbolAndNumberQueue, prevInt: Int = 0): Int {
         if (queue.size == 0) return prevInt
 
-        val symbolC = queue.pop()
-        val symbolType: SymbolType = SymbolType.symbolOf(symbolC)
-        val numberChar = queue.popInt()
-        if (numberRegex.matches(numberChar.toString())) {
-            val calculable = CalcSelector.select(symbolType)
-            return divideAndCalc(queue, calculable.calculate(prevInt, numberChar))
-        }
-
-        throw IllegalArgumentException("정상적이지 않는 문자열 $queue")
+        val (symbolType: SymbolType, number: Int) = queue.popSymbolAndNumber()
+        val calculable = CalcSelector.select(symbolType)
+        return divideAndCalc(queue, calculable.calculate(prevInt, number))
     }
 }
 
