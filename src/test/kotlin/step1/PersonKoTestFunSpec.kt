@@ -38,7 +38,6 @@ class PersonKoTestFunSpec : FunSpec({
         person.nickname shouldBe "kycho"
     }
 
-
     context("데이터 클래스") {
         val person = Person("조경현", 33, "kycho")
 
