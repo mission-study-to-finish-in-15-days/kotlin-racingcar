@@ -1,38 +1,61 @@
 sealed interface Calculable {
-    fun calculate(a: Int, b: Int): Int
+    fun calculate(a: Number, b: Number): Number
 }
 
-object PlusCalc : Calculable {
-    override fun calculate(a: Int, b: Int): Int {
+object PlusCalculator : Calculable {
+    override fun calculate(a: Number, b: Number): Number {
         return a + b
     }
 }
 
-object MinusCalc : Calculable {
-    override fun calculate(a: Int, b: Int): Int {
+object MinusCalculator : Calculable {
+    override fun calculate(a: Number, b: Number): Number {
         return a - b
     }
 }
 
-object MultipleCalc : Calculable {
-    override fun calculate(a: Int, b: Int): Int {
+object MultipleCalculator : Calculable {
+    override fun calculate(a: Number, b: Number): Number {
         return a * b
     }
 }
 
-object DivideCalc : Calculable {
-    override fun calculate(a: Int, b: Int): Int {
+object DivideCalculator : Calculable {
+    override fun calculate(a: Number, b: Number): Number {
         return a / b
+    }
+}
+
+@JvmInline
+value class Number(private val value: Int)  {
+    operator fun plus(from: Number): Number {
+        return Number(this.value + from.value)
+    }
+
+    operator fun minus(from: Number): Number {
+        return Number(this.value - from.value)
+    }
+
+    operator fun times(from: Number): Number {
+        return Number(this.value * from.value)
+    }
+
+    operator fun div(from: Number): Number {
+        return Number(this.value / from.value)
+    }
+
+    override fun toString(): String {
+        return "$value"
     }
 }
 
 object CalcSelector {
     fun select(symbolType: SymbolType): Calculable {
         return when (symbolType) {
-            SymbolType.PLUS -> PlusCalc
-            SymbolType.MINUS -> MinusCalc
-            SymbolType.MULTIPLE -> MultipleCalc
-            SymbolType.DIVIDE -> DivideCalc
+            SymbolType.PLUS -> PlusCalculator
+            SymbolType.MINUS -> MinusCalculator
+            SymbolType.MULTIPLE -> MultipleCalculator
+            SymbolType.DIVIDE -> DivideCalculator
         }
     }
 }
@@ -62,10 +85,10 @@ data class SymbolAndNumberQueue(private val inputString: String) {
         )
     }
 
-    private fun popInt(): Int {
-        return symbolAndNumArray
+    private fun popInt(): Number {
+        return Number(symbolAndNumArray
             .removeAt(0)
-            .digitToInt()
+            .digitToInt())
     }
 
     val size: Int get() = symbolAndNumArray.size
@@ -73,27 +96,27 @@ data class SymbolAndNumberQueue(private val inputString: String) {
 
 data class SymbolNumber(
     val symbolType: SymbolType,
-    val number: Int,
+    val number: Number,
 )
 
 object StringCalculator {
 
     fun calculate(inputString: String? = null): String {
-        require(inputString != null) { "null 이면 안됩니다." }
+        requireNotNull(inputString) { "null 이면 안됩니다." }
 
         return divideAndCalc(SymbolAndNumberQueue(inputString)).toString()
     }
 
-    private fun divideAndCalc(queue: SymbolAndNumberQueue, prevInt: Int = 0): Int {
-        if (queue.size == 0) return prevInt
+    private fun divideAndCalc(queue: SymbolAndNumberQueue, result: Number = Number(0)): Number {
+        if (queue.size == 0) return result
 
-        val (symbolType: SymbolType, number: Int) = queue.popSymbolAndNumber()
+        val (symbolType: SymbolType, number: Number) = queue.popSymbolAndNumber()
         val calculable = CalcSelector.select(symbolType)
-        return divideAndCalc(queue, calculable.calculate(prevInt, number))
+        return divideAndCalc(queue, calculable.calculate(result, number))
     }
 }
 
-enum class SymbolType(private val c: Char) {
+enum class SymbolType(private val symbolChar: Char) {
     PLUS('+'),
     MINUS('-'),
     MULTIPLE('*'),
@@ -101,9 +124,9 @@ enum class SymbolType(private val c: Char) {
     ;
 
     companion object {
-        fun symbolOf(c: Char): SymbolType {
-            return values().firstOrNull { it.c == c }
-                ?: throw IllegalArgumentException("사칙 연산 기호 이외에는 들어오면 안됩니다.(c=$c)")
+        fun symbolOf(inputChar: Char): SymbolType {
+            return values().firstOrNull { it.symbolChar == inputChar }
+                ?: throw IllegalArgumentException("사칙 연산 기호 이외에는 들어오면 안됩니다.(c=$inputChar)")
         }
     }
 }
