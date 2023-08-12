@@ -1,46 +1,65 @@
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.BehaviorSpec
+import io.kotest.datatest.withData
 import io.kotest.matchers.shouldBe
 
 class CalcuratorTest : BehaviorSpec({
 
-    given("문자열 4 + 3 이면") {
-        val inputString = "4 + 3"
-        `when`("calcurate 호출 시") {
-            val result = StringCalculator.calculate(inputString)
-            then("7 반환") {
-                result shouldBe "7"
-            }
+    given("덧셈 연산일 경우") {
+        withData(
+            nameFn = {"${it.first} = ${it.second
+            }"},
+            "2 + 3 + 5" to "10",
+            "2 + 4" to "6",
+        ) { (input, output) ->
+            StringCalculator.calculate(input) shouldBe output
         }
     }
 
-    given("문자열 4 - 3 이면") {
-        val inputString = "4 - 3"
-        `when`("calcurate 호출 시") {
-            val result = StringCalculator.calculate(inputString)
-            then("1 반환") {
-                result shouldBe "1"
-            }
+    given("뺄셈일 경우") {
+        withData(
+            nameFn = {"${it.first} = ${it.second
+            }"},
+            "2 - 3 - 5" to "-6",
+            "2 - 4" to "-2",
+        ) { (input, output) ->
+            StringCalculator.calculate(input) shouldBe output
+        }
+
+    }
+
+    given("곱셈일 경우") {
+        withData(
+            nameFn = {"${it.first} = ${it.second
+            }"},
+            "2 * 3 * 5" to "30",
+            "2 * 4" to "8",
+        ) { (input, output) ->
+            StringCalculator.calculate(input) shouldBe output
+        }
+
+    }
+
+
+    given("나눗셈일 경우") {
+        withData(
+            nameFn = {"${it.first} = ${it.second
+            }"},
+            "6 / 2 / 2" to "1",
+            "4 / 2" to "2",
+        ) { (input, output) ->
+            StringCalculator.calculate(input) shouldBe output
         }
     }
 
-    given("문자열 4 * 3 이면") {
-        val inputString = "4 * 3"
-        `when`("calcurate 호출 시") {
-            val result = StringCalculator.calculate(inputString)
-            then("12 반환") {
-                result shouldBe "12"
-            }
-        }
-    }
-
-    given("문자열 4 / 2 이면") {
-        val inputString = "4 / 2"
-        `when`("calcurate 호출 시") {
-            val result = StringCalculator.calculate(inputString)
-            then("2 반환") {
-                result shouldBe "2"
-            }
+    given("복합 연산일 경우") {
+        withData(
+            nameFn = {"${it.first} = ${it.second
+            }"},
+            "2 * 3 + 5" to "11",
+            "2 + 4 / 2 * 3" to "9",
+        ) { (input, output) ->
+            StringCalculator.calculate(input) shouldBe output
         }
     }
 
