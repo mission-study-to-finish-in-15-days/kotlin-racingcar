@@ -1,33 +1,33 @@
-sealed interface Calculatable {
-    fun calculrate(a: Int, b: Int): Int
+sealed interface Calculable {
+    fun calculate(a: Int, b: Int): Int
 }
 
-object PlusCalc : Calculatable {
-    override fun calculrate(a: Int, b: Int): Int {
+object PlusCalc : Calculable {
+    override fun calculate(a: Int, b: Int): Int {
         return a + b
     }
 }
 
-object MinusCalc : Calculatable {
-    override fun calculrate(a: Int, b: Int): Int {
+object MinusCalc : Calculable {
+    override fun calculate(a: Int, b: Int): Int {
         return a - b
     }
 }
 
-object MultipleCalc : Calculatable {
-    override fun calculrate(a: Int, b: Int): Int {
+object MultipleCalc : Calculable {
+    override fun calculate(a: Int, b: Int): Int {
         return a * b
     }
 }
 
-object DivideCalc : Calculatable {
-    override fun calculrate(a: Int, b: Int): Int {
+object DivideCalc : Calculable {
+    override fun calculate(a: Int, b: Int): Int {
         return a / b
     }
 }
 
 object CalcSelector {
-    fun select(symbolType: SymbolType): Calculatable {
+    fun select(symbolType: SymbolType): Calculable {
         return when (symbolType) {
             SymbolType.PLUS -> PlusCalc
             SymbolType.MINUS -> MinusCalc
@@ -37,8 +37,7 @@ object CalcSelector {
     }
 }
 
-object StringCalcurator {
-    private val numberRegex: Regex = "\\d".toRegex()
+object StringCalculator {
 
     fun calculate(inputString: String? = null): String {
         require(inputString != null) { "null 이면 안됩니다." }
@@ -52,6 +51,7 @@ object StringCalcurator {
         return divideAndCalc(filteredBlankList).toString()
     }
 
+    private val numberRegex: Regex = "\\d".toRegex()
     private fun divideAndCalc(charMutableList: MutableList<Char>, prevInt: Int = 0): Int {
         if (charMutableList.size == 0) return prevInt
 
@@ -59,7 +59,7 @@ object StringCalcurator {
         val symbolType: SymbolType = SymbolType.symbolOf(symbolC)
         val numberChar = charMutableList.removeAt(0)
         if (numberRegex.matches(numberChar.toString())) {
-            return divideAndCalc(charMutableList, CalcSelector.select(symbolType).calculrate(prevInt, numberChar.toString().toInt()))
+            return divideAndCalc(charMutableList, CalcSelector.select(symbolType).calculate(prevInt, numberChar.toString().toInt()))
         }
 
         throw IllegalArgumentException("정상적이지 않는 문자열 $charMutableList")
