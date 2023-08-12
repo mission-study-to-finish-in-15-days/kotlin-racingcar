@@ -1,3 +1,5 @@
+package step1
+
 import io.kotest.core.spec.style.AnnotationSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
@@ -42,21 +44,17 @@ class PersonTest : AnnotationSpec() {
     }
 
     @Test
-    fun `기본인자 default-arguments 다루어보기`(){
+    fun `기본인자 default-arguments 다루어보기`() {
         val person = Person()
 
         person.getName() shouldBe "김준우"
     }
 
     @Test
-    fun `데이터 클래스 다루어보기`(){
+    fun `데이터 클래스 다루어보기`() {
         val person1 = Person()
         val person2 = Person()
 
         person1 shouldBe person2
     }
-
-
-
-
 }
