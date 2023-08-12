@@ -4,10 +4,10 @@ data class Person(
   private val _name: String,
   private val _age: Int,
   private var _nickname: String? = "윤지막",
-  private var _companion: Boolean? = false
+  private var _companionPerson: Boolean? = false
 ) {
   init {
-    validateRacingEntry(_age, _companion!!)
+    validateRacingEntry(_age, _companionPerson!!)
   }
 
   private var _introduce: String? = null

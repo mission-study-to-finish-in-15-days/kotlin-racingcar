@@ -23,7 +23,7 @@ class PersonValidTest : AnnotationSpec() {
   @DisplayName("자동차 경주 게임장은 성인만 입장가능하다::미성년자+보호자동반")
   fun test2() {
     assertDoesNotThrow {
-      person = Person("김꼬마", 7, _companion = true)
+      person = Person("김꼬마", 7, _companionPerson = true)
     }
   }
 
@@ -39,7 +39,7 @@ class PersonValidTest : AnnotationSpec() {
   @DisplayName("자동차 경주 게임장은 성인만 입장가능하다::성인+보호자동반")
   fun test4() {
     assertDoesNotThrow {
-      person = Person("김어른", 70, _companion = true)
+      person = Person("김어른", 70, _companionPerson = true)
     }
   }
 }
