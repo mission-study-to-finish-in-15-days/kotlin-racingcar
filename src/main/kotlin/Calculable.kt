@@ -49,7 +49,7 @@ value class Number(private val value: Int)  {
     }
 }
 
-object CalcSelector {
+object CalculableSelector {
     fun select(symbolType: SymbolType): Calculable {
         return when (symbolType) {
             SymbolType.PLUS -> PlusCalculator
@@ -75,7 +75,7 @@ data class SymbolAndNumberQueue(private val inputString: String) {
     fun popSymbolAndNumber(): SymbolNumber {
         return SymbolNumber(
             symbolType = popSymbol(),
-            number = popInt(),
+            number = popNumber(),
         )
     }
 
@@ -85,7 +85,7 @@ data class SymbolAndNumberQueue(private val inputString: String) {
         )
     }
 
-    private fun popInt(): Number {
+    private fun popNumber(): Number {
         return Number(symbolAndNumArray
             .removeAt(0)
             .digitToInt())
@@ -111,7 +111,7 @@ object StringCalculator {
         if (queue.size == 0) return result
 
         val (symbolType: SymbolType, number: Number) = queue.popSymbolAndNumber()
-        val calculable = CalcSelector.select(symbolType)
+        val calculable: Calculable = CalculableSelector.select(symbolType)
         return divideAndCalc(queue, calculable.calculate(result, number))
     }
 }
