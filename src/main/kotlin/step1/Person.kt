@@ -11,9 +11,9 @@ data class Person(
     와 테스트하려면 다른것도 다 정의가 되어야 하는군여 ..
      */
 
-    private val _name: String,
-    private val _age: Int,
-    private val _nickname: String? = "윤코니"
+    val _name: String,
+    val _age: Int,
+    val _nickname: String? = "윤코니"
 ) {
     val name: String get() = nameInfo.name
     val nickname: String? get() = nameInfo.nickname
