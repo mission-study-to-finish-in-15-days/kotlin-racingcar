@@ -14,5 +14,9 @@ enum class ArithmeticOperator(
         fun of(symbol: String): ArithmeticOperator? {
             return values().firstOrNull { it.symbol == symbol }
         }
+
+        fun of(symbol: Char): ArithmeticOperator? {
+            return of(symbol.toString())
+        }
     }
 }
