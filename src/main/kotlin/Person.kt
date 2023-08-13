@@ -1,6 +1,11 @@
-data class Name(var name: String)
-data class Age(var age: Int)
-data class Nickname(var nickname: String?)
+@JvmInline
+value class Name(val name: String)
+
+@JvmInline
+value class Age(val age: Int)
+
+@JvmInline
+value class Nickname(val nickname: String?)
 
 data class Person(
     private val _name: String,
