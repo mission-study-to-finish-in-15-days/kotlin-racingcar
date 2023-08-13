@@ -7,8 +7,7 @@ class CalcuratorTest : BehaviorSpec({
 
     given("덧셈 연산일 경우") {
         withData(
-            nameFn = {"${it.first} = ${it.second
-            }"},
+            nameFn = { "${it.first} = ${it.second}" },
             "2 + 3 + 5" to "10",
             "2 + 4" to "6",
         ) { (input, output) ->
@@ -18,8 +17,7 @@ class CalcuratorTest : BehaviorSpec({
 
     given("뺄셈일 경우") {
         withData(
-            nameFn = {"${it.first} = ${it.second
-            }"},
+            nameFn = { "${it.first} = ${it.second}" },
             "2 - 3 - 5" to "-6",
             "2 - 4" to "-2",
         ) { (input, output) ->
@@ -30,8 +28,7 @@ class CalcuratorTest : BehaviorSpec({
 
     given("곱셈일 경우") {
         withData(
-            nameFn = {"${it.first} = ${it.second
-            }"},
+            nameFn = { "${it.first} = ${it.second}" },
             "2 * 3 * 5" to "30",
             "2 * 4" to "8",
         ) { (input, output) ->
@@ -43,8 +40,7 @@ class CalcuratorTest : BehaviorSpec({
 
     given("나눗셈일 경우") {
         withData(
-            nameFn = {"${it.first} = ${it.second
-            }"},
+            nameFn = { "${it.first} = ${it.second}" },
             "6 / 2 / 2" to "1",
             "4 / 2" to "2",
         ) { (input, output) ->
@@ -54,8 +50,7 @@ class CalcuratorTest : BehaviorSpec({
 
     given("복합 연산일 경우") {
         withData(
-            nameFn = {"${it.first} = ${it.second
-            }"},
+            nameFn = { "${it.first} = ${it.second}" },
             "2 * 3 + 5" to "11",
             "2 + 4 / 2 * 3" to "9",
         ) { (input, output) ->

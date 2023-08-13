@@ -22,7 +22,8 @@ object MultipleCalculator : Calculable {
 
 object DivideCalculator : Calculable {
     override fun calculate(a: Number, b: Number): Number {
-        return a / b
+        return runCatching { a / b }
+            .getOrDefault(Number(0))
     }
 }
 
