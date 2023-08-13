@@ -13,26 +13,18 @@ object StringCalculator {
         var result = splitInput.poll().toLong()
 
         while (splitInput.isNotEmpty()) {
-            val operator = splitInput.poll()
+            val arithmeticOperator = ArithmeticOperator.of(splitInput.poll())
             val operand = splitInput.poll().toLong()
-
-            when (operator) {
-                "+" -> result += operand
-                "-" -> result -= operand
-                "*" -> result *= operand
-                "/" -> result /= operand
-                else -> throw IllegalArgumentException("사칙연산 기호는 +,-,*,/ 만 허용됩니다.")
-            }
+            result = arithmeticOperator.operator(result, operand)
         }
 
         return result
     }
 
     private fun splitExpression(expression: String): Queue<String> {
+        val expressionCharQueue = expression.toCollection(LinkedList())
 
         val queue = LinkedList<String>()
-
-        val expressionCharQueue = expression.toCollection(LinkedList())
 
         var token = getNextToken(expressionCharQueue)
         while (token != null) {
@@ -46,18 +38,18 @@ object StringCalculator {
     private fun getNextToken(expressionCharQueue: LinkedList<Char>): String? {
 
         while (expressionCharQueue.firstOrNull() == ' ')
-            expressionCharQueue.pop()
+            expressionCharQueue.poll()
 
         if (expressionCharQueue.isEmpty())
             return null
 
         var expressionChar = expressionCharQueue.first
         if (!expressionChar.isDigit())
-            return expressionCharQueue.pop().toString()
+            return expressionCharQueue.poll().toString()
 
         val token = StringBuilder()
         while (expressionChar?.isDigit() == true) {
-            val char = expressionCharQueue.pop()
+            val char = expressionCharQueue.poll()
             token.append(char)
             expressionChar = expressionCharQueue.firstOrNull()
         }
