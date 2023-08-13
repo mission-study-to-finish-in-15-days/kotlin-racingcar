@@ -9,13 +9,15 @@ object StringCalculator {
 
         val parsedInput: Queue<String> = ArithmeticExpressionParser.parse(input)
 
-        var result = parsedInput.poll().toLong()
+        require(parsedInput.size % 2 != 0) { "피연산자, 연산자의 짝이 맞지 않습니다." }
+
+        var result = ArithmeticOperand.of(parsedInput.poll())
         while (parsedInput.isNotEmpty()) {
             val arithmeticOperator = ArithmeticOperator.of(parsedInput.poll())
-            val operand = parsedInput.poll().toLong()
-            result = arithmeticOperator.operator(result, operand)
+            val operand = ArithmeticOperand.of(parsedInput.poll())
+            result = ArithmeticOperand(arithmeticOperator.operator(result.value, operand.value))
         }
 
-        return result
+        return result.value
     }
 }

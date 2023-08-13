@@ -1,6 +1,5 @@
 package step2
 
-import step2.ArithmeticOperator.MINUS
 import java.util.LinkedList
 import java.util.Queue
 
@@ -27,10 +26,14 @@ object ArithmeticExpressionParser {
     private fun isFirstNumberMinus(expression: String): Boolean {
         val trimExpression = expression.trim()
 
-        if (trimExpression.length >= 2 &&
-            ArithmeticOperator.supportSymbol(trimExpression[0].toString()) &&
-            ArithmeticOperator.of(trimExpression[0].toString()) == MINUS &&
-            trimExpression[1].isDigit()
+        if (trimExpression.length < 2)
+            return false
+
+        val firstChar = trimExpression[0]
+        val secondChar = trimExpression[1]
+        if (ArithmeticOperator.supportSymbol("$firstChar") &&
+            ArithmeticOperator.of("$firstChar") == ArithmeticOperator.MINUS &&
+            secondChar.isDigit()
         ) {
             return true
         }
