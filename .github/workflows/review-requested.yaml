@@ -5,12 +5,12 @@ on:
       types: [opened, reopened, ready_for_review]
 
 jobs:
-  send-slack-webhook-by-6161990:
-    if: ${{ github.actor }} == '6161990'
+  ready-request-review-of-6161990:
+    if: github.actor == '6161990'
     runs-on: ubuntu-latest
     steps:
       - name: auto assign assignee & reviewer
-        uses: hkusu/review-assign-action@v1
+        uses: hkusu/review-assign-action@v1.3.1
         with:
           assignees: ${{ github.actor }}
           reviewers:
@@ -28,12 +28,12 @@ jobs:
               "icon_url": "https://opgg-static.akamaized.net/meta/images/lol/champion/Blitzcrank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1690894796332"
             }
 
-  send-slack-webhook-by-JeremyShin:
-    if: ${{ github.actor }} == 'JeremyShin'
+  ready-request-review-of-JeremyShin:
+    if: github.actor == 'JeremyShin'
     runs-on: ubuntu-latest
     steps:
       - name: auto assign assignee & reviewer
-        uses: hkusu/review-assign-action@v1
+        uses: hkusu/review-assign-action@v1.3.1
         with:
           assignees: ${{ github.actor }}
           reviewers:
@@ -51,12 +51,12 @@ jobs:
               "icon_url": "https://opgg-static.akamaized.net/meta/images/lol/champion/Blitzcrank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1690894796332"
             }
 
-  send-slack-webhook-by-JiwonDev:
-    if: ${{ github.actor }} == 'JiwonDev'
+  ready-request-review-of-JiwonDev:
+    if: github.actor == 'JiwonDev'
     runs-on: ubuntu-latest
     steps:
       - name: auto assign assignee & reviewer
-        uses: hkusu/review-assign-action@v1
+        uses: hkusu/review-assign-action@v1.3.1
         with:
           assignees: ${{ github.actor }}
           reviewers:
@@ -74,12 +74,12 @@ jobs:
               "icon_url": "https://opgg-static.akamaized.net/meta/images/lol/champion/Blitzcrank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1690894796332"
             }
 
-  send-slack-webhook-by-Junuu:
-    if: ${{ github.actor }} == 'Junuu'
+  ready-request-review-of-Junuu:
+    if: github.actor == 'Junuu'
     runs-on: ubuntu-latest
     steps:
       - name: auto assign assignee & reviewer
-        uses: hkusu/review-assign-action@v1
+        uses: hkusu/review-assign-action@v1.3.1
         with:
           assignees: ${{ github.actor }}
           reviewers:
@@ -97,12 +97,12 @@ jobs:
               "icon_url": "https://opgg-static.akamaized.net/meta/images/lol/champion/Blitzcrank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1690894796332"
             }
 
-  send-slack-webhook-by-khcho902:
-    if: ${{ github.actor }} == 'khcho902'
+  ready-request-review-of-khcho902:
+    if: github.actor == 'khcho902'
     runs-on: ubuntu-latest
     steps:
       - name: auto assign assignee & reviewer
-        uses: hkusu/review-assign-action@v1
+        uses: hkusu/review-assign-action@v1.3.1
         with:
           assignees: ${{ github.actor }}
           reviewers:
@@ -120,12 +120,12 @@ jobs:
               "icon_url": "https://opgg-static.akamaized.net/meta/images/lol/champion/Blitzcrank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1690894796332"
             }
 
-  send-slack-webhook-by-kji6252:
-    if: ${{ github.actor }} == 'kji6252'
+  ready-request-review-of-kji6252:
+    if: github.actor == 'kji6252'
     runs-on: ubuntu-latest
     steps:
       - name: auto assign assignee & reviewer
-        uses: hkusu/review-assign-action@v1
+        uses: hkusu/review-assign-action@v1.3.1
         with:
           assignees: ${{ github.actor }}
           reviewers:
@@ -143,12 +143,12 @@ jobs:
               "icon_url": "https://opgg-static.akamaized.net/meta/images/lol/champion/Blitzcrank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1690894796332"
             }
 
-  send-slack-webhook-by-moon9ua:
-    if: ${{ github.actor }} == 'moon9ua'
+  ready-request-review-of-moon9ua:
+    if: github.actor == 'moon9ua'
     runs-on: ubuntu-latest
     steps:
       - name: auto assign assignee & reviewer
-        uses: hkusu/review-assign-action@v1
+        uses: hkusu/review-assign-action@v1.3.1
         with:
           assignees: ${{ github.actor }}
           reviewers:
@@ -166,12 +166,12 @@ jobs:
               "icon_url": "https://opgg-static.akamaized.net/meta/images/lol/champion/Blitzcrank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1690894796332"
             }
 
-  send-slack-webhook-by-pado0:
-    if: ${{ github.actor }} == 'pado0'
+  ready-request-review-of-pado0:
+    if: github.actor == 'pado0'
     runs-on: ubuntu-latest
     steps:
       - name: auto assign assignee & reviewer
-        uses: hkusu/review-assign-action@v1
+        uses: hkusu/review-assign-action@v1.3.1
         with:
           assignees: ${{ github.actor }}
           reviewers:
@@ -189,12 +189,12 @@ jobs:
               "icon_url": "https://opgg-static.akamaized.net/meta/images/lol/champion/Blitzcrank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1690894796332"
             }
 
-  send-slack-webhook-by-yeoonjae:
-    if: ${{ github.actor }} == 'yeoonjae'
+  ready-request-review-of-yeoonjae:
+    if: github.actor == 'yeoonjae'
     runs-on: ubuntu-latest
     steps:
       - name: auto assign assignee & reviewer
-        uses: hkusu/review-assign-action@v1
+        uses: hkusu/review-assign-action@v1.3.1
         with:
           assignees: ${{ github.actor }}
           reviewers:
@@ -212,15 +212,16 @@ jobs:
               "icon_url": "https://opgg-static.akamaized.net/meta/images/lol/champion/Blitzcrank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1690894796332"
             }
 
-  send-slack-webhook-by-hyeon9mak:
-    if: ${{ github.actor }} == 'hyeon9mak'
+  ready-request-review-of-hyeon9mak:
+    if: github.actor == 'hyeon9mak'
     runs-on: ubuntu-latest
     steps:
+      - run: echo ${{ github.actor }}
       - name: auto assign assignee & reviewer
-        uses: hkusu/review-assign-action@v1
+        uses: hkusu/review-assign-action@v1.3.1
         with:
-          assignees: ${{ github.actor }}
-          reviewers:
+          assignees: hyeon9mak
+          reviewers: khcho902
 
       - name: slack-send
         uses: slackapi/slack-github-action@v1.24.0
