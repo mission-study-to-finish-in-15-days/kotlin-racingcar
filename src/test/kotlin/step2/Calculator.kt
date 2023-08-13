@@ -1,16 +1,44 @@
 package step2
 
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.AnnotationSpec
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
+import org.junit.jupiter.params.provider.ValueSource
 import java.util.stream.Stream
 
 
 class CalculatorTest: AnnotationSpec() {
 
     private val sut = Calculator
+
+    @Test
+    fun `사칙연산 이외에는 연산자가 들어올 수 없다`(){
+        val input = "3 ㄱ 3"
+
+        shouldThrow<IllegalArgumentException> {
+            sut.calculate(input)
+        }
+    }
+
+    @Test
+    fun `계산기의 입력값으로는 null 이 들어올 수 없다`(){
+        val input = null
+
+        shouldThrow<IllegalArgumentException> {
+            sut.calculate(input)
+        }
+    }
+
+    @Test
+    fun `계산기의 입력값으로는 빈문자가 들어올 수 없다`(){
+        val input = "  "
+        shouldThrow<IllegalArgumentException> {
+            sut.calculate(input)
+        }
+    }
 
     @ParameterizedTest
     @MethodSource("plusCalculatorInputAndResult")

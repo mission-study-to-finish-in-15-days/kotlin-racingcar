@@ -4,7 +4,7 @@ import java.util.*
 
 object Calculator {
 
-    fun calculate(input: String): Int {
+    fun calculate(input: String?): Int {
         val elementStorage = CalculatorInputClassifier.splitElementAndValidator(input)
         while (elementStorage.isCalculateContinue()) {
             val calculateInfo = elementStorage.getCalculateInfo()
@@ -29,7 +29,8 @@ object Calculator {
 }
 
 object CalculatorInputClassifier {
-    fun splitElementAndValidator(input: String): CalculatorElementStorage {
+    fun splitElementAndValidator(input: String?): CalculatorElementStorage {
+        require(input.isNullOrBlank() == false)
         val inputSplit = input.split(" ")
         return CalculatorElementStorage(inputSplit)
     }
