@@ -1,3 +1,5 @@
+package step01
+
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
