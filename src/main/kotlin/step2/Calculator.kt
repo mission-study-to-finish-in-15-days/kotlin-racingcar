@@ -19,6 +19,10 @@ object Calculator {
             Operation.PLUS -> calculateInfo.getFirstValue() + calculateInfo.getSecondValue()
             Operation.MINUS -> calculateInfo.getFirstValue() - calculateInfo.getSecondValue()
             Operation.MULTIPLE -> calculateInfo.getFirstValue() * calculateInfo.getSecondValue()
+            Operation.DIVIDE -> runCatching {
+                calculateInfo.getFirstValue() / calculateInfo.getSecondValue()
+            }.getOrDefault(0)
+
         }
         return result.toString()
     }
@@ -102,7 +106,9 @@ value class SecondOperatedValue(
 enum class Operation(val value: String) {
     PLUS("+"),
     MINUS("-"),
-    MULTIPLE("*");
+    MULTIPLE("*"),
+    DIVIDE("/"),
+    ;
 
     companion object {
         fun operationOf(value: String): Operation {

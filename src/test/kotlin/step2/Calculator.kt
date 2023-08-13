@@ -40,6 +40,16 @@ class CalculatorTest: AnnotationSpec() {
         calculatorResult shouldBe expectedResult
     }
 
+    @ParameterizedTest
+    @MethodSource("divideCalculatorInputAndResult")
+    fun `계산기에 두 숫자를 넣으면 나머지연산을 수행한다`(input: String, expectedResult: Int){
+
+        val calculatorResult = sut.calculate(input)
+
+        calculatorResult shouldBe expectedResult
+    }
+
+
     companion object {
         @JvmStatic
         fun plusCalculatorInputAndResult(): Stream<Arguments> {
@@ -65,6 +75,16 @@ class CalculatorTest: AnnotationSpec() {
                 Arguments.of("5 * 3", 15),
                 Arguments.of("10 * 3 * 3", 90),
                 Arguments.of("15 * 0", 0),
+            )
+        }
+
+        @JvmStatic
+        fun divideCalculatorInputAndResult(): Stream<Arguments> {
+            return Stream.of(
+                Arguments.of("5 / 3", 1),
+                Arguments.of("30 / 3 / 2", 5),
+                Arguments.of("15 / 0", 0),
+                Arguments.of("0 / 15", 0),
             )
         }
     }
