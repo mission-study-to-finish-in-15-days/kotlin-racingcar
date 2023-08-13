@@ -24,7 +24,6 @@ class PersonFuncTest : FunSpec(
 
             person1 shouldBe person2
         }
-
         test("데이터 클래스 componentN"){
             val person1 = Person(name="신윤철", age=28, nickname = "윤코니")
             val (name, age, nickname) = person1

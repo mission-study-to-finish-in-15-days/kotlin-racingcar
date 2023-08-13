@@ -34,8 +34,6 @@ class PersonKoTest : StringSpec({
         person.age shouldBe 28
         person.nickname shouldBe "윤코니"
     }
-
-
     "데이터 클래스" {
         val person1 = Person("신윤철", 28)
         val person2 = Person("신윤철", 28)
