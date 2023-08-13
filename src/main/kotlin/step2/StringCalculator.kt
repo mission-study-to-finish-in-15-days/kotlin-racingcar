@@ -4,13 +4,11 @@ import java.util.LinkedList
 import java.util.Queue
 
 object StringCalculator {
-
-    private const val DELIMETER = " "
     fun calculate(input: String?): Long {
 
         require(!input.isNullOrBlank()) { "입력값이 null 또는 빈 문자열일 수 없습니다." }
 
-        val splitInput: Queue<String> = splitInput(input)
+        val splitInput: Queue<String> = splitExpression(input)
 
         var result = splitInput.poll().toLong()
 
@@ -30,10 +28,40 @@ object StringCalculator {
         return result
     }
 
-    private fun splitInput(input: String): Queue<String> {
+    private fun splitExpression(expression: String): Queue<String> {
 
-        val splitInput = input.split(DELIMETER)
+        val queue = LinkedList<String>()
 
-        return LinkedList(splitInput)
+        val expressionCharQueue = expression.toCollection(LinkedList())
+
+        var token = getNextToken(expressionCharQueue)
+        while (token != null) {
+            queue.add(token)
+            token = getNextToken(expressionCharQueue)
+        }
+
+        return queue
+    }
+
+    private fun getNextToken(expressionCharQueue: LinkedList<Char>): String? {
+
+        while (expressionCharQueue.firstOrNull() == ' ')
+            expressionCharQueue.pop()
+
+        if (expressionCharQueue.isEmpty())
+            return null
+
+        var expressionChar = expressionCharQueue.first
+        if (!expressionChar.isDigit())
+            return expressionCharQueue.pop().toString()
+
+        val token = StringBuilder()
+        while (expressionChar?.isDigit() == true) {
+            val char = expressionCharQueue.pop()
+            token.append(char)
+            expressionChar = expressionCharQueue.firstOrNull()
+        }
+
+        return token.toString()
     }
 }

@@ -15,6 +15,9 @@ class StringCalculatorTest : FunSpec({
             StringCalculatorTestData("5 * 6", 30L),
             StringCalculatorTestData("8 / 4", 2L),
             StringCalculatorTestData("2 + 3 * 4 / 2", 10L),
+            StringCalculatorTestData("2+3*4 / 2", 10L),
+            StringCalculatorTestData("2+3*4 / 2 ", 10L),
+            StringCalculatorTestData("   2+3*4 / 2 ", 10L),
         ) { (input, result) ->
             StringCalculator.calculate(input) shouldBe result
         }
