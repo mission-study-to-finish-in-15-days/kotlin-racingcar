@@ -49,6 +49,15 @@ class CalculatorTest: AnnotationSpec() {
         calculatorResult shouldBe expectedResult
     }
 
+    @ParameterizedTest
+    @MethodSource("allInOneCalculatorInputAndResult")
+    fun `계산기에 사칙연산을 모두 포함하는 연산을 넣으면 계산을 수행한다`(input: String, expectedResult: Int){
+
+        val calculatorResult = sut.calculate(input)
+
+        calculatorResult shouldBe expectedResult
+    }
+
 
     companion object {
         @JvmStatic
@@ -85,6 +94,16 @@ class CalculatorTest: AnnotationSpec() {
                 Arguments.of("30 / 3 / 2", 5),
                 Arguments.of("15 / 0", 0),
                 Arguments.of("0 / 15", 0),
+            )
+        }
+
+        @JvmStatic
+        fun allInOneCalculatorInputAndResult(): Stream<Arguments> {
+            return Stream.of(
+                Arguments.of("5 / 3 + 3 - 2", 2),
+                Arguments.of("2 + 3 * 4 / 2", 10),
+                Arguments.of("15 / 0 + 5 * 20", 100),
+                Arguments.of("0 / 15 + 3", 3),
             )
         }
     }

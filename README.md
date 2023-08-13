@@ -15,6 +15,6 @@
 - [x] 뺄셈
 - [x] 곱셈
 - [x] 나눗셈
-- [ ] 사칙연산을 모두 포함하는 연산
+- [x] 사칙연산을 모두 포함하는 연산
 - [ ] 입력값이 null 또는 빈 문자열일 경우 IllegalArgumentException throw
 - [ ] 사칙연산 기호가 아닌 경우 IllegalArgumentException throw
