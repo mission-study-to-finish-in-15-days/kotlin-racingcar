@@ -11,9 +11,10 @@ object StringCalculator {
         val splitInput: Queue<String> = splitExpression(input)
 
         var result = splitInput.poll().toLong()
-
         while (splitInput.isNotEmpty()) {
             val arithmeticOperator = ArithmeticOperator.of(splitInput.poll())
+            require(arithmeticOperator != null) { "올바르지 않은 사칙연산 기호입니다."}
+
             val operand = splitInput.poll().toLong()
             result = arithmeticOperator.operator(result, operand)
         }
@@ -30,6 +31,10 @@ object StringCalculator {
         while (token != null) {
             queue.add(token)
             token = getNextToken(expressionCharQueue)
+        }
+
+        if(ArithmeticOperator.of(queue.first) == ArithmeticOperator.MINUS) {
+            queue.addFirst("0")
         }
 
         return queue

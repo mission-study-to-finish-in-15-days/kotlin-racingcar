@@ -11,6 +11,7 @@ class StringCalculatorTest : FunSpec({
     context("사칙연산") {
         withData(
             StringCalculatorTestData("2 + 5", 7L),
+            StringCalculatorTestData("-2 + 5", 3L),
             StringCalculatorTestData("5 - 6", -1L),
             StringCalculatorTestData("5 * 6", 30L),
             StringCalculatorTestData("8 / 4", 2L),
@@ -43,11 +44,12 @@ class StringCalculatorTest : FunSpec({
             "2 = 5",
             "2 a 5",
             "2 ^ 5",
+            "2+3*4 1 2 "
         ) { input ->
             val exception = shouldThrow<IllegalArgumentException> {
                 StringCalculator.calculate(input)
             }
-            exception.localizedMessage shouldBe "사칙연산 기호는 +,-,*,/ 만 허용됩니다."
+            exception.localizedMessage shouldBe "올바르지 않은 사칙연산 기호입니다."
         }
     }
 })

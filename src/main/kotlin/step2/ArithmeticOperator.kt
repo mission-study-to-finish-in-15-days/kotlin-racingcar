@@ -11,9 +11,8 @@ enum class ArithmeticOperator(
     ;
 
     companion object {
-        fun of(symbol: String): ArithmeticOperator {
+        fun of(symbol: String): ArithmeticOperator? {
             return values().firstOrNull { it.symbol == symbol }
-                ?: throw IllegalArgumentException("사칙연산 기호는 +,-,*,/ 만 허용됩니다.")
         }
     }
 }
