@@ -6,7 +6,6 @@ import io.kotest.matchers.shouldBe
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
-import org.junit.jupiter.params.provider.ValueSource
 import java.util.stream.Stream
 
 
@@ -19,7 +18,7 @@ class CalculatorTest: AnnotationSpec() {
         val input = "3 ㄱ 3"
 
         shouldThrow<IllegalArgumentException> {
-            sut.calculate(input)
+            sut.runCalculator(input)
         }
     }
 
@@ -28,7 +27,7 @@ class CalculatorTest: AnnotationSpec() {
         val input = null
 
         shouldThrow<IllegalArgumentException> {
-            sut.calculate(input)
+            sut.runCalculator(input)
         }
     }
 
@@ -36,7 +35,7 @@ class CalculatorTest: AnnotationSpec() {
     fun `계산기의 입력값으로는 빈문자가 들어올 수 없다`(){
         val input = "  "
         shouldThrow<IllegalArgumentException> {
-            sut.calculate(input)
+            sut.runCalculator(input)
         }
     }
 
@@ -44,7 +43,7 @@ class CalculatorTest: AnnotationSpec() {
     @MethodSource("plusCalculatorInputAndResult")
     fun `계산기에 두 숫자를 넣으면 덧셈을 수행한다`(input: String, expectedResult: Int){
 
-        val calculatorResult = sut.calculate(input)
+        val calculatorResult = sut.runCalculator(input)
 
         calculatorResult shouldBe expectedResult
     }
@@ -54,7 +53,7 @@ class CalculatorTest: AnnotationSpec() {
     @MethodSource("minusCalculatorInputAndResult")
     fun `계산기에 두 숫자를 넣으면 뺄셈을 수행한다`(input: String, expectedResult: Int){
 
-        val calculatorResult = sut.calculate(input)
+        val calculatorResult = sut.runCalculator(input)
 
         calculatorResult shouldBe expectedResult
     }
@@ -63,7 +62,7 @@ class CalculatorTest: AnnotationSpec() {
     @MethodSource("multipleCalculatorInputAndResult")
     fun `계산기에 두 숫자를 넣으면 곱셈을 수행한다`(input: String, expectedResult: Int){
 
-        val calculatorResult = sut.calculate(input)
+        val calculatorResult = sut.runCalculator(input)
 
         calculatorResult shouldBe expectedResult
     }
@@ -72,7 +71,7 @@ class CalculatorTest: AnnotationSpec() {
     @MethodSource("divideCalculatorInputAndResult")
     fun `계산기에 두 숫자를 넣으면 나머지연산을 수행한다`(input: String, expectedResult: Int){
 
-        val calculatorResult = sut.calculate(input)
+        val calculatorResult = sut.runCalculator(input)
 
         calculatorResult shouldBe expectedResult
     }
@@ -81,7 +80,7 @@ class CalculatorTest: AnnotationSpec() {
     @MethodSource("allInOneCalculatorInputAndResult")
     fun `계산기에 사칙연산을 모두 포함하는 연산을 넣으면 계산을 수행한다`(input: String, expectedResult: Int){
 
-        val calculatorResult = sut.calculate(input)
+        val calculatorResult = sut.runCalculator(input)
 
         calculatorResult shouldBe expectedResult
     }

@@ -3,8 +3,7 @@ package step2
 import java.util.*
 
 object Calculator {
-
-    fun calculate(input: String?): Int {
+    fun runCalculator(input: String?): Int {
         val elementStorage = CalculatorInputClassifier.splitElementAndValidator(input)
         while (elementStorage.isCalculateContinue()) {
             val calculateInfo = elementStorage.getCalculateInfo()
@@ -22,7 +21,6 @@ object Calculator {
             Operation.DIVIDE -> runCatching {
                 calculateInfo.getFirstValue() / calculateInfo.getSecondValue()
             }.getOrDefault(0)
-
         }
         return result.toString()
     }
@@ -112,9 +110,9 @@ enum class Operation(val value: String) {
     ;
 
     companion object {
-        fun operationOf(value: String): Operation {
-            return values().firstOrNull { it.value == value }
-                ?: throw IllegalArgumentException("사칙 연산 기호 이외에는 들어오면 안됩니다.(value=$value)")
+        fun operationOf(inputValue: String): Operation {
+            return values().firstOrNull { it.value == inputValue }
+                ?: throw IllegalArgumentException("사칙 연산 기호 이외에는 들어오면 안됩니다.(value=$inputValue)")
         }
     }
 }
