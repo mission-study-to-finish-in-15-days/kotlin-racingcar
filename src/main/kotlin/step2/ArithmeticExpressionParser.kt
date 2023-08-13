@@ -1,5 +1,6 @@
 package step2
 
+import step2.ArithmeticOperator.MINUS
 import java.util.LinkedList
 import java.util.Queue
 
@@ -27,12 +28,13 @@ object ArithmeticExpressionParser {
         val trimExpression = expression.trim()
 
         if (trimExpression.length >= 2 &&
-            ArithmeticOperator.of(trimExpression[0]) == ArithmeticOperator.MINUS &&
+            ArithmeticOperator.supportSymbol(trimExpression[0].toString()) &&
+            ArithmeticOperator.of(trimExpression[0].toString()) == MINUS &&
             trimExpression[1].isDigit()
         ) {
             return true
         }
-        
+
         return false
     }
 

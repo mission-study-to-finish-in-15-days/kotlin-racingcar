@@ -52,6 +52,20 @@ class StringCalculatorTest : FunSpec({
             exception.localizedMessage shouldBe "올바르지 않은 사칙연산 기호입니다."
         }
     }
+
+    context("0으로 나누는 경우 IllegalArgumentException throw") {
+        withData(
+            nameFn = { "input : $it" },
+            "2 / 0",
+            "0 / 0",
+            "1/0",
+        ) { input ->
+            val exception = shouldThrow<IllegalArgumentException> {
+                StringCalculator.calculate(input)
+            }
+            exception.localizedMessage shouldBe "0으로 나눌 수 없습니다."
+        }
+    }
 })
 
 data class StringCalculatorTestData(val input: String, val result: Long) : WithDataTestName {
