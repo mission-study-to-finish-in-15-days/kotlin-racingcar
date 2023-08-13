@@ -18,6 +18,7 @@ object Calculator {
         val result = when(calculateInfo.operation){
             Operation.PLUS -> calculateInfo.getFirstValue() + calculateInfo.getSecondValue()
             Operation.MINUS -> calculateInfo.getFirstValue() - calculateInfo.getSecondValue()
+            Operation.MULTIPLE -> calculateInfo.getFirstValue() * calculateInfo.getSecondValue()
         }
         return result.toString()
     }
@@ -31,9 +32,13 @@ object CalculatorInputClassifier {
 }
 
 class CalculatorElementStorage(
-    splitElement: List<String>?,
+    splitElement: List<String>,
 ) {
-    private val _storage: Queue<String> = LinkedList(splitElement)
+    private val _storage: ArrayDeque<String> = ArrayDeque()
+
+    init{
+        saveCalculatorElement(splitElement)
+    }
 
     fun isCalculateContinue(): Boolean {
         if (_storage.size >= 3) {
@@ -43,9 +48,9 @@ class CalculatorElementStorage(
     }
 
     fun getCalculateInfo(): CalculateInfo {
-        val firstOperatedValue = FirstOperatedValue(_storage.poll().toInt())
-        val operation = _storage.poll()
-        val  secondOperatedValue = SecondOperatedValue(_storage.poll().toInt())
+        val firstOperatedValue = FirstOperatedValue(_storage.pollFirst().toInt())
+        val operation = _storage.pollFirst()
+        val  secondOperatedValue = SecondOperatedValue(_storage.pollFirst().toInt())
         return CalculateInfo(
             calculateNumbers = CalculateNumbers(firstOperatedValue, secondOperatedValue),
             operation = Operation.operationOf(operation),
@@ -53,12 +58,16 @@ class CalculatorElementStorage(
     }
 
     fun putOperatedNumber(operatedNumber: String){
-        _storage.offer(operatedNumber)
+        _storage.addFirst(operatedNumber)
     }
 
     fun getResult(): Int {
         return _storage.poll()
             .toInt()
+    }
+
+    private fun saveCalculatorElement(splitElement: List<String>){
+        splitElement.forEach { _storage.addLast(it) }
     }
 }
 
@@ -92,7 +101,8 @@ value class SecondOperatedValue(
 
 enum class Operation(val value: String) {
     PLUS("+"),
-    MINUS("-");
+    MINUS("-"),
+    MULTIPLE("*");
 
     companion object {
         fun operationOf(value: String): Operation {

@@ -14,7 +14,7 @@ class CalculatorTest: AnnotationSpec() {
 
     @ParameterizedTest
     @MethodSource("plusCalculatorInputAndResult")
-    fun `계산기는에 두 숫자를 넣으면 덧셈을 수행한다`(input: String, expectedResult: Int){
+    fun `계산기에 두 숫자를 넣으면 덧셈을 수행한다`(input: String, expectedResult: Int){
 
         val calculatorResult = sut.calculate(input)
 
@@ -24,7 +24,16 @@ class CalculatorTest: AnnotationSpec() {
 
     @ParameterizedTest
     @MethodSource("minusCalculatorInputAndResult")
-    fun `계산기는에 두 숫자를 넣으면 뺄셈을 수행한다`(input: String, expectedResult: Int){
+    fun `계산기에 두 숫자를 넣으면 뺄셈을 수행한다`(input: String, expectedResult: Int){
+
+        val calculatorResult = sut.calculate(input)
+
+        calculatorResult shouldBe expectedResult
+    }
+
+    @ParameterizedTest
+    @MethodSource("multipleCalculatorInputAndResult")
+    fun `계산기에 두 숫자를 넣으면 곱셈을 수행한다`(input: String, expectedResult: Int){
 
         val calculatorResult = sut.calculate(input)
 
@@ -35,7 +44,7 @@ class CalculatorTest: AnnotationSpec() {
         @JvmStatic
         fun plusCalculatorInputAndResult(): Stream<Arguments> {
             return Stream.of(
-                Arguments.of("2 + 3", 5),
+                Arguments.of("2 + 3 + 10", 15),
                 Arguments.of("8 + 9", 17),
                 Arguments.of("5 + 5", 10),
             )
@@ -46,7 +55,16 @@ class CalculatorTest: AnnotationSpec() {
             return Stream.of(
                 Arguments.of("5 - 3", 2),
                 Arguments.of("10 - 3", 7),
-                Arguments.of("15 - 8", 7),
+                Arguments.of("15 - 8 - 1 - 1", 5),
+            )
+        }
+
+        @JvmStatic
+        fun multipleCalculatorInputAndResult(): Stream<Arguments> {
+            return Stream.of(
+                Arguments.of("5 * 3", 15),
+                Arguments.of("10 * 3 * 3", 90),
+                Arguments.of("15 * 0", 0),
             )
         }
     }
