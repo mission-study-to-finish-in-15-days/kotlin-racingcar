@@ -3,6 +3,7 @@ package calculator
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.AnnotationSpec
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.string.shouldContain
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
@@ -17,18 +18,23 @@ class CalculatorTest: AnnotationSpec() {
     fun `사칙연산 이외에는 연산자가 들어올 수 없다`(){
         val input = "3 ㄱ 3"
 
-        shouldThrow<IllegalArgumentException> {
+        val exception = shouldThrow<IllegalArgumentException> {
             sut.runCalculator(input)
         }
+
+        exception.message shouldContain "사칙 연산"
+        exception.message shouldBe "사칙 연산 기호 이외에는 들어오면 안됩니다.(value=ㄱ)"
     }
 
     @Test
     fun `계산기의 입력값으로는 null 이 들어올 수 없다`(){
         val input = null
 
-        shouldThrow<IllegalArgumentException> {
+        val exception = shouldThrow<IllegalArgumentException> {
             sut.runCalculator(input)
         }
+
+        exception.message shouldBe "계산기에 '3 + 5 / 2' 와 같은 형태로 메시지를 입력해주세요"
     }
 
     @Test
