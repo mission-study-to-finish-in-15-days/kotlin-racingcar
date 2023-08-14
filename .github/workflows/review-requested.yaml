@@ -2,7 +2,7 @@ name: Slack notification when review requested
 
 on:
   pull_request:
-      types: [open, ready_for_review]
+      types: [opened, ready_for_review]
 
 jobs:
   ready-request-review-of-6161990:
