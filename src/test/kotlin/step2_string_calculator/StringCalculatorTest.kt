@@ -55,7 +55,6 @@ class StringCalculatorTest : StringSpec({
         }
     }
 
-
     "사칙 연산 외의 연산자가 입력될 경우 예외를 던진다 - 2 +/ 3 % 4 / 2" {
         val expression = "2 + 3 % 4 / 2"
 
@@ -68,7 +67,7 @@ class StringCalculatorTest : StringSpec({
 
     "숫자, 연산자 외의 값이 입력될 경우 예외를 던진다" {
         val expression = listOf(
-            " 3 + ㄱ + 1 / 3 % 1",  // 숫자 자리에 한글 문자가 온다
+            " 3 + ㄱ + 1 / 3 % 1", // 숫자 자리에 한글 문자가 온다
             " 3 + 3 ㄱ / 3 % 1", // 연산자 자리에 한글 문자가 온다
         )
         expression.forAll {

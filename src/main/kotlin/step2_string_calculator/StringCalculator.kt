@@ -9,7 +9,7 @@ class StringCalculator {
 
     fun runStringCalculator(input: String): Double {
         val trimmedInput = input.trimAll()
-        val operationQueue = trimmedInput.extractNumberAndOperatorToQueue(input = trimmedInput)
+        val operationQueue = trimmedInput.extractNumberAndOperatorToQueue()
         val readFirst: Double = operationQueue.removeFirst().toDouble()
         var result = readFirst
 

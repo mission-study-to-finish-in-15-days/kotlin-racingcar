@@ -1,19 +1,28 @@
 package step2_string_calculator.util
 
-fun String.extractNumberAndOperatorToQueue(input: String): ArrayDeque<String> {
+fun String.extractNumberAndOperatorToQueue(): ArrayDeque<String> {
     val queue = ArrayDeque<String>()
 
-    for (it in input) {
-        if (OperationUtil.isOperatorOrNull(queue.lastOrNull()) && OperationUtil.isOperator(it.toString())) {
-            throw IllegalArgumentException("식의 첫 자리가 연산자이거나, 연속된 연산자가 입력되었습니다.")
-        }
-        if (OperationUtil.isNumber(queue.lastOrNull()) && OperationUtil.isNumber(it.toString())) {
-            createNDigitNumber(queue, it)
-            continue
-        }
+    for (it in this) {
+        validateOperator(queue, it)
+        if (validateAndCreateNumber(queue, it)) continue
         queue.add((it.toString()))
     }
     return queue
+}
+
+private fun validateAndCreateNumber(queue: ArrayDeque<String>, it: Char): Boolean {
+    if (OperationUtil.isNumber(queue.lastOrNull()) && OperationUtil.isNumber(it.toString())) {
+        createNDigitNumber(queue, it)
+        return true
+    }
+    return false
+}
+
+private fun validateOperator(queue: ArrayDeque<String>, it: Char) {
+    if (OperationUtil.isOperatorOrNull(queue.lastOrNull()) && OperationUtil.isOperator(it.toString())) {
+        throw IllegalArgumentException("식의 첫 자리가 연산자이거나, 연속된 연산자가 입력되었습니다.")
+    }
 }
 
 private fun createNDigitNumber(queue: ArrayDeque<String>, character: Char) {
