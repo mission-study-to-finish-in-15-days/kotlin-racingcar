@@ -1,16 +1,18 @@
+package dataclass
+
 data class Person(
     val nameInfo: NameInfo = NameInfo(),
     val age: Age = Age(),
-){
-    fun getName(): String{
+) {
+    fun getName(): String {
         return nameInfo.getName()
     }
 
-    fun getNickname(): String?{
+    fun getNickname(): String? {
         return nameInfo.getNickname()
     }
 
-    fun getAge(): Int{
+    fun getAge(): Int {
         return age.value
     }
 }
@@ -18,11 +20,12 @@ data class Person(
 data class NameInfo(
     val name: Name = Name(),
     val nickName: NickName = NickName(),
-){
-    fun getName(): String{
+) {
+    fun getName(): String {
         return name.value
     }
-    fun getNickname(): String?{
+
+    fun getNickname(): String? {
         return nickName.value
     }
 }
