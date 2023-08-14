@@ -21,7 +21,6 @@ private fun createNDigitNumber(queue: ArrayDeque<String>, character: Char) {
     queue.add((lastNumber * 10 + character.toString().toInt()).toString())
 }
 
-
 fun String.trimAll(): String {
     return this.replace(" ", "")
 }

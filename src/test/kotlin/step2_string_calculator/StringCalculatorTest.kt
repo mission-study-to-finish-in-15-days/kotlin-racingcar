@@ -2,6 +2,7 @@ package step2_string_calculator
 
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
+import io.kotest.data.row
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
 
@@ -11,6 +12,17 @@ class StringCalculatorTest : StringSpec({
         val expression = "2 + 3 * 4 / 2"
         val result = StringCalculator().runStringCalculator(expression)
         result shouldBe 10.0
+    }
+
+    "큰 자릿수의 사칙연산을 통과하는지 확인한다" {
+        listOf(
+            row("2 + 3 * 4 / 2 * 100", 1000.0),
+            row("200 + 2 + 3 * 4 / 2", 410.0),
+            row("2 + 3 - 300 * 4 / 2", -590.0),
+        ).forEach { (expression, expect) ->
+            val result = StringCalculator().runStringCalculator(expression)
+            result shouldBe expect
+        }
     }
 
     "큰 자릿수의 사칙연산을 통과하는지 확인한다 - 2 + 3 * 4 / 2 * 100" {
