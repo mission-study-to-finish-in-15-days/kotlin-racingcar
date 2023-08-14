@@ -1,11 +1,18 @@
 package calculator
 
-enum class Operation(val value: String) {
-    PLUS("+"),
-    MINUS("-"),
-    MULTIPLE("*"),
-    DIVIDE("/"),
+enum class Operation(
+    val value: String,
+    private val calculation: (Int, Int) -> Int,
+) {
+    PLUS("+", calculation = {a ,b -> a + b}),
+    MINUS("-", calculation ={a ,b -> a - b}),
+    MULTIPLE("*", calculation = {a, b -> a * b}),
+    DIVIDE("/", calculation = {a, b -> a / b}),
     ;
+
+    fun calculate(firstNumber: Int, secondNumber: Int): Int{
+        return calculation(firstNumber, secondNumber)
+    }
 
     companion object {
         fun operationOf(inputValue: String): Operation {
