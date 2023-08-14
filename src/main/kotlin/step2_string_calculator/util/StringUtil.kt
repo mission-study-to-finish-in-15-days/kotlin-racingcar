@@ -17,7 +17,7 @@ fun String.extractNumberAndOperatorToQueue(input: String): ArrayDeque<String> {
 }
 
 private fun createNDigitNumber(queue: ArrayDeque<String>, character: Char) {
-    val lastNumber = queue.readLastAndRemove().toInt()
+    val lastNumber = queue.removeLast().toInt()
     queue.add((lastNumber * 10 + character.toString().toInt()).toString())
 }
 
