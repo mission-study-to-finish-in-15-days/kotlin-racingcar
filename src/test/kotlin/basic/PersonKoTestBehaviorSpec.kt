@@ -1,4 +1,4 @@
-package step1
+package basic
 
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe

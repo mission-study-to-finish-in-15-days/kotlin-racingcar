@@ -1,4 +1,4 @@
-package step1
+package basic
 
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.inspectors.forAll

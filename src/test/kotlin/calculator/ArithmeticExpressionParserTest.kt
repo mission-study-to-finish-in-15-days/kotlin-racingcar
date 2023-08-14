@@ -1,4 +1,4 @@
-package step2
+package calculator
 
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.datatest.withData
