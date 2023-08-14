@@ -2,16 +2,16 @@ package calculator
 
 enum class Operation(
     val value: String,
-    private val calculation: (Int, Int) -> Int,
+    private val calculation: (CalculateNumber, CalculateNumber) -> CalculateNumber,
 ) {
-    PLUS("+", calculation = {a ,b -> a + b}),
-    MINUS("-", calculation ={a ,b -> a - b}),
-    MULTIPLE("*", calculation = {a, b -> a * b}),
-    DIVIDE("/", calculation = {a, b -> a / b}),
+    PLUS("+", calculation = { a, b -> a + b }),
+    MINUS("-", calculation = { a, b -> a - b }),
+    MULTIPLE("*", calculation = { a, b -> a * b }),
+    DIVIDE("/", calculation = { a, b -> a / b }),
     ;
 
-    fun calculate(firstNumber: Int, secondNumber: Int): Int{
-        return calculation(firstNumber, secondNumber)
+    fun calculate(calculateNumbers: CalculateNumbers): Int {
+        return calculation(calculateNumbers.firstOperatedNumber, calculateNumbers.secondOperatedNumber).value
     }
 
     companion object {

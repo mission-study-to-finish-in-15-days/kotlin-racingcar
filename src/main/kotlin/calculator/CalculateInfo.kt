@@ -1,22 +1,32 @@
 package calculator
 
 data class CalculateInfo(
-    private val _calculateNumbers: CalculateNumbers,
+    val calculateNumbers: CalculateNumbers,
     val operation: Operation,
-){
-    val firstNumberValue get() = _calculateNumbers.firstOperatedValue
-    val secondNumberValue get() = _calculateNumbers.secondOperatedValue
-}
+)
 
 data class CalculateNumbers(
-    private val _firstOperatedValue: CalculateNumber,
-    private val _secondOperatedValue: CalculateNumber,
-){
-    val firstOperatedValue get() = _firstOperatedValue.value
-    val secondOperatedValue get() = _secondOperatedValue.value
-}
+    val firstOperatedNumber: CalculateNumber,
+    val secondOperatedNumber: CalculateNumber,
+)
 
 @JvmInline
 value class CalculateNumber(
     val value: Int,
-)
+){
+    operator fun plus(increment: CalculateNumber): CalculateNumber {
+        return CalculateNumber(this.value + increment.value)
+    }
+
+    operator fun minus(minus: CalculateNumber): CalculateNumber {
+        return CalculateNumber(this.value - minus.value)
+    }
+
+    operator fun times(times: CalculateNumber): CalculateNumber {
+        return CalculateNumber(this.value * times.value)
+    }
+
+    operator fun div(div: CalculateNumber): CalculateNumber {
+        return CalculateNumber(this.value / div.value)
+    }
+}

@@ -13,11 +13,11 @@ object Calculator {
 
     private fun calculate(calculateInfo: CalculateInfo): String{
         val result = when(calculateInfo.operation){
-            Operation.PLUS -> Operation.PLUS.calculate(calculateInfo.firstNumberValue, calculateInfo.secondNumberValue)
-            Operation.MINUS -> Operation.MINUS.calculate(calculateInfo.firstNumberValue, calculateInfo.secondNumberValue)
-            Operation.MULTIPLE -> Operation.MULTIPLE.calculate(calculateInfo.firstNumberValue, calculateInfo.secondNumberValue)
+            Operation.PLUS -> Operation.PLUS.calculate(calculateInfo.calculateNumbers)
+            Operation.MINUS -> Operation.MINUS.calculate(calculateInfo.calculateNumbers)
+            Operation.MULTIPLE -> Operation.MULTIPLE.calculate(calculateInfo.calculateNumbers)
             Operation.DIVIDE -> runCatching {
-                Operation.DIVIDE.calculate(calculateInfo.firstNumberValue, calculateInfo.secondNumberValue)
+                Operation.DIVIDE.calculate(calculateInfo.calculateNumbers)
             }.getOrDefault(0)
         }
         return result.toString()

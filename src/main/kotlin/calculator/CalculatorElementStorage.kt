@@ -20,7 +20,7 @@ class CalculatorElementStorage(
         val operation = _storage.pollFirst()
         val  secondOperatedValue = CalculateNumber(_storage.pollFirst().toInt())
         return CalculateInfo(
-            _calculateNumbers = CalculateNumbers(firstOperatedValue, secondOperatedValue),
+            calculateNumbers = CalculateNumbers(firstOperatedValue, secondOperatedValue),
             operation = Operation.operationOf(operation),
         )
     }
