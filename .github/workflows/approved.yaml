@@ -17,9 +17,9 @@ jobs:
           payload: |
             {
               "channel": "#코틀린-미션-스터디",
-              "username": "사이보그 현구막",
+              "username": "코드리뷰 알림봇",
               "text": "<@U04M3J6AHAS>님, 리뷰어가 PR을 Approve 했습니다! 🎉\n리뷰어의 코멘트를 확인하고 다음 단계를 진행해주세요.\nhttps://github.com/mission-study-to-finish-in-15-days/kotlin-racingcar/pull/${{ github.event.pull_request.number }}",
-              "icon_url": "https://opgg-static.akamaized.net/meta/images/lol/champion/Blitzcrank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1690894796332"
+              "icon_url": "https://img.freepik.com/premium-vector/cute-robot-waving-hand-cartoon-character-science-technology-isolated_138676-3155.jpg?w=2000"
             }
 
   notification-changes-requested-to-JeremyShin:
@@ -34,9 +34,9 @@ jobs:
           payload: |
             {
               "channel": "#코틀린-미션-스터디",
-              "username": "사이보그 현구막",
+              "username": "코드리뷰 알림봇",
               "text": "<@U055KQ0C9EJ>님, 리뷰어가 PR을 Approve 했습니다! 🎉\n리뷰어의 코멘트를 확인하고 다음 단계를 진행해주세요.\nhttps://github.com/mission-study-to-finish-in-15-days/kotlin-racingcar/pull/${{ github.event.pull_request.number }}",
-              "icon_url": "https://opgg-static.akamaized.net/meta/images/lol/champion/Blitzcrank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1690894796332"
+              "icon_url": "https://img.freepik.com/premium-vector/cute-robot-waving-hand-cartoon-character-science-technology-isolated_138676-3155.jpg?w=2000"
             }
 
   notification-changes-requested-to-JiwonDev:
@@ -51,9 +51,9 @@ jobs:
           payload: |
             {
               "channel": "#코틀린-미션-스터디",
-              "username": "사이보그 현구막",
+              "username": "코드리뷰 알림봇",
               "text": "<@U03EVALAKHB>님, 리뷰어가 PR을 Approve 했습니다! 🎉\n리뷰어의 코멘트를 확인하고 다음 단계를 진행해주세요.\nhttps://github.com/mission-study-to-finish-in-15-days/kotlin-racingcar/pull/${{ github.event.pull_request.number }}",
-              "icon_url": "https://opgg-static.akamaized.net/meta/images/lol/champion/Blitzcrank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1690894796332"
+              "icon_url": "https://img.freepik.com/premium-vector/cute-robot-waving-hand-cartoon-character-science-technology-isolated_138676-3155.jpg?w=2000"
             }
 
   notification-changes-requested-to-Junuu:
@@ -68,9 +68,9 @@ jobs:
           payload: |
             {
               "channel": "#코틀린-미션-스터디",
-              "username": "사이보그 현구막",
+              "username": "코드리뷰 알림봇",
               "text": "<@U0446HGG3TK>님, 리뷰어가 PR을 Approve 했습니다! 🎉\n리뷰어의 코멘트를 확인하고 다음 단계를 진행해주세요.\nhttps://github.com/mission-study-to-finish-in-15-days/kotlin-racingcar/pull/${{ github.event.pull_request.number }}",
-              "icon_url": "https://opgg-static.akamaized.net/meta/images/lol/champion/Blitzcrank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1690894796332"
+              "icon_url": "https://img.freepik.com/premium-vector/cute-robot-waving-hand-cartoon-character-science-technology-isolated_138676-3155.jpg?w=2000"
             }
 
   notification-changes-requested-to-khcho902:
@@ -85,9 +85,9 @@ jobs:
           payload: |
             {
               "channel": "#코틀린-미션-스터디",
-              "username": "사이보그 현구막",
+              "username": "코드리뷰 알림봇",
               "text": "<@U03HTSNCV09>님, 리뷰어가 PR을 Approve 했습니다! 🎉\n리뷰어의 코멘트를 확인하고 다음 단계를 진행해주세요.\nhttps://github.com/mission-study-to-finish-in-15-days/kotlin-racingcar/pull/${{ github.event.pull_request.number }}",
-              "icon_url": "https://opgg-static.akamaized.net/meta/images/lol/champion/Blitzcrank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1690894796332"
+              "icon_url": "https://img.freepik.com/premium-vector/cute-robot-waving-hand-cartoon-character-science-technology-isolated_138676-3155.jpg?w=2000"
             }
 
   notification-changes-requested-to-kji6252:
@@ -102,9 +102,9 @@ jobs:
           payload: |
             {
               "channel": "#코틀린-미션-스터디",
-              "username": "사이보그 현구막",
+              "username": "코드리뷰 알림봇",
               "text": "<@U03RJL2EH7G>님, 리뷰어가 PR을 Approve 했습니다! 🎉\n리뷰어의 코멘트를 확인하고 다음 단계를 진행해주세요.\nhttps://github.com/mission-study-to-finish-in-15-days/kotlin-racingcar/pull/${{ github.event.pull_request.number }}",
-              "icon_url": "https://opgg-static.akamaized.net/meta/images/lol/champion/Blitzcrank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1690894796332"
+              "icon_url": "https://img.freepik.com/premium-vector/cute-robot-waving-hand-cartoon-character-science-technology-isolated_138676-3155.jpg?w=2000"
             }
 
   notification-changes-requested-to-moon9ua:
@@ -119,9 +119,9 @@ jobs:
           payload: |
             {
               "channel": "#코틀린-미션-스터디",
-              "username": "사이보그 현구막",
+              "username": "코드리뷰 알림봇",
               "text": "<@U03HF83L742>님, 리뷰어가 PR을 Approve 했습니다! 🎉\n리뷰어의 코멘트를 확인하고 다음 단계를 진행해주세요.\nhttps://github.com/mission-study-to-finish-in-15-days/kotlin-racingcar/pull/${{ github.event.pull_request.number }}",
-              "icon_url": "https://opgg-static.akamaized.net/meta/images/lol/champion/Blitzcrank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1690894796332"
+              "icon_url": "https://img.freepik.com/premium-vector/cute-robot-waving-hand-cartoon-character-science-technology-isolated_138676-3155.jpg?w=2000"
             }
 
   notification-changes-requested-to-pado0:
@@ -136,9 +136,9 @@ jobs:
           payload: |
             {
               "channel": "#코틀린-미션-스터디",
-              "username": "사이보그 현구막",
+              "username": "코드리뷰 알림봇",
               "text": "<@U033L0WCKE1>님, 리뷰어가 PR을 Approve 했습니다! 🎉\n리뷰어의 코멘트를 확인하고 다음 단계를 진행해주세요.\nhttps://github.com/mission-study-to-finish-in-15-days/kotlin-racingcar/pull/${{ github.event.pull_request.number }}",
-              "icon_url": "https://opgg-static.akamaized.net/meta/images/lol/champion/Blitzcrank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1690894796332"
+              "icon_url": "https://img.freepik.com/premium-vector/cute-robot-waving-hand-cartoon-character-science-technology-isolated_138676-3155.jpg?w=2000"
             }
 
   notification-changes-requested-to-yeoonjae:
@@ -153,7 +153,7 @@ jobs:
           payload: |
             {
               "channel": "#코틀린-미션-스터디",
-              "username": "사이보그 현구막",
+              "username": "코드리뷰 알림봇",
               "text": "<@U03EHKUTDD5>님, 리뷰어가 PR을 Approve 했습니다! 🎉\n리뷰어의 코멘트를 확인하고 다음 단계를 진행해주세요.\nhttps://github.com/mission-study-to-finish-in-15-days/kotlin-racingcar/pull/${{ github.event.pull_request.number }}",
-              "icon_url": "https://opgg-static.akamaized.net/meta/images/lol/champion/Blitzcrank.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_160&v=1690894796332"
+              "icon_url": "https://img.freepik.com/premium-vector/cute-robot-waving-hand-cartoon-character-science-technology-isolated_138676-3155.jpg?w=2000"
             }
