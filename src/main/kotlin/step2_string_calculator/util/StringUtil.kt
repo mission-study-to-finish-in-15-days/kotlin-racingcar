@@ -3,9 +3,9 @@ package step2_string_calculator.util
 fun String.extractNumberAndOperatorToQueue(): ArrayDeque<String> {
     val queue = ArrayDeque<String>()
 
-    for (it in this) {
+    this.forEach {
         validateOperator(queue, it)
-        if (validateAndCreateNumber(queue, it)) continue
+        if (validateAndCreateNumber(queue, it)) return@forEach
         queue.add((it.toString()))
     }
     return queue
