@@ -1,4 +1,4 @@
-package step1
+package dataclass
 
 import io.kotest.core.spec.style.AnnotationSpec
 import io.kotest.inspectors.forAll

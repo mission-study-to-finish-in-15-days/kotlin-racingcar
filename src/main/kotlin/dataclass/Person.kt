@@ -1,4 +1,4 @@
-package step1
+package dataclass
 
 data class Person(
     val nameInfo: NameInfo = NameInfo(),
