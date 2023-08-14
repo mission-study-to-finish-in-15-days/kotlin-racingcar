@@ -12,10 +12,7 @@ class CalculatorElementStorage(
     }
 
     fun isCalculateContinue(): Boolean {
-        if (_storage.size >= 3) {
-            return true
-        }
-        return false
+        return _storage.size >= 3
     }
 
     fun getCalculateInfo(): CalculateInfo {
