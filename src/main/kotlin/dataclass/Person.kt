@@ -53,3 +53,9 @@ value class Name(
 value class NickName(
     val value: String? = null,
 )
+
+class Test(
+    val col1: String,
+){
+    
+}
