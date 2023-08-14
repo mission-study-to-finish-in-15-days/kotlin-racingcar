@@ -1,3 +1,5 @@
+package step1
+
 import io.kotest.core.spec.style.DescribeSpec
 
 class PersonDescribeTest : DescribeSpec({

@@ -1,3 +1,5 @@
+package step1
+
 import io.kotest.core.spec.style.FunSpec
 
 class PersonFuncTest : FunSpec({

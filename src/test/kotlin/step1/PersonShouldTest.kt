@@ -1,4 +1,4 @@
-
+package step1
 import io.kotest.core.spec.style.ShouldSpec
 
 class PersonShouldTest : ShouldSpec({

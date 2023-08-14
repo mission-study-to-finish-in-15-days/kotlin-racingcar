@@ -1,10 +1,12 @@
-import io.kotest.core.spec.style.FeatureSpec
+package step1
+
+import io.kotest.core.spec.style.ExpectSpec
 import io.kotest.matchers.shouldBe
 
-class PersonFeatureTest : FeatureSpec({
+class PersonExpectTest : ExpectSpec({
 
-    feature("이름 있는 인자") {
-        scenario("이름 있는 경우") {
+    context("이름 있는 인자") {
+        expect("이름 있는 경우") {
             val perple = listOf(
                 Person("김종인", 33, "종인막"),
                 Person("김종인", 33, _nickname = "종인막"),
@@ -17,22 +19,22 @@ class PersonFeatureTest : FeatureSpec({
         }
     }
 
-    feature("널 타입") {
+    expect("널 타입") {
         val person = Person("김종인", 33, null)
         person.name shouldBe "김종인"
         person.age shouldBe 33
         person.nickname shouldBe null
     }
 
-    xfeature("실행 안될 피쳐") {
+    xcontext("실행 안될 피쳐") {
         val person = Person("김종인", 33)
         person.name shouldBe "김종인"
         person.age shouldBe 33
         person.nickname shouldBe "종인막"
     }
 
-    xfeature("데이터 클래스") {
-        scenario("실행 안될 시나리오") {
+    context("데이터 클래스") {
+        xexpect("실행 안될 시나리오") {
             val person1 = Person("김종인", 33)
             val person2 = Person("김종인", 33)
             person1 shouldBe person2

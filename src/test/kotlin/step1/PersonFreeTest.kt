@@ -1,10 +1,12 @@
-import io.kotest.core.spec.style.ExpectSpec
+package step1
+
+import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
 
-class PersonExpectTest : ExpectSpec({
+class PersonFreeTest : FreeSpec({
 
-    context("이름 있는 인자") {
-        expect("이름 있는 경우") {
+    "이름 있는 인자" - {
+        "이름 있는 경우" {
             val perple = listOf(
                 Person("김종인", 33, "종인막"),
                 Person("김종인", 33, _nickname = "종인막"),
@@ -17,25 +19,23 @@ class PersonExpectTest : ExpectSpec({
         }
     }
 
-    expect("널 타입") {
+    "널 타입" - {
         val person = Person("김종인", 33, null)
         person.name shouldBe "김종인"
         person.age shouldBe 33
         person.nickname shouldBe null
     }
 
-    xcontext("실행 안될 피쳐") {
+    "기본 인자" - {
         val person = Person("김종인", 33)
         person.name shouldBe "김종인"
         person.age shouldBe 33
         person.nickname shouldBe "종인막"
     }
 
-    context("데이터 클래스") {
-        xexpect("실행 안될 시나리오") {
-            val person1 = Person("김종인", 33)
-            val person2 = Person("김종인", 33)
-            person1 shouldBe person2
-        }
+    "데이터 클래스" - {
+        val person1 = Person("김종인", 33)
+        val person2 = Person("김종인", 33)
+        person1 shouldBe person2
     }
 })
