@@ -1,4 +1,4 @@
-package step1
+package step1_kotlin_basic
 
 data class Person(
     val officialProfile: OfficialProfile,

@@ -1,4 +1,4 @@
-package step1
+package step1_kotlin_basic
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll

@@ -1,4 +1,4 @@
-package step2.type
+package step2_string_calculator.type
 
 enum class OperatorType(
     private val operator: String

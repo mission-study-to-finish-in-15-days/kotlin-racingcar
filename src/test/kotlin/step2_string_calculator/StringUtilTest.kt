@@ -1,8 +1,8 @@
-package step2
+package step2_string_calculator
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
-import step2.util.extractNumberAndOperatorToQueue
+import step2_string_calculator.util.extractNumberAndOperatorToQueue
 
 class StringUtilTest : StringSpec({
 

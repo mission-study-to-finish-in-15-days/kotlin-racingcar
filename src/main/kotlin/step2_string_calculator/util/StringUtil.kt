@@ -1,4 +1,4 @@
-package step2.util
+package step2_string_calculator.util
 
 fun String.extractNumberAndOperatorToQueue(input: String): ArrayDeque<String> {
     val queue = ArrayDeque<String>()

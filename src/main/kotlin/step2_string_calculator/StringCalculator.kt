@@ -1,10 +1,10 @@
-package step2
+package step2_string_calculator
 
-import step2.type.OperatorType
-import step2.util.createOperatorNumberPair
-import step2.util.extractNumberAndOperatorToQueue
-import step2.util.readFirstAndRemove
-import step2.util.trimAll
+import step2_string_calculator.type.OperatorType
+import step2_string_calculator.util.createOperatorNumberPair
+import step2_string_calculator.util.extractNumberAndOperatorToQueue
+import step2_string_calculator.util.readFirstAndRemove
+import step2_string_calculator.util.trimAll
 
 class StringCalculator {
 

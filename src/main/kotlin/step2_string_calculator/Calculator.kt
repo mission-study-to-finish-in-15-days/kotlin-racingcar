@@ -1,6 +1,6 @@
-package step2
+package step2_string_calculator
 
-import step2.type.OperatorType
+import step2_string_calculator.type.OperatorType
 
 data class Calculator(
     val operatorType: OperatorType,
