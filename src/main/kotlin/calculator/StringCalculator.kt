@@ -15,7 +15,7 @@ object StringCalculator {
         while (parsedInput.isNotEmpty()) {
             val arithmeticOperator = ArithmeticOperator.of(parsedInput.poll())
             val operand = ArithmeticOperand.of(parsedInput.poll())
-            result = ArithmeticOperand(arithmeticOperator.operator(result.value, operand.value))
+            result = arithmeticOperator.operator(result, operand)
         }
 
         return result.value

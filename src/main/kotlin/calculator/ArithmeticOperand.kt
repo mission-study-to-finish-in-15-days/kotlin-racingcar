@@ -10,4 +10,20 @@ value class ArithmeticOperand(
             return ArithmeticOperand(stringValue.toLong())
         }
     }
+
+    operator fun plus(operand: ArithmeticOperand): ArithmeticOperand {
+        return ArithmeticOperand(value + operand.value)
+    }
+
+    operator fun minus(operand: ArithmeticOperand): ArithmeticOperand {
+        return ArithmeticOperand(value - operand.value)
+    }
+
+    operator fun times(operand: ArithmeticOperand): ArithmeticOperand {
+        return ArithmeticOperand(value * operand.value)
+    }
+
+    operator fun div(operand: ArithmeticOperand): ArithmeticOperand {
+        return ArithmeticOperand(value / operand.value)
+    }
 }
