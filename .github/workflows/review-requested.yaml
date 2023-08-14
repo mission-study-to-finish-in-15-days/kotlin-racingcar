@@ -75,7 +75,7 @@ jobs:
             }
 
   ready-request-review-of-Junuu:
-    if: github.actor == 'Junuu'
+    if: github.actor == 'Junuu' || github.actor == 'junuuuuuu'
     runs-on: ubuntu-latest
     steps:
       - name: auto assign assignee & reviewer
