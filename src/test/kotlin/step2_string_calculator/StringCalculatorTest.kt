@@ -76,4 +76,14 @@ class StringCalculatorTest : StringSpec({
             }
         }
     }
+
+    "0으로 나뉠 경우 예외를 던진다 - 2 +/ 3 / 0" {
+        val expression = "2 + 3 / 0"
+
+        val errorMessage = shouldThrow<Exception> {
+            StringCalculator().runStringCalculator(expression)
+        }
+
+        errorMessage.message shouldBe "0으로 나눌 수 없습니다."
+    }
 })

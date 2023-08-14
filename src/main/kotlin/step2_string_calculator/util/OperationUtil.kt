@@ -1,10 +1,10 @@
 package step2_string_calculator.util
 
-import step2_string_calculator.type.OperatorType
+import step2_string_calculator.type.Operator
 
 class OperationUtil {
     companion object {
-        private val operators = OperatorType.values().map(OperatorType::name)
+        private val operators = Operator.values().map(Operator::name)
 
         fun isOperator(operator: String?): Boolean {
             return operators.contains(operator)
