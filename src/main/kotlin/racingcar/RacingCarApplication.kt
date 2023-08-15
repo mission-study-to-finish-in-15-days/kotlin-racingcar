@@ -2,12 +2,17 @@ package racingcar
 
 object RacingCarApplication {
     fun gameStart() {
-        InputView.showMessage()
+        InputView.showHelloMessage()
+        InputView.showCarNumberInputMessage()
         val carNumber = InputUtil.inputCarNumber()
+        InputView.showMoveNumberInputMessage()
         val moveNumber = InputUtil.inputMoveNumber()
-        RacingCars(carNumber).racingStart(moveNumber)
-
-
+        val racingCars = RacingCars(carNumber)
+        repeat(moveNumber.getNumber()){
+            ResultView.showCurrentRound(it+1)
+            racingCars.racingStart()
+            ResultView.showResult(racingCars.getCars())
+        }
     }
 }
 
