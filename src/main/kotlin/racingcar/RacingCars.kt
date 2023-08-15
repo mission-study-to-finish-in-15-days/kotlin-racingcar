@@ -15,6 +15,18 @@ class RacingCars(
         }
     }
 
+    fun racingStart(moveNumber: MoveNumber){
+        repeat(moveNumber.getNumber()){
+            moveEachCars()
+        }
+    }
+
+    private fun moveEachCars(){
+        cars.forEach{
+            it.move()
+        }
+    }
+
     fun getCars(): List<Car>{
         return cars.toList()
     }
@@ -22,12 +34,25 @@ class RacingCars(
 }
 
 data class Car(
-    val currentPosition: Position = Position(),
+    private var currentPosition: Position = Position(),
+    val moveStrategy: MoveStrategy = RandomMoveStrategy(ThreadLocalRandomNumberUtil),
 ){
+    fun move() {
+        val movePosition = moveStrategy.move(currentPosition)
+        currentPosition = movePosition
+    }
+
+    fun getPosition(): Position{
+        return currentPosition
+    }
 }
 
 
 @JvmInline
 value class Position(
-    val value: Int = 0,
-)
+    private val value: Int = 0,
+){
+    operator fun plus(addValue: Position): Position{
+        return Position(this.value + addValue.value)
+    }
+}

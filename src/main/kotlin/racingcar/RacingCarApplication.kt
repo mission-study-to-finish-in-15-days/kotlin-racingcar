@@ -5,6 +5,9 @@ object RacingCarApplication {
         InputView.showMessage()
         val carNumber = InputUtil.inputCarNumber()
         val moveNumber = InputUtil.inputMoveNumber()
+        RacingCars(carNumber).racingStart(moveNumber)
+
+
     }
 }
 
