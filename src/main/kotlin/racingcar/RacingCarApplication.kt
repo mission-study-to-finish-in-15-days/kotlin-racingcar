@@ -3,7 +3,8 @@ package racingcar
 object RacingCarApplication {
     fun gameStart() {
         InputView.showMessage()
-        val inputValue = InputUtil.process()
+        val carNumber = InputUtil.inputCarNumber()
+        val moveNumber = InputUtil.inputMoveNumber()
     }
 }
 
