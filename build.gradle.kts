@@ -3,7 +3,7 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint") version "10.3.0"
 }
 
-group = "com.example"
+group = "com.yoon.racingCar"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -11,17 +11,18 @@ repositories {
 }
 
 dependencies {
+    testImplementation("io.kotest", "kotest-runner-junit5", "5.3.1")
     testImplementation("org.junit.jupiter", "junit-jupiter", "5.8.2")
     testImplementation("org.assertj", "assertj-core", "3.22.0")
-    testImplementation("io.kotest", "kotest-runner-junit5", "5.2.3")
+
 }
 
 tasks {
     compileKotlin {
-        kotlinOptions.jvmTarget = "11"
+        kotlinOptions.jvmTarget = "17"
     }
     compileTestKotlin {
-        kotlinOptions.jvmTarget = "11"
+        kotlinOptions.jvmTarget = "17"
     }
     test {
         useJUnitPlatform()
