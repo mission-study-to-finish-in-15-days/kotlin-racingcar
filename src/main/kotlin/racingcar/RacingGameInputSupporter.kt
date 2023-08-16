@@ -2,7 +2,7 @@ package racingcar
 
 import java.lang.IllegalArgumentException
 
-object InputUtil {
+object RacingGameInputSupporter {
     fun inputCarNumber(): CarNumber{
         val userInputValue = readlnOrNull() ?: throw IllegalArgumentException("입력을 다시 시도해주세요.")
         return CarNumber(userInputValue)

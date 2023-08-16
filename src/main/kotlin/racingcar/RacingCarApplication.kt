@@ -4,9 +4,9 @@ object RacingCarApplication {
     fun gameStart() {
         InputView.showHelloMessage()
         InputView.showCarNumberInputMessage()
-        val carNumber = InputUtil.inputCarNumber()
+        val carNumber = RacingGameInputSupporter.inputCarNumber()
         InputView.showMoveNumberInputMessage()
-        val moveNumber = InputUtil.inputMoveNumber()
+        val moveNumber = RacingGameInputSupporter.inputMoveNumber()
         val racingCars = RacingCars(carNumber)
         repeat(moveNumber.getNumber()){
             ResultView.showCurrentRound(it+1)
