@@ -1,6 +1,6 @@
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
-import step1.Person
+import basic.Person
 
 class PersonFuncTest : FunSpec(
     {
