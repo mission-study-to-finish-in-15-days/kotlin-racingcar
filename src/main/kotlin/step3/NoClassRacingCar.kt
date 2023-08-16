@@ -1,15 +1,19 @@
 package step3
 
+import java.util.*
 import kotlin.random.Random
 
 class NoClassRacingCar {
 }
 
 fun main(args: Array<String>) {
+    val systemResourceAsStream = ClassLoader.getSystemResourceAsStream("input.txt") ?: throw IllegalArgumentException("input.txt 파일이 존재 하지 않습니다.")
+//    val scanner = Scanner(System.`in`)
+    val scanner = Scanner(systemResourceAsStream)
     println("자동차 대수는 몇 대인가요?")
-    val carCount = readln().toInt()
+    val carCount = scanner.nextInt().also { println(it) }
     println("시도할 횟수는 몇 회인가요?")
-    val roundCount = readln().toInt()
+    val roundCount = scanner.nextInt().also { println(it) }
 
     println("실행 결과")
 
