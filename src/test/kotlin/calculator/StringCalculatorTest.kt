@@ -11,7 +11,6 @@ class StringCalculatorTest : FunSpec({
     context("사칙연산") {
         withData(
             StringCalculatorTestData("2 + 5", 7L),
-            StringCalculatorTestData("-2 + 5", 3L),
             StringCalculatorTestData("5 - 6", -1L),
             StringCalculatorTestData("5 * 6", 30L),
             StringCalculatorTestData("8 / 4", 2L),

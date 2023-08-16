@@ -16,29 +16,7 @@ object ArithmeticExpressionParser {
             token = getNextToken(expressionCharQueue)
         }
 
-        if (queue.isNotEmpty() && isFirstNumberMinus(expression)) {
-            queue.addFirst(queue.poll() + queue.poll())
-        }
-
         return queue
-    }
-
-    private fun isFirstNumberMinus(expression: String): Boolean {
-        val trimExpression = expression.trim()
-
-        if (trimExpression.length < 2)
-            return false
-
-        val firstChar = trimExpression[0]
-        val secondChar = trimExpression[1]
-        if (ArithmeticOperator.supportSymbol("$firstChar") &&
-            ArithmeticOperator.of("$firstChar") == ArithmeticOperator.MINUS &&
-            secondChar.isDigit()
-        ) {
-            return true
-        }
-
-        return false
     }
 
     private fun getNextToken(expressionCharQueue: LinkedList<Char>): String? {
