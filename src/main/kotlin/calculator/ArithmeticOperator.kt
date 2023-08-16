@@ -14,14 +14,16 @@ enum class ArithmeticOperator(
     ;
 
     companion object {
+
+        private val symbols = values().map(ArithmeticOperator::symbol).toSet()
+
         fun supportSymbol(symbol: String): Boolean {
-            val symbols = values().map(ArithmeticOperator::symbol)
             return symbols.contains(symbol)
         }
 
         fun of(symbol: String): ArithmeticOperator {
             return values().firstOrNull { it.symbol == symbol }
-                ?: throw IllegalArgumentException("사용 가능한 사칙연산 기호는 " + values().map(ArithmeticOperator::symbol) + "입니다.")
+                ?: throw IllegalArgumentException("사용 가능한 사칙연산 기호는 " + symbols + "입니다.")
         }
     }
 }

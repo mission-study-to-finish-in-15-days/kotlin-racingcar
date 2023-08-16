@@ -59,9 +59,7 @@ object ArithmeticExpressionParser {
             expressionChar = expressionCharQueue.poll()
         }
 
-        if (expressionChar != null) {
-            expressionCharQueue.addFirst(expressionChar)
-        }
+        expressionChar?.let(expressionCharQueue::addFirst)
 
         return token.toString()
     }
