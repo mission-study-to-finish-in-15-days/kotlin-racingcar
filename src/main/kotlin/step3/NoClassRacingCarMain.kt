@@ -3,7 +3,7 @@ package step3
 import java.util.*
 import kotlin.random.Random
 
-class NoClassRacingCar {
+class NoClassRacingCarMain {
 }
 
 fun main(args: Array<String>) {
