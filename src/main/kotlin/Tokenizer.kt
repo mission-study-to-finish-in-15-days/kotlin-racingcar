@@ -17,9 +17,9 @@ class OperatorToken(token: String) : Token {
     fun compute(a: Int, b: Int): Int {
         return when (operatorType) {
             OperatorType.PLUS -> a + b
-            OperatorType.SUBTRACT -> a + b
-            OperatorType.MULTIPLY -> a + b
-            OperatorType.DIVIDE -> a + b
+            OperatorType.SUBTRACT -> a - b
+            OperatorType.MULTIPLY -> a * b
+            OperatorType.DIVIDE -> a / b
         }
     }
 }
