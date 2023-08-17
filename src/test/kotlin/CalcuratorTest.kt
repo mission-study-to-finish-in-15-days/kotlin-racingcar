@@ -1,5 +1,3 @@
-package step2
-
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.datatest.withData
