@@ -32,11 +32,11 @@ class RacingGameData(
     }
 
     private val randomUntilNumber = 10
-    private val i = 4
+    private val randomDistanceConditionNumber = 4
 
     private fun calcDistance(distance: Int): Int {
         var distance1 = distance
-        if (Random.nextInt(randomUntilNumber) >= i) distance1++
+        if (Random.nextInt(randomUntilNumber) >= randomDistanceConditionNumber) distance1++
         return distance1
     }
 
