@@ -1,5 +1,10 @@
 package racingcar
 
+import racingcar.domain.RacingCars
+import racingcar.input.InputView
+import racingcar.input.RacingGameInputSupporter
+import racingcar.output.ResultView
+
 object RacingCarApplication {
     fun gameStart() {
         InputView.showHelloMessage()
@@ -9,7 +14,7 @@ object RacingCarApplication {
         val moveNumber = RacingGameInputSupporter.inputMoveNumber()
         val racingCars = RacingCars(carNumber)
         repeat(moveNumber.getNumber()){
-            ResultView.showCurrentRound(it+1)
+            ResultView.showCurrentRound(it)
             racingCars.racingStart()
             ResultView.showResult(racingCars.getCars())
         }

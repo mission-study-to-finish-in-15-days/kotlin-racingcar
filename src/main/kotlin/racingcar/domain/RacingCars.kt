@@ -1,4 +1,6 @@
-package racingcar
+package racingcar.domain
+
+import racingcar.domain.vo.CarNumber
 
 class RacingCars(
     private val carNumber: CarNumber,
@@ -10,7 +12,8 @@ class RacingCars(
     }
 
     private fun createCars() {
-        repeat(carNumber.getNumber()) {
+        //repeat(){}과 동일하다, 학습용으로 한번 써보기
+        List(carNumber.getNumber()) {
             cars.add(Car())
         }
     }

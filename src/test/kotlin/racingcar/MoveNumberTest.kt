@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import org.junit.jupiter.params.provider.ValueSource
+import racingcar.domain.vo.MoveNumber
 import java.util.stream.Stream
 
 class MoveNumberTest: AnnotationSpec(){
@@ -24,7 +25,7 @@ class MoveNumberTest: AnnotationSpec(){
     fun `자동차가 움직일 수 있는 횟수로 정수가 아닌 문자열이 들어오면 안된다`(value: String){
         val exception = shouldThrow<IllegalArgumentException> { MoveNumber(value) }
 
-        exception.message shouldBe "문자열이 아닌 정수값을 입력해주세요. 예시) 5"
+        exception.message shouldBe "문자열이 아닌 정수값이여야 합니다"
     }
 
     @ParameterizedTest
@@ -32,7 +33,7 @@ class MoveNumberTest: AnnotationSpec(){
     fun `자동차가 움직일 수 있는 횟수로 0, 음수가 들어오면 안된다`(value: String){
         val exception = shouldThrow<IllegalArgumentException> { MoveNumber(value) }
 
-        exception.message shouldBe "1이상의 양의 정수를 입력해주세요."
+        exception.message shouldBe "1이상의 양의 정수여야 합니다."
     }
 
     companion object {
