@@ -1,4 +1,4 @@
-package step1
+package basic
 
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.inspectors.forAll
@@ -37,7 +37,6 @@ class PersonKoTestFunSpec : FunSpec({
         person.age shouldBe 33
         person.nickname shouldBe "kycho"
     }
-
 
     context("데이터 클래스") {
         val person = Person("조경현", 33, "kycho")

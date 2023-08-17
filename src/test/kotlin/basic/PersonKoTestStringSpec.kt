@@ -1,4 +1,4 @@
-package step1
+package basic
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
@@ -37,7 +37,6 @@ class PersonKoTestStringSpec : StringSpec({
         person.age shouldBe 33
         person.nickname shouldBe "kycho"
     }
-
 
     "데이터 클래스" {
         val person1 = Person("조경현", 33)
