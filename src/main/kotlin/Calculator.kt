@@ -1,6 +1,6 @@
 class Calculator {
     private var computedValue: Int? = null
-    private var operator: Operator? = null
+    private var compute: ((Int, Int) -> Int)? = null
 
     private fun inputNumberToken(numberToken: NumberToken) {
         if (computedValue == null) {
@@ -9,13 +9,13 @@ class Calculator {
         }
 
         computedValue?.let { nonNullComputedValue ->
-            operator?.compute(nonNullComputedValue, numberToken.value)
-                ?: throw NullPointerException("operator 가 null 입니다.")
+            compute?.let { nonNullCompute -> nonNullCompute(nonNullComputedValue, numberToken.value) }
+                ?: throw NullPointerException("compute 가 null 입니다.")
         } ?: throw NullPointerException("computedValue 가 null 입니다.")
     }
 
     private fun inputOperatorToken(operatorToken: OperatorToken) {
-        operator = operatorToken.value
+        compute = { a, b -> operatorToken.compute(a, b) }
     }
 
     private fun inputToken(token: Token) {
@@ -27,7 +27,7 @@ class Calculator {
 
     private fun resetCalculator() {
         computedValue = null
-        operator = null
+        compute = null
     }
 
     fun calculate(text: String): Int {

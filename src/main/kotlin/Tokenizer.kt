@@ -1,18 +1,26 @@
-sealed interface Token {
-    val value: Any
-}
+sealed interface Token
 
 class NumberToken(token: String) : Token {
-    override val value: Int = token.toInt()
+    val value = token.toInt()
+}
+
+enum class OperatorType(val symbol: String) {
+    PLUS("+"), SUBTRACT("-"), MULTIPLY("*"), DIVIDE("/")
 }
 
 class OperatorToken(token: String) : Token {
-    override val value: Operator = when (token) {
-        "+" -> PlusOperator
-        "-" -> SubtractOperator
-        "*" -> MultiplyOperator
-        "/" -> DivideOperator
-        else -> throw IllegalArgumentException("수식 항은 숫자나 연산자여야 합니다.") // else를 어떻게 안 쓸까요?
+    private val operatorType: OperatorType = OperatorType
+        .values()
+        .find { it.symbol == token }
+        ?: throw IllegalArgumentException("잘못된 연산자 기호 입력입니다.")
+
+    fun compute(a: Int, b: Int): Int {
+        return when (operatorType) {
+            OperatorType.PLUS -> a + b
+            OperatorType.SUBTRACT -> a + b
+            OperatorType.MULTIPLY -> a + b
+            OperatorType.DIVIDE -> a + b
+        }
     }
 }
 
