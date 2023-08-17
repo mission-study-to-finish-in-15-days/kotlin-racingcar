@@ -1,5 +1,4 @@
 class Calculator {
-    private val tokenizer = Tokenizer()
     private var computedValue: Int? = null
     private var operator: Operator? = null
 
@@ -9,11 +8,10 @@ class Calculator {
             return
         }
 
-        if (operator == null) {
-            throw Error("연산자가 없습니다.")
-        }
-
-        computedValue = operator!!.compute(computedValue!!, numberToken.value)
+        computedValue?.let { nonNullComputedValue ->
+            operator?.compute(nonNullComputedValue, numberToken.value)
+                ?: throw NullPointerException("operator 가 null 입니다.")
+        } ?: throw NullPointerException("computedValue 가 null 입니다.")
     }
 
     private fun inputOperatorToken(operatorToken: OperatorToken) {
@@ -33,11 +31,12 @@ class Calculator {
     }
 
     fun calculate(text: String): Int {
-        val tokens = tokenizer.tokenizeToTokenArray(text)
+        val tokens = Tokenizer.tokenizeToTokenArray(text)
         tokens.forEach { inputToken(it) }
 
-        val result = computedValue!!
+        val result = computedValue ?: throw IllegalArgumentException("계산된 값이 없습니다.")
         resetCalculator()
+
         return result
     }
 }

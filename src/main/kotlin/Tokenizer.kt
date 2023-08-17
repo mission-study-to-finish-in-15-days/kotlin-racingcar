@@ -16,7 +16,7 @@ class OperatorToken(token: String) : Token {
     }
 }
 
-class Tokenizer {
+object Tokenizer {
     private fun tokenizeToSingleToken(word: String, toNumberToken: Boolean): Token {
         return when (toNumberToken) {
             true -> NumberToken(word)

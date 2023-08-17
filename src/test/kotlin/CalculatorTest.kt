@@ -1,4 +1,4 @@
-import io.kotest.assertions.throwables.shouldNotThrow
+import io.kotest.assertions.throwables.shouldNotThrowAny
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
@@ -44,7 +44,7 @@ class CalculatorTest : StringSpec({
     }
 
     "공백이 두개 이상이어도 동작해야 한다." {
-        shouldNotThrow<IllegalArgumentException> {
+        shouldNotThrowAny {
             calculator.calculate("1   + 2 / 3 * 10") shouldBe 10
         }
     }
