@@ -1,14 +1,14 @@
 package step3.domain
 
-import step3.port.output.ResultView
 import kotlin.random.Random
+import kotlin.reflect.KFunction1
 
 class RacingGameData(
     private val carCount: Int,
     private val roundCount: Int,
-    private val resultView: ResultView,
+    private val viewFunction: KFunction1<String, Unit>,
 
-) {
+    ) {
     init {
         require(carCount > 0) { "carCount=$carCount 는 0보다 커야 합니다." }
         require(roundCount > 0) { "roundCount=$roundCount 는 0보다 커야 합니다." }
@@ -18,7 +18,7 @@ class RacingGameData(
 
     fun start() {
         for (currentRound in 0 until roundCount) {
-            resultView.view("$currentRound Round")
+            viewFunction("$currentRound Round")
             whileCarCount()
         }
     }
@@ -27,13 +27,16 @@ class RacingGameData(
         for (carNumber in 0 until carCount) {
             val distance = calcDistance(carDistances.getOrElse(carNumber) { 0 })
             carDistances[carNumber] = distance
-            resultView.view("$carNumber Car ($distance) ${IntArray(distance).joinToString("") { "-" }}")
+            viewFunction("$carNumber Car ($distance) ${IntArray(distance).joinToString("") { "-" }}")
         }
     }
 
+    private val randomUntilNumber = 10
+    private val i = 4
+
     private fun calcDistance(distance: Int): Int {
         var distance1 = distance
-        if (Random.nextInt(10) >= 4) distance1++
+        if (Random.nextInt(randomUntilNumber) >= i) distance1++
         return distance1
     }
 

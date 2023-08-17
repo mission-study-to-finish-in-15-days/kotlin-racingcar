@@ -6,6 +6,7 @@ import step3.port.output.ConsoleResultView
 import step3.port.output.FileInputView
 import step3.port.output.InputView
 import step3.port.output.ResultView
+import kotlin.reflect.KFunction1
 
 class GameStarterService(
     private val inputView: InputView = FileInputView("input.txt"),
@@ -17,7 +18,7 @@ class GameStarterService(
         resultView.view("시도할 횟수는 몇 회인가요?")
         val roundCount = inputView.input()
 
-        val racingGameData = RacingGameData(carCount, roundCount, resultView)
+        val racingGameData = RacingGameData(carCount, roundCount, resultView::view)
         racingGameData.start()
 
     }
