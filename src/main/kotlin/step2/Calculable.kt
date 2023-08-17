@@ -1,3 +1,5 @@
+package step2
+
 sealed interface Calculable {
     fun calculate(a: Number, b: Number): Number
 }
