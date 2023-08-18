@@ -2,19 +2,8 @@ package racingcar.domain
 
 
 class RacingCars(
-    private val carNames: List<CarName>,
+    val cars: List<Car>,
 ) {
-    private val cars: MutableList<Car> = mutableListOf()
-
-    init {
-        createCars()
-    }
-
-    private fun createCars() {
-        carNames.forEach {
-            cars.add(Car(name = it))
-        }
-    }
 
     fun racingStart() {
         cars.forEach {
@@ -22,10 +11,11 @@ class RacingCars(
         }
     }
 
-    fun getCars(): List<Car> {
-        return cars.toList()
+    fun findWinner(): String {
+        val winnerPosition = cars.maxOf { it.getPosition().value }
+        return cars.filter { it.getPosition().value == winnerPosition }
+            .joinToString(separator = ",") { it.name.value }
     }
-
 }
 
 data class Car(

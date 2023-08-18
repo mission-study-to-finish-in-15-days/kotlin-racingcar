@@ -1,5 +1,6 @@
 package racingcar
 
+import racingcar.domain.CarsFactory
 import racingcar.domain.RacingCars
 import racingcar.input.InputView
 import racingcar.input.RacingGameInputSupporter
@@ -12,12 +13,14 @@ object RacingCarApplication {
         val carNames = RacingGameInputSupporter.inputCarNames()
         InputView.showMoveNumberInputMessage()
         val moveNumber = RacingGameInputSupporter.inputMoveNumber()
-        val racingCars = RacingCars(carNames.getCarNames())
+        val cars = CarsFactory.create(carNames.getCarNames())
+        val racingCars = RacingCars(cars)
         repeat(moveNumber.getNumber()){
             ResultView.showCurrentRound(it)
             racingCars.racingStart()
-            ResultView.showResult(racingCars.getCars())
+            ResultView.showResult(racingCars.cars)
         }
+        ResultView.showWinner(racingCars.findWinner())
     }
 }
 

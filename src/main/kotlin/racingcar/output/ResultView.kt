@@ -18,6 +18,10 @@ object ResultView {
         }
     }
 
+    fun showWinner(winner: String){
+        println("$winner (이)가 최종 우승했습니다.")
+    }
+
     private fun showCarName(carName: CarName){
         print("${carName.value}: ")
     }

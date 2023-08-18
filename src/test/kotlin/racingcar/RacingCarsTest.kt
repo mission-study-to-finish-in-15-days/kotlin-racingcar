@@ -8,10 +8,33 @@ import racingcar.domain.vo.CarNames
 
 class RacingCarsTest: StringSpec({
 
+    "자동차 경주가 끝난 후 우승자를 여러명 일 수 있다"{
+        val firstCar = Car(name = CarName("user1"), currentPosition = Position(1))
+        val secondCar = Car(name = CarName("user2"), currentPosition = Position(2))
+        val thirdCar = Car(name = CarName("user3"), currentPosition = Position(2))
+        val cars = listOf(firstCar, secondCar,thirdCar)
+        val sut = RacingCars(cars)
+
+        val actual = sut.findWinner()
+
+        actual shouldBe "user2,user3"
+    }
+
+    "자동차 경주가 끝난 후 우승자를 찾을 수 있다"{
+        val firstCar = Car(name = CarName("user1"), currentPosition = Position(1))
+        val secondCar = Car(name = CarName("user2"), currentPosition = Position(2))
+        val cars = listOf(firstCar, secondCar)
+        val sut = RacingCars(cars)
+
+        val actual = sut.findWinner()
+
+        actual shouldBe "user2"
+    }
+
     "n개의 자동차를 생성했을때 초기 위치는 0이다."{
         val carNames = listOf<CarName>(CarName(),CarName())
 
-        val cars: List<Car> = RacingCars(carNames).getCars()
+        val cars = CarsFactory.create(carNames)
 
         cars.forAll{
             it.getPosition() shouldBe Position(0)
