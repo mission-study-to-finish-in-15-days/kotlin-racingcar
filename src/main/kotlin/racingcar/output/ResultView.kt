@@ -1,6 +1,7 @@
 package racingcar.output
 
 import racingcar.domain.Car
+import racingcar.domain.CarName
 import racingcar.domain.Position
 
 object ResultView {
@@ -11,9 +12,14 @@ object ResultView {
 
     fun showResult(cars: List<Car>) {
         cars.forEach{
+            showCarName(it.name)
             showCarPosition(it.getPosition())
             newLine()
         }
+    }
+
+    private fun showCarName(carName: CarName){
+        print("${carName.value}: ")
     }
 
     private fun showCarPosition(position: Position){
