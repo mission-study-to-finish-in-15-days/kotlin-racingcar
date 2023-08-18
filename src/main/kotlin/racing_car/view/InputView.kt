@@ -1,11 +1,14 @@
 package racing_car.view
 
+import racing_car.domain.Car
+
 object InputView {
 
-    fun inputNumberOfCars(): Int {
+    fun inputCars(): List<Car> {
         println("자동차 대수는 몇 대인가요?")
 
-        return readln().toInt()
+        val numberOfCars = readln().toInt()
+        return List(numberOfCars) { Car() }
     }
 
     fun inputNumOfMove(): Int {

@@ -1,15 +1,20 @@
 package racing_car.domain
 
 class Car(
-    private val moveStrategy: MoveStrategy = RandomMoveStrategy()
+    private var _position: Int = 0,
+    private val _moveStrategy: MoveStrategy = RandomMoveStrategy()
 ) {
 
-    var position = 0
-        private set
+    val position: Int
+        get() = _position
 
     fun move() {
-        if (moveStrategy.canMove()) {
-            position++
+        if (_moveStrategy.canMove()) {
+            _position++
         }
+    }
+
+    fun copy(): Car {
+        return Car(_position = _position, _moveStrategy = _moveStrategy)
     }
 }

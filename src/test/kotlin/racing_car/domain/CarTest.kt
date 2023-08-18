@@ -17,7 +17,7 @@ class CarTest : FunSpec({
             1, 5, 12,
         ) { numberOfMove ->
 
-            val car = Car(alwaysMoveStrategy)
+            val car = Car(_moveStrategy = alwaysMoveStrategy)
             repeat(numberOfMove) {
                 car.move()
             }
@@ -32,7 +32,7 @@ class CarTest : FunSpec({
             1, 5, 12,
         ) { numberOfMove ->
 
-            val car = Car(neverMoveStrategy)
+            val car = Car(_moveStrategy = neverMoveStrategy)
             repeat(numberOfMove) {
                 car.move()
             }
