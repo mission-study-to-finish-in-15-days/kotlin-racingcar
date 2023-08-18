@@ -12,7 +12,7 @@ object CharacterStringCalculator {
 
     val result: ArrayDeque<Double> = OperationDispatcher().dispatch(operands, operations)
 
-    return result.sum()
+    return result.first()
   }
 
   private fun tokenizeWithTrim(input: String): List<String> {
