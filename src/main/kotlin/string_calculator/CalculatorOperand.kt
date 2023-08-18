@@ -1,8 +1,10 @@
-package step02
+package string_calculator
 
-import step02.StringCalculator.isDigit
+
+fun String.isDigit() = all { it.isDigit() }
 
 data class CalculatorOperand(val number: Int) {
+
     companion object {
         fun of(operand: String): CalculatorOperand {
             require(operand.isDigit()) { "피연산자는 숫자만 가능합니다." }
@@ -19,11 +21,12 @@ data class CalculatorOperand(val number: Int) {
     }
 
     operator fun div(operand: CalculatorOperand): CalculatorOperand {
-        require(operand.number != 0) { "0으로 나눌 수 없습니다." }
+        require(operand.number != 0) { "0 으로 나눌 수 없습니다." }
         return CalculatorOperand(number / operand.number)
     }
 
     operator fun times(operand: CalculatorOperand): CalculatorOperand {
         return CalculatorOperand(number * operand.number)
     }
+
 }

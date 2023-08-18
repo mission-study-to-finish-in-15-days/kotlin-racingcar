@@ -1,34 +1,37 @@
-package step02
+package string_calculator
 
 import java.lang.IllegalArgumentException
 import java.util.*
 
 object StringCalculator {
 
-    fun String.isDigit() = all { it.isDigit() }
+    fun calculate(input: String): CalculatorOperand {
+        require(input.isNotBlank()) { "입력값은 공백 일 수 없습니다." }
 
-    fun calculate(input: String?): CalculatorOperand {
-        require(!input.isNullOrBlank()) { "입력값은 null 일 수 없습니다." }
-        val element: LinkedList<String> = parseElement(input)
-        require(element.isEmpty().not()) { "입력값은 빈 문자열일 수 없습니다."}
-        val operator = CalculatorOperand.of(element.poll())
-        val operatorType = element.poll()
+        val elements: Queue<String> = parseElement(input = input)
+        require(elements.isNotEmpty()) { "입력값은 빈 문자열일 수 없습니다." }
+
+        val operand: CalculatorOperand = CalculatorOperand.of(elements.poll())
+        val operatorType: String = elements.poll()
+
         return stringCalculate(
-            operator = CalculatorOperand(operator.number),
+            operator = CalculatorOperand(operand.number),
             operatorType = operatorType,
-            element = element
+            elements = elements,
         )
     }
 
-    private fun stringCalculate(
+    private tailrec fun stringCalculate(
         operator: CalculatorOperand,
         operatorType: String,
-        element: Queue<String>
+        elements: Queue<String>
     ): CalculatorOperand {
-        val operand = CalculatorOperand.of(element.poll())
+        val operand = CalculatorOperand.of(elements.poll())
         val calculatedNumber = calculateByOperatorType(operatorType, operator, operand)
-        if (element.isEmpty() || element.size < 2) return CalculatorOperand(calculatedNumber.number)
-        return stringCalculate(operator = calculatedNumber, operatorType = element.poll(), element = element)
+
+        if (elements.isEmpty() || elements.size < 2) return CalculatorOperand(calculatedNumber.number)
+
+        return stringCalculate(operator = calculatedNumber, operatorType = elements.poll(), elements = elements)
     }
 
     private fun calculateByOperatorType(
@@ -47,12 +50,9 @@ object StringCalculator {
     }
 
     private fun parseElement(input: String): LinkedList<String> {
-        val result: LinkedList<String> = LinkedList()
-        input.trim()
+        return input.trim()
             .split(" ")
-            .forEach { result.add(it) }
-        return result
+            .toList()
+            .let { LinkedList(it) }
     }
-
-
 }

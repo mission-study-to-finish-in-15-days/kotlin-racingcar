@@ -1,13 +1,10 @@
-package step02
+package string_calculator
 
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.*
 import io.kotest.datatest.WithDataTestName
 import io.kotest.datatest.withData
-import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
-import step01.*
-import java.lang.IllegalStateException
 
 class CalculatorTest : ExpectSpec({
     context("사칙연산 테스트") {
@@ -40,15 +37,6 @@ class CalculatorTest : ExpectSpec({
             nameFn = { it },
             "8 = 5",
             "50 & 3",
-        ) { input ->
-            shouldThrow<IllegalArgumentException> { StringCalculator.calculate(input) }
-        }
-    }
-
-    context("입력 문자열이 null empty인 경우 IllegalArgumentException 에러 발생") {
-        withData(
-            null,
-            null
         ) { input ->
             shouldThrow<IllegalArgumentException> { StringCalculator.calculate(input) }
         }
