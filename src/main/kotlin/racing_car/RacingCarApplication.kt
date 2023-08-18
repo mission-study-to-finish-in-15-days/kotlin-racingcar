@@ -1,22 +1,19 @@
 package racing_car
 
-import racing_car.domain.Car
+import racing_car.domain.RacingGame
 import racing_car.view.InputView
 import racing_car.view.ResultView
 
 fun main() {
 
-    // 자동차 대수는 몇 대인가요??
-    val numberOfCar = InputView.inputNumberOfCars()
-    val cars = List(numberOfCar) { Car() }
+    val racingGame = RacingGame(
+        numberOfCars = InputView.inputNumberOfCars(),
+        numberOfMove = InputView.inputNumOfMove(),
+    )
 
-    // 시도할 횟수는 몇 회인가요???
-    val numberOfMove = InputView.inputNumOfMove()
-
-    // 실행 결과
     ResultView.printResultTitle()
-    for (i in 1..numberOfMove) {
-        cars.forEach { it.move() }
-        ResultView.printPosition(cars)
+    while (!racingGame.isFinish) {
+        racingGame.move()
+        ResultView.printPosition(racingGame.cars)
     }
 }

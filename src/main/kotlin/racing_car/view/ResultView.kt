@@ -14,7 +14,7 @@ object ResultView {
 //    }
 
     fun printPosition(cars: List<Car>) {
-        cars.forEach { println("-".repeat(it.position)) }
+        cars.forEach { println("-" + "-".repeat(it.position)) }
         println()
     }
 }
