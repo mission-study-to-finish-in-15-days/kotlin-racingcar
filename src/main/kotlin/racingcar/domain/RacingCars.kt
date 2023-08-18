@@ -32,6 +32,7 @@ class RacingCars(
 
 data class Car(
     private var currentPosition: Position = Position(),
+    val name: CarName = CarName(),
     val moveStrategy: MoveStrategy = RandomMoveStrategy(ThreadLocalRandomNumberUtil),
 ) {
     fun move() {
@@ -41,6 +42,15 @@ data class Car(
 
     fun getPosition(): Position {
         return currentPosition
+    }
+}
+
+@JvmInline
+value class CarName(
+    val value: String = "자동차이름",
+) {
+    init{
+        require(this.value.length <= 5) {"자동차 이름은 다섯자 이하여야 합니다."}
     }
 }
 
