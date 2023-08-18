@@ -8,11 +8,6 @@ object ResultView {
         println("\n실행 결과")
     }
 
-//    fun printResult(carRacing: CarRacing) {
-//        carRacing.positions.forEach { println("-".repeat(it)) }
-//        println()
-//    }
-
     fun printPosition(cars: List<Car>) {
         cars.forEach { println("-" + "-".repeat(it.position)) }
         println()
