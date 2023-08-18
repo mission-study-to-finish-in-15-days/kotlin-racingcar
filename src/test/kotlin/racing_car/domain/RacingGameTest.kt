@@ -11,7 +11,7 @@ class RacingGameTest : FunSpec({
     context("입력된 수만큼 자동차를 만든다.") {
         withData(
             nameFn = { "numberOfCars : $it" },
-            1, 13, 12, 1000,
+            2, 13, 12, 1000,
         ) { numberOfCars ->
 
             val racingGame = RacingGame(numberOfCars = numberOfCars, numberOfMove = 10)
@@ -20,17 +20,17 @@ class RacingGameTest : FunSpec({
         }
     }
 
-    context("1미만의 자동차 대수를 입력한 경우 IllegalArgumentException throw") {
+    context("자동차 대수가 2대 보다 작은 경우 IllegalArgumentException throw") {
         withData(
             nameFn = { "numberOfCars : $it" },
-            0, -1, -12, -1000,
+            0, 1, -12, -1000,
         ) { numberOfCars ->
 
             val exception = shouldThrow<IllegalArgumentException> {
                 RacingGame(numberOfCars = numberOfCars, numberOfMove = 10)
             }
 
-            exception.localizedMessage shouldBe "경주에 필요한 자동차 대수는 1대 이상입니다."
+            exception.localizedMessage shouldBe "경주에 필요한 자동차 대수는 2대 이상입니다."
         }
     }
 
@@ -52,7 +52,7 @@ class RacingGameTest : FunSpec({
         }
     }
 
-    context("1미만의 시도할 횟수를 입력한 경우 IllegalArgumentException throw") {
+    context("시도할 횟수가 1보다 작은 경우 IllegalArgumentException throw") {
         withData(
             nameFn = { "numberOfMove : $it" },
             0, -1, -13, -30,
@@ -60,6 +60,8 @@ class RacingGameTest : FunSpec({
             val exception = shouldThrow<IllegalArgumentException> {
                 RacingGame(numberOfCars = 10, numberOfMove = numberOfMove)
             }
+
+            exception.localizedMessage shouldBe "경주는 1번 이상 시도되어야합니다."
         }
     }
 
