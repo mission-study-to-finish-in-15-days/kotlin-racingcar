@@ -8,11 +8,11 @@ import racingcar.output.ResultView
 object RacingCarApplication {
     fun gameStart() {
         InputView.showHelloMessage()
-        InputView.showCarNumberInputMessage()
-        val carNumber = RacingGameInputSupporter.inputCarNumber()
+        InputView.showCarNamesInputMessage()
+        val carNames = RacingGameInputSupporter.inputCarNames()
         InputView.showMoveNumberInputMessage()
         val moveNumber = RacingGameInputSupporter.inputMoveNumber()
-        val racingCars = RacingCars(carNumber)
+        val racingCars = RacingCars(carNames.getCarNames())
         repeat(moveNumber.getNumber()){
             ResultView.showCurrentRound(it)
             racingCars.racingStart()

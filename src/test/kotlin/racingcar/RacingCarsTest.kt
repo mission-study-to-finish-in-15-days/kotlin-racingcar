@@ -4,14 +4,14 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
 import racingcar.domain.*
-import racingcar.domain.vo.CarNumber
+import racingcar.domain.vo.CarNames
 
 class RacingCarsTest: StringSpec({
 
     "n개의 자동차를 생성했을때 초기 위치는 0이다."{
-        val carNumber = CarNumber("3")
+        val carNames = listOf<CarName>(CarName(),CarName())
 
-        val cars: List<Car> = RacingCars(carNumber).getCars()
+        val cars: List<Car> = RacingCars(carNames).getCars()
 
         cars.forAll{
             it.getPosition() shouldBe Position(0)

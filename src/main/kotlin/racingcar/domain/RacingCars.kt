@@ -1,9 +1,8 @@
 package racingcar.domain
 
-import racingcar.domain.vo.CarNumber
 
 class RacingCars(
-    private val carNumber: CarNumber,
+    private val carNames: List<CarName>,
 ) {
     private val cars: MutableList<Car> = mutableListOf()
 
@@ -12,13 +11,12 @@ class RacingCars(
     }
 
     private fun createCars() {
-        //repeat(){}과 동일하다, 학습용으로 한번 써보기
-        List(carNumber.getNumber()) {
-            cars.add(Car())
+        carNames.forEach {
+            cars.add(Car(name = it))
         }
     }
 
-    fun racingStart(){
+    fun racingStart() {
         cars.forEach {
             it.move()
         }
@@ -49,8 +47,8 @@ data class Car(
 value class CarName(
     val value: String = "자동차이름",
 ) {
-    init{
-        require(this.value.length <= 5) {"자동차 이름은 다섯자 이하여야 합니다."}
+    init {
+        require(this.value.length <= 5) { "자동차 이름은 다섯자 이하여야 합니다." }
     }
 }
 
