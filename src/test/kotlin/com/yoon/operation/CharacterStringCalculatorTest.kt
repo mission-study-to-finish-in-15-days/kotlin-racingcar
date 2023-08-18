@@ -35,6 +35,15 @@ class CharacterStringCalculatorTest : FunSpec({
     }
   }
 
+  context("연산자와 피 연산자의 순서가 성립하지 않아도 된다.") {
+    withData(
+      Calculator("+ - 1 2 3", 0.0),
+      Calculator("1 2 3 + - ", 0.0),
+    ) { (input, output) ->
+      calculate(input) shouldBe output
+    }
+  }
+
 })
 
 data class Calculator(val input: String, val output: Double) : WithDataTestName {

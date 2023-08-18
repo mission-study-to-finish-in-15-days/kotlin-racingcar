@@ -10,7 +10,7 @@ object CharacterStringParser {
 
     for (token in tokens) {
       if (token.matches(Regex("-?\\d+(\\.\\d+)?"))) {
-        operands.add(token.toDouble())
+        operands.addLast(token.toDouble())
       } else {
         operations.addLast(Operation.of(token))
       }
