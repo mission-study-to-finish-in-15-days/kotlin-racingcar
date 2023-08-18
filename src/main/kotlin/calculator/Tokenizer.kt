@@ -1,6 +1,5 @@
 package calculator
 
-
 object Tokenizer {
     fun tokenizeToTokenArray(expression: String): Array<Token> {
         val terms = expression.split("\\s+".toRegex())

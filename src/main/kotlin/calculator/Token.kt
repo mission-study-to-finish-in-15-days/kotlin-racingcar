@@ -7,10 +7,7 @@ class NumberToken(token: String) : Token {
 }
 
 class OperatorToken(token: String) : Token {
-    private val operatorType: OperatorType = OperatorType
-        .values()
-        .find { it.symbol == token }
-        ?: throw IllegalArgumentException("잘못된 연산자 기호 입력입니다.")
+    private val operatorType: OperatorType = OperatorType.of(token)
 
     fun compute(a: Int, b: Int): Int {
         return when (operatorType) {
