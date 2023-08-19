@@ -15,8 +15,8 @@ class CalculatorTest : FreeSpec({
             val result2: Double = calculator.compute("8 - 4 / 2")
 
             assertSoftly {
-                result1 shouldBe (2 + 3) * 2
-                result2 shouldBe (8 - 4) / 2
+                result1 shouldBe 10
+                result2 shouldBe 2
             }
 
         }
