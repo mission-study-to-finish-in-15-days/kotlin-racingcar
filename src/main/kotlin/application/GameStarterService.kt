@@ -21,10 +21,11 @@ class GameStarterService(
         val (carCount, roundCount) = introduceInput()
 
         val carRacingGame = CarRacingGame(
-            CarCount(carCount),
-            Round(roundCount),
-            RandomDistancePolicy,
-            resultView::view)
+            carCount = CarCount(carCount),
+            round = Round(roundCount),
+            distancePolicy = RandomDistancePolicy,
+            viewFunction = resultView::view
+        )
         carRacingGame.start()
     }
 
