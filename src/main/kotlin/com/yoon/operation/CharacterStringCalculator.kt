@@ -10,7 +10,7 @@ object CharacterStringCalculator {
     val tokenized = tokenizeWithTrim(input)
     val (operands, operations) = CharacterStringParser.parse(tokenized)
 
-    val result: ArrayDeque<Double> = OperationDispatcher().dispatch(operands, operations)
+    val result: ArrayDeque<Double> = OperationDispatcher.dispatch(operands, operations)
 
     return result.first()
   }
@@ -21,4 +21,3 @@ object CharacterStringCalculator {
   }
 
 }
-
