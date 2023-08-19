@@ -1,7 +1,7 @@
 package application
 
 import domain.distance.RandomDistancePolicy
-import domain.game.CarCount
+import domain.game.CarNames
 import domain.game.CarRacingGame
 import domain.game.Round
 import port.input.GameStarter
@@ -21,7 +21,7 @@ class GameStarterService(
         val (carCount, roundCount) = introduceInput()
 
         val carRacingGame = CarRacingGame(
-            carCount = CarCount(carCount),
+            carNames = CarNames(carCount),
             round = Round(roundCount),
             distancePolicy = RandomDistancePolicy,
             viewFunction = resultView::view
@@ -29,11 +29,11 @@ class GameStarterService(
         carRacingGame.start()
     }
 
-    private fun introduceInput(): Pair<Int, Int> {
+    private fun introduceInput(): Pair<String, Int> {
         resultView.view(CAR_INPUT_TEXT)
-        val carCount = inputView.input()
+        val carNames = inputView.inputString()
         resultView.view(ROUND_INPUT_TEXT)
-        val roundCount = inputView.input()
-        return Pair(carCount, roundCount)
+        val roundCount = inputView.inputInt()
+        return Pair(carNames, roundCount)
     }
 }

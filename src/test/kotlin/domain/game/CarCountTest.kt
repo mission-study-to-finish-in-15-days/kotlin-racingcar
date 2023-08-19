@@ -2,10 +2,8 @@ package domain.game
 
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.BehaviorSpec
-import io.kotest.core.spec.style.StringSpec
 import io.kotest.datatest.withData
 import io.kotest.matchers.nulls.shouldNotBeNull
-import io.kotest.matchers.shouldBe
 
 class CarCountTest : BehaviorSpec({
 
@@ -14,7 +12,7 @@ class CarCountTest : BehaviorSpec({
             0,-1, -2, -3
         ) {
             shouldThrow<IllegalArgumentException> {
-                CarCount(it)
+                CarNames(it)
             }
         }
     }
@@ -23,8 +21,8 @@ class CarCountTest : BehaviorSpec({
         withData(
             1,2,3,4,5
         ) {
-            val carCount = CarCount(it)
-            carCount.shouldNotBeNull()
+            val carNames = CarNames(it)
+            carNames.shouldNotBeNull()
         }
     }
 })

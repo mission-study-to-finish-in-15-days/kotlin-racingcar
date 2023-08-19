@@ -4,12 +4,12 @@ import domain.distance.DistancePolicy
 import domain.racer.CarRacers
 
 class CarRacingGame(
-    carCount: CarCount,
+    carNames: CarNames,
     private val round: Round,
     private val distancePolicy: DistancePolicy,
     private val viewFunction: (String) -> Unit,
 ) {
-    private val carRacers: CarRacers = carCount.createCarRacers()
+    private val carRacers: CarRacers = carNames.createCarRacers()
 
     fun start() {
         round.forEachRound {
@@ -17,5 +17,6 @@ class CarRacingGame(
             carRacers.roundCarRaceAndRaceResult(distancePolicy)
                 .forEach(viewFunction)
         }
+        viewFunction("이번 대회 우승자는 : ${carRacers.winnerResult()}")
     }
 }
