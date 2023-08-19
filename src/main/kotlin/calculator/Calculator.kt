@@ -7,13 +7,21 @@ import kotlin.IllegalArgumentException
 
 class Calculator {
     fun compute(expression: String): Double {
+        val expressionProcessor = ExpressionProcessor()
+        return expressionProcessor.processExpression(expression)
+    }
+}
 
-        if (expression.replace("""(\+|-|\*|/|[0-9]|\s)+""".toRegex(), "").isNotEmpty())
-            throw IllegalArgumentException("이상한 문자를 썼네요? 잡았다 이놈")
+class ExpressionProcessor {
+    fun processExpression(expression: String): Double {
+        if (expression.replace("""(\+|-|\*|/|[0-9]|\s)+""".toRegex(), "").isNotEmpty()) {
+            throw IllegalArgumentException("이상한 문자를 썼네요? 잡았다 요놈")
+        }
 
         if (expression.replace(" ", "").isEmpty()) {
             throw IllegalArgumentException("빈칸이 너무 많아요")
         }
+
 
         // 공백단위로 문자열을 쪼갠다.
         val tokens: List<String> = expression.split(" ")
@@ -37,11 +45,11 @@ class Calculator {
 
                     sum / currentNumber
                 }
+
                 else -> throw Exception("예외발생")
             }
         }
-
-
         return sum
+
     }
 }
