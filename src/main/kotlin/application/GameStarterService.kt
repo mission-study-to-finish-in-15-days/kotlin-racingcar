@@ -17,13 +17,17 @@ class GameStarterService(
     private val resultView: ResultView = ConsoleResultView,
 ): GameStarter {
     override fun start() {
+        val (carCount, roundCount) = introduceInput()
+
+        val carRacingGame = CarRacingGame(CarCount(carCount), Round(roundCount), resultView::view)
+        carRacingGame.start()
+    }
+
+    private fun introduceInput(): Pair<Int, Int> {
         resultView.view(CAR_INPUT_TEXT)
         val carCount = inputView.input()
         resultView.view(ROUND_INPUT_TEXT)
         val roundCount = inputView.input()
-
-        val carRacingGame = CarRacingGame(CarCount(carCount), Round(roundCount), resultView::view)
-        carRacingGame.start()
-
+        return Pair(carCount, roundCount)
     }
 }
