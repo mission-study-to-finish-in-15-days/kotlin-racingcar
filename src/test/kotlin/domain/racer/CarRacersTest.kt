@@ -13,7 +13,7 @@ class CarRacersTest : BehaviorSpec({
     given("레이서는 DistancePolicy 로 이동") {
         and("이동 하는 경우") {
             `when`("distancePolicy.isDistance() true 이면") {
-                val sut = CarRacers(CarNames(5))
+                val sut = CarRacers(CarNames("1,2,3,4,5"))
                 val distancePolicy: DistancePolicy = mockk()
                 every { distancePolicy.isDistance() } returns true
                 then("레이서들은 전부 이동 한다.") {
@@ -26,7 +26,7 @@ class CarRacersTest : BehaviorSpec({
 
         and("이동 하지 않는 경우") {
             `when`("distancePolicy.isDistance() false 이면") {
-                val sut = CarRacers(CarNames(5))
+                val sut = CarRacers(CarNames("1,2,3,4,5"))
                 val distancePolicy: DistancePolicy = mockk()
                 every { distancePolicy.isDistance() } returns false
                 then("레이서들은 전부 이동 하지 않는다") {

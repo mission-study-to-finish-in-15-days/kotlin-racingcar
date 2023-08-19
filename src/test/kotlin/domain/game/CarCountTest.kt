@@ -9,7 +9,7 @@ class CarCountTest : BehaviorSpec({
 
     given("0 이하의 숫자가 들어오면 Exception 발생") {
         withData(
-            0,-1, -2, -3
+            "0","121,123456"
         ) {
             shouldThrow<IllegalArgumentException> {
                 CarNames(it)
@@ -19,7 +19,7 @@ class CarCountTest : BehaviorSpec({
 
     given("1 이상이 들어오면 정상 생성") {
         withData(
-            1,2,3,4,5
+            "1,2,3", "1,3,"
         ) {
             val carNames = CarNames(it)
             carNames.shouldNotBeNull()
