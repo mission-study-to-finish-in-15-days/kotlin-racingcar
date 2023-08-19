@@ -1,5 +1,3 @@
-package step3
-
 import java.util.*
 import kotlin.random.Random
 

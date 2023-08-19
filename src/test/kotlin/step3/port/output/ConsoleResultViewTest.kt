@@ -1,7 +1,7 @@
 package step3.port.output
 
 import io.kotest.core.spec.style.StringSpec
-import io.kotest.matchers.shouldBe
+import port.output.ConsoleResultView
 
 class ConsoleResultViewTest : StringSpec({
 

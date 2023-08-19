@@ -3,10 +3,11 @@ package step3.domain
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
-import step3.application.GameStarterService
-import step3.port.output.ConsoleResultView
-import step3.port.output.FileInputView
-import step3.port.output.FileResultView
+import application.GameStarterService
+import domain.game.CarRacingGame
+import port.output.ConsoleResultView
+import port.output.FileInputView
+import port.output.FileResultView
 
 class RacingGameDataTest : BehaviorSpec({
 
@@ -14,15 +15,15 @@ class RacingGameDataTest : BehaviorSpec({
         `when`("carCount, roundCount를 0이하로 주면") {
             then("Exception 발생") {
                 val shouldThrow = shouldThrow<IllegalArgumentException> {
-                    RacingGameData(0, 0, ConsoleResultView::view)
+                    CarRacingGame(0, 0, ConsoleResultView::view)
                 }
                 shouldThrow.localizedMessage shouldBe "carCount=0 는 0보다 커야 합니다."
                 val shouldThrow1 = shouldThrow<IllegalArgumentException> {
-                    RacingGameData(0, 1, ConsoleResultView::view)
+                    CarRacingGame(0, 1, ConsoleResultView::view)
                 }
                 shouldThrow1.localizedMessage shouldBe "carCount=0 는 0보다 커야 합니다."
                 val shouldThrow2 = shouldThrow<IllegalArgumentException> {
-                    RacingGameData(1, 0, ConsoleResultView::view)
+                    CarRacingGame(1, 0, ConsoleResultView::view)
                 }
                 shouldThrow2.localizedMessage shouldBe "roundCount=0 는 0보다 커야 합니다."
             }

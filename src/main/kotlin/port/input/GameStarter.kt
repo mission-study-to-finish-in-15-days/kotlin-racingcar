@@ -1,4 +1,4 @@
-package step3.port.input
+package port.input
 
 interface GameStarter {
     fun start()

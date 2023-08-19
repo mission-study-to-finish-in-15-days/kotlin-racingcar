@@ -1,7 +1,5 @@
-package step3
-
-import step3.application.GameStarterService
-import step3.port.input.GameStarter
+import application.GameStarterService
+import port.input.GameStarter
 
 class RacingCarMain {
 }

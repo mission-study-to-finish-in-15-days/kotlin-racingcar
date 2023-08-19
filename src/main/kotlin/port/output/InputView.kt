@@ -1,4 +1,4 @@
-package step3.port.output
+package port.output
 
 import java.util.Scanner
 
