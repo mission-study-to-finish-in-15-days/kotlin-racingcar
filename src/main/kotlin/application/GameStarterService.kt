@@ -1,5 +1,6 @@
 package application
 
+import domain.distance.RandomDistancePolicy
 import domain.game.CarCount
 import domain.game.CarRacingGame
 import domain.game.Round
@@ -19,7 +20,11 @@ class GameStarterService(
     override fun start() {
         val (carCount, roundCount) = introduceInput()
 
-        val carRacingGame = CarRacingGame(CarCount(carCount), Round(roundCount), resultView::view)
+        val carRacingGame = CarRacingGame(
+            CarCount(carCount),
+            Round(roundCount),
+            RandomDistancePolicy,
+            resultView::view)
         carRacingGame.start()
     }
 

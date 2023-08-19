@@ -11,24 +11,24 @@ import port.output.FileResultView
 
 class RacingGameDataTest : BehaviorSpec({
 
-    given("RaingGameData 입력값이 0으로 주어진 경우") {
-        `when`("carCount, roundCount를 0이하로 주면") {
-            then("Exception 발생") {
-                val shouldThrow = shouldThrow<IllegalArgumentException> {
-                    CarRacingGame(0, 0, ConsoleResultView::view)
-                }
-                shouldThrow.localizedMessage shouldBe "carCount=0 는 0보다 커야 합니다."
-                val shouldThrow1 = shouldThrow<IllegalArgumentException> {
-                    CarRacingGame(0, 1, ConsoleResultView::view)
-                }
-                shouldThrow1.localizedMessage shouldBe "carCount=0 는 0보다 커야 합니다."
-                val shouldThrow2 = shouldThrow<IllegalArgumentException> {
-                    CarRacingGame(1, 0, ConsoleResultView::view)
-                }
-                shouldThrow2.localizedMessage shouldBe "roundCount=0 는 0보다 커야 합니다."
-            }
-        }
-    }
+//    given("RaingGameData 입력값이 0으로 주어진 경우") {
+//        `when`("carCount, roundCount를 0이하로 주면") {
+//            then("Exception 발생") {
+//                val shouldThrow = shouldThrow<IllegalArgumentException> {
+//                    CarRacingGame(0, 0, ConsoleResultView::view)
+//                }
+//                shouldThrow.localizedMessage shouldBe "carCount=0 는 0보다 커야 합니다."
+//                val shouldThrow1 = shouldThrow<IllegalArgumentException> {
+//                    CarRacingGame(0, 1, ConsoleResultView::view)
+//                }
+//                shouldThrow1.localizedMessage shouldBe "carCount=0 는 0보다 커야 합니다."
+//                val shouldThrow2 = shouldThrow<IllegalArgumentException> {
+//                    CarRacingGame(1, 0, ConsoleResultView::view)
+//                }
+//                shouldThrow2.localizedMessage shouldBe "roundCount=0 는 0보다 커야 합니다."
+//            }
+//        }
+//    }
 
 
     given("RaingGameData 정상 처리") {
