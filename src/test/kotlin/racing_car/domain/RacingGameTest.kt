@@ -46,7 +46,7 @@ class RacingGameTest : FunSpec({
             val racingGame = RacingGame(_cars = cars, _round = round)
 
             var actualRound = 0
-            while (!racingGame.isFinish) {
+            while (racingGame.isContinuable) {
                 racingGame.move()
                 actualRound++
             }

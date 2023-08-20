@@ -14,8 +14,8 @@ class RacingGame(
     val cars: List<Car>
         get() = _cars.map { it.copy() }
 
-    val isFinish: Boolean
-        get() = _round == _currentRound
+    val isContinuable: Boolean
+        get() = _currentRound < _round
 
     fun move() {
         check(_currentRound < _round) { "시도회수를 초과하였습니다." }

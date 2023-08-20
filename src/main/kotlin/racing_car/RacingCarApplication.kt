@@ -12,7 +12,7 @@ fun main() {
     )
 
     ResultView.printResultTitle()
-    while (!racingGame.isFinish) {
+    while (racingGame.isContinuable) {
         racingGame.move()
         ResultView.printPosition(racingGame.cars)
     }
