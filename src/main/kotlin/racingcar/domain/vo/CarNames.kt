@@ -2,7 +2,7 @@ package racingcar.domain.vo
 
 import racingcar.domain.CarName
 
-class CarNames(
+data class CarNames(
     private val userInputValue: String,
 ) {
     private val names = mutableListOf<CarName>()
