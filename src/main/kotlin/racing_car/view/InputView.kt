@@ -13,12 +13,12 @@ object InputView {
         return List(numberOfCars) { Car() }
     }
 
-    fun inputNumberOfMove(): Int {
+    fun inputRacingRound(): Int {
         println("시도할 횟수는 몇 회인가요?")
 
-        val numberOfMove = readlnOrNull()?.toIntOrNull()
-        require(numberOfMove != null && numberOfMove > 0) { "시도할 횟수는 자연수값입니다." }
+        val round = readlnOrNull()?.toIntOrNull()
+        require(round != null && round > 0) { "시도할 횟수는 자연수값입니다." }
 
-        return numberOfMove
+        return round
     }
 }

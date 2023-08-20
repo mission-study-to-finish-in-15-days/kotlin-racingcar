@@ -15,7 +15,7 @@ class RacingGameTest : FunSpec({
         ) { numberOfCars ->
 
             val cars = List(numberOfCars) { Car() }
-            val racingGame = RacingGame(_cars = cars, _numberOfMove = 10)
+            val racingGame = RacingGame(_cars = cars, _round = 10)
 
             racingGame.cars.size shouldBe numberOfCars
         }
@@ -29,7 +29,7 @@ class RacingGameTest : FunSpec({
             val cars = List(numberOfCars) { Car() }
 
             val exception = shouldThrow<IllegalArgumentException> {
-                RacingGame(_cars = cars, _numberOfMove = 10)
+                RacingGame(_cars = cars, _round = 10)
             }
 
             exception.localizedMessage shouldBe "경주에 필요한 자동차 대수는 2대 이상입니다."
@@ -38,35 +38,35 @@ class RacingGameTest : FunSpec({
 
     context("입력된 시도횟수만큼 레이싱을 진행한다.") {
         withData(
-            nameFn = { "numberOfMove : $it" },
+            nameFn = { "round : $it" },
             1, 13, 12, 30,
-        ) { numberOfMove ->
+        ) { round ->
 
             val cars = List(10) { Car() }
-            val racingGame = RacingGame(_cars = cars, _numberOfMove = numberOfMove)
+            val racingGame = RacingGame(_cars = cars, _round = round)
 
-            var actualNumberOfMove = 0
+            var actualRound = 0
             while (!racingGame.isFinish) {
                 racingGame.move()
-                actualNumberOfMove++
+                actualRound++
             }
 
-            actualNumberOfMove shouldBe numberOfMove
+            actualRound shouldBe round
         }
     }
 
     context("주어진 시도횟수보다 더 많이 시도하는 경우 IllegalStateException throw") {
-        val numberOfMove = 5
+        val round = 5
         withData(
-            nameFn = { "numberOfMove : $numberOfMove, actualMove : $it" },
+            nameFn = { "round : $round, actualRound : $it" },
             6, 10,
-        ) { actualMove ->
+        ) { actualRound ->
 
             val cars = List(10) { Car() }
-            val racingGame = RacingGame(_cars = cars, _numberOfMove = numberOfMove)
+            val racingGame = RacingGame(_cars = cars, _round = round)
 
             val exception = shouldThrow<IllegalStateException> {
-                for (i in 1..actualMove) {
+                for (i in 1..actualRound) {
                     racingGame.move()
                 }
             }
@@ -77,12 +77,12 @@ class RacingGameTest : FunSpec({
 
     context("시도할 횟수가 1보다 작은 경우 IllegalArgumentException throw") {
         withData(
-            nameFn = { "numberOfMove : $it" },
+            nameFn = { "round : $it" },
             0, -1, -13, -30,
-        ) { numberOfMove ->
+        ) { round ->
             val exception = shouldThrow<IllegalArgumentException> {
                 val cars = List(10) { Car() }
-                RacingGame(_cars = cars, _numberOfMove = numberOfMove)
+                RacingGame(_cars = cars, _round = round)
             }
 
             exception.localizedMessage shouldBe "경주는 1번 이상 시도되어야합니다."
@@ -91,11 +91,11 @@ class RacingGameTest : FunSpec({
 
     context("자동차 경주에 포함된 자동차들이 올바르게 이동한다.") {
 
-        val numberOfMove = 10
+        val round = 10
         val cars = List(10) { Car(_moveStrategy = alwaysMoveStrategy) }
-        val racingGame = RacingGame(_cars = cars, _numberOfMove = numberOfMove)
+        val racingGame = RacingGame(_cars = cars, _round = round)
 
-        for (i in 1..numberOfMove) {
+        for (i in 1..round) {
             racingGame.move()
 
             racingGame.cars.forEach {
@@ -105,12 +105,12 @@ class RacingGameTest : FunSpec({
     }
 
     context("부정행위가 통하지 않는다.(racingGame 외부에서 자동차를 변경시키지 못한다.") {
-        val actualMove = 5
+        val actualRound = 5
         val racingGame = RacingGame(
             _cars = List(10) { Car(_moveStrategy = alwaysMoveStrategy) },
-            _numberOfMove = 10
+            _round = 10
         )
-        for (i in 1..actualMove) {
+        for (i in 1..actualRound) {
             racingGame.move()
         }
 
@@ -121,7 +121,7 @@ class RacingGameTest : FunSpec({
         }
 
         racingGame.cars.forAll {
-            it.position shouldBe actualMove
+            it.position shouldBe actualRound
         }
     }
 }) {

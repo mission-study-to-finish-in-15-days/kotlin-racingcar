@@ -13,27 +13,27 @@ class CarTest : FunSpec({
 
     context("항상 이동하는 자동차는 항상 앞으로 이동한다.") {
         withData(
-            nameFn = { "numberOfMove : $it" },
+            nameFn = { "round : $it" },
             1, 5, 12,
-        ) { numberOfMove ->
+        ) { round ->
 
             val car = Car(_moveStrategy = alwaysMoveStrategy)
-            repeat(numberOfMove) {
+            repeat(round) {
                 car.move()
             }
 
-            car.position shouldBe numberOfMove
+            car.position shouldBe round
         }
     }
 
     context("절대 이동하는 않는 자동차는 항상 제자리다.") {
         withData(
-            nameFn = { "numberOfMove : $it" },
+            nameFn = { "round : $it" },
             1, 5, 12,
-        ) { numberOfMove ->
+        ) { round ->
 
             val car = Car(_moveStrategy = neverMoveStrategy)
-            repeat(numberOfMove) {
+            repeat(round) {
                 car.move()
             }
 
