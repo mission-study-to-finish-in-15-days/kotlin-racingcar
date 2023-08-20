@@ -11,10 +11,10 @@ class RacingCars(
         }
     }
 
-    fun findWinner(): String {
+    fun findWinner(): List<String> {
         val winnerPosition = cars.maxOf { it.getPosition().value }
         return cars.filter { it.getPosition().value == winnerPosition }
-            .joinToString(separator = ",") { it.name.value }
+            .map { it.name.value }
     }
 }
 

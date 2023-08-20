@@ -2,6 +2,7 @@ package racingcar
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
+import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.shouldBe
 import racingcar.domain.*
 import racingcar.domain.vo.CarNames
@@ -17,7 +18,8 @@ class RacingCarsTest: StringSpec({
 
         val actual = sut.findWinner()
 
-        actual shouldBe "user2,user3"
+        actual shouldContain "user2"
+        actual shouldContain "user3"
     }
 
     "자동차 경주가 끝난 후 우승자를 찾을 수 있다"{
@@ -28,7 +30,7 @@ class RacingCarsTest: StringSpec({
 
         val actual = sut.findWinner()
 
-        actual shouldBe "user2"
+        actual.first() shouldBe "user2"
     }
 
     "n개의 자동차를 생성했을때 초기 위치는 0이다."{

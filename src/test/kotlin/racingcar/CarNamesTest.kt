@@ -23,9 +23,10 @@ class CarNamesTest: AnnotationSpec(){
     @Test
     fun `쉼표가 아닌경우는 자동차 이름으로 구분되지 않고 5자리가 넘으면 안된다`(){
         val input = "user1.user2!user3"
+        val carNames = CarNames(input)
 
         val exception = shouldThrow<IllegalArgumentException> {
-            CarNames(input)
+            carNames.getCarNames()
         }
 
         exception.message shouldBe "자동차 이름은 다섯자 이하여야 합니다."
