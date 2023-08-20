@@ -7,4 +7,3 @@ object RandomDecisionUtil {
 
     private const val MEDIUM_THRESHOLD = 4
 }
-

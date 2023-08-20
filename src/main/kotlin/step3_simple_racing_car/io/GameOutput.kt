@@ -7,8 +7,7 @@ object GameOutput {
         participants: List<RacingCar>,
     ) {
         participants.forEach {
-            (1..it.position.value).map { _ -> print("-") }
-            println()
+            println("-".repeat(it.position.value))
         }
         println("라운드 종료.")
     }

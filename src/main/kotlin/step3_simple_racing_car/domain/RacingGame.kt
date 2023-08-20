@@ -1,27 +1,27 @@
 package step3_simple_racing_car.domain
 
-import step3_simple_racing_car.io.GameOptionInput
-import step3_simple_racing_car.io.GameOutput
-
 class RacingGame(
-    val participants: MutableList<RacingCar> = mutableListOf(),
-    var movingCount: Int = 0
+    private val _participants: MutableList<RacingCar> = mutableListOf(),
+    private var _movingCount: Int = 0
 ) {
-    fun setting() = GameOptionInput.input()
+    val movingCount: Int
+        get() = _movingCount
 
-    fun ready(gameOption: GameOptionInput) {
-        repeat(gameOption.participantCount) {
-            participants.add(RacingCar())
+    val participants: List<RacingCar>
+        get() = _participants
+
+    fun ready(
+        participantCount: Int,
+        movingCount: Int
+    ) {
+        repeat(participantCount) {
+            _participants.add(RacingCar())
         }
-
-        this.movingCount = gameOption.movingCount
+        this._movingCount = movingCount
     }
 
-    fun start() {
-        repeat(movingCount){
-            participants.forEach { it.move() }
-            GameOutput.printGameResult(participants)
-        }
+    fun move() {
+        _participants.forEach { it.move() }
     }
 
     fun finish() {

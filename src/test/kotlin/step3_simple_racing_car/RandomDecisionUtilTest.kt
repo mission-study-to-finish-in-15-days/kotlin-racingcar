@@ -8,10 +8,10 @@ import step3_simple_racing_car.util.RandomDecisionUtil
 
 class RandomDecisionUtilTest : StringSpec({
     "랜덤한 값으로 추출한 결과는 시행 횟수보다 클 수 없다." {
-        val iterationCount = listOf( 10, 20, 30, 40, 50)
+        val iterationCount = listOf(10, 20, 30, 40, 50)
         iterationCount.forAll {
             var count = 0
-            repeat(it) { if(RandomDecisionUtil.isUpper()) count ++ }
+            repeat(it) { if (RandomDecisionUtil.isUpper()) count++ }
             count shouldNotBeGreaterThan it
         }
     }
