@@ -7,7 +7,7 @@ object GameOutput {
         participants: List<RacingCar>,
     ) {
         participants.forEach {
-            print("${it.name}: ")
+            print("${it.nickName}: ")
             println("-".repeat(it.position.value))
         }
         println()
