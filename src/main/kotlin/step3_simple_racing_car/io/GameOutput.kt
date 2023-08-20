@@ -7,8 +7,15 @@ object GameOutput {
         participants: List<RacingCar>,
     ) {
         participants.forEach {
+            print("${it.name}: ")
             println("-".repeat(it.position.value))
         }
-        println("라운드 종료.")
+        println()
+    }
+
+    fun printWinners(
+        winners: List<String>,
+    ) {
+        println("${winners.joinToString()} (이)가 최종 우승했습니다.")
     }
 }
