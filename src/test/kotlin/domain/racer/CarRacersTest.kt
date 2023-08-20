@@ -5,6 +5,7 @@ import domain.game.CarNames
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.booleans.shouldBeFalse
 import io.kotest.matchers.booleans.shouldBeTrue
+import io.kotest.matchers.equals.shouldBeEqual
 import io.mockk.every
 import io.mockk.mockk
 
@@ -34,6 +35,18 @@ class CarRacersTest : BehaviorSpec({
                         it.contains("-").shouldBeFalse()
                     }
                 }
+            }
+        }
+    }
+
+    given("우승자 테스트") {
+        val sut = CarRacers(CarNames("1,2,3,4,5"))
+        val distancePolicy: DistancePolicy = mockk()
+        every { distancePolicy.isDistance() } returns false
+        sut.roundCarRaceAndRaceResult(distancePolicy)
+        `when`("동점자들은") {
+            then("모두 우승 한다.") {
+                sut.winnerResult() shouldBeEqual listOf("1","2","3","4","5")
             }
         }
     }
