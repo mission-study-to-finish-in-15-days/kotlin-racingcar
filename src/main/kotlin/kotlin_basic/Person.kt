@@ -1,4 +1,4 @@
-package step01
+package kotlin_basic
 
 data class Person(
     val personInfo: PersonInfo = PersonInfo(),

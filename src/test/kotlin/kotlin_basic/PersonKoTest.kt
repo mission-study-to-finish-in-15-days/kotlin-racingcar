@@ -1,7 +1,8 @@
+package kotlin_basic
+
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
-import step01.*
 
 class PersonKoTest : FreeSpec({
     "FreeSpec" - {
@@ -97,5 +98,6 @@ class PersonKoTest : FreeSpec({
             (person1 == person2) shouldBe true
             person1 shouldBe person2
         }
+
     }
 })
