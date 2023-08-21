@@ -11,7 +11,8 @@ repositories {
 }
 
 dependencies {
-    testImplementation("io.kotest", "kotest-runner-junit5", "5.3.1")
+    testImplementation("io.kotest", "kotest-framework-datatest", "5.6.2")
+    testImplementation("io.kotest", "kotest-runner-junit5", "5.6.2")
     testImplementation("org.junit.jupiter", "junit-jupiter", "5.8.2")
     testImplementation("org.assertj", "assertj-core", "3.22.0")
 
