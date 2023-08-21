@@ -1,11 +1,11 @@
-package step2.service
+package racingcar.service
 
-import step2.entity.Expression
-import step2.entity.ExpressionToken
-import step2.entity.NumberToken
-import step2.entity.OperatorToken
-import step2.type.ExpressionType
-import step2.type.OperatorType
+import racingcar.entity.Expression
+import racingcar.entity.ExpressionToken
+import racingcar.entity.NumberToken
+import racingcar.entity.OperatorToken
+import racingcar.type.ExpressionType
+import racingcar.type.OperatorType
 
 interface ExpressionCalculator {
     fun isCalculable(expression: Expression): Boolean

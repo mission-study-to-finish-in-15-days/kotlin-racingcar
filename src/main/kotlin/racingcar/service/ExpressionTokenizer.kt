@@ -1,7 +1,7 @@
-package step2.service
+package racingcar.service
 
-import step2.entity.Expression
-import step2.entity.RawToken
+import racingcar.entity.Expression
+import racingcar.entity.RawToken
 
 /**
  * 문자열로 된 표현식을 토큰 단위로 분리한다.

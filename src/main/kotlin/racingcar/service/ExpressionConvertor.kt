@@ -1,11 +1,11 @@
-package step2.service
+package racingcar.service
 
-import step2.entity.Expression
-import step2.entity.ExpressionToken
-import step2.entity.NumberToken
-import step2.entity.OperatorToken
-import step2.entity.RawToken
-import step2.type.ExpressionType
+import racingcar.entity.Expression
+import racingcar.entity.ExpressionToken
+import racingcar.entity.NumberToken
+import racingcar.entity.OperatorToken
+import racingcar.entity.RawToken
+import racingcar.type.ExpressionType
 
 /**
  * 토큰 리스트를 표현식으로 변환한다.

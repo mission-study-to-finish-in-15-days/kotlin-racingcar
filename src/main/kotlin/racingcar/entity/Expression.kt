@@ -1,6 +1,6 @@
-package step2.entity
+package racingcar.entity
 
-import step2.type.ExpressionType
+import racingcar.type.ExpressionType
 
 data class Expression(
     val type: ExpressionType,

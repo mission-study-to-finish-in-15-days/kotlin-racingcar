@@ -1,12 +1,12 @@
-package step2.application
+package racingcar.application
 
 import io.kotest.assertions.throwables.shouldNotThrowAny
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
-import step2.service.PostfixExpressionCalculator
-import step2.service.PostfixExpressionConvertor
-import step2.service.RegexExpressionTokenizer
+import racingcar.service.PostfixExpressionCalculator
+import racingcar.service.PostfixExpressionConvertor
+import racingcar.service.RegexExpressionTokenizer
 
 class CalculateUseCaseTest : FreeSpec({
 

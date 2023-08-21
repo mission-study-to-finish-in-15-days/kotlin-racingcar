@@ -1,6 +1,6 @@
-package step2.entity
+package racingcar.entity
 
-import step2.type.OperatorType
+import racingcar.type.OperatorType
 
 sealed interface ExpressionToken
 
