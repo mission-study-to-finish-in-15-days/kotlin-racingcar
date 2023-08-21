@@ -2,21 +2,15 @@ package domain.racer
 
 import domain.distance.DistancePolicy
 import domain.game.CarNames
-import kotlin.math.max
 
 data class CarRacers(private val carNames: CarNames) {
     private val racers = carNames.value.split(",").map { CarRacer(it) }
 
-    fun roundCarRaceAndRaceResult(distancePolicy: DistancePolicy): List<String> {
+    fun roundCarRace(distancePolicy: DistancePolicy) {
         racers.forEach { it.distance(distancePolicy) }
-        return raceResult()
     }
 
-    private fun raceResult(): List<String> = racers.map { "${it.name} racer: ${distanceDisplay(it.distance)}" }
-
-    private fun distanceDisplay(distance: Int): String {
-        return IntArray(distance).joinToString("") { "-" }
-    }
+    fun raceResult(): List<DisplayCarRacer> = racers.map { DisplayCarRacer(it.name, it.distance)}
 
     fun winnerResult(): List<String> {
         val maxDistanceRacers = racers.sortedByDescending { it.distance }
@@ -36,3 +30,8 @@ data class CarRacer(
         return distance
     }
 }
+
+data class DisplayCarRacer(
+    val name: String,
+    val distance: Int,
+)

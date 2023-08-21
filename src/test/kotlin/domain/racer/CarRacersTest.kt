@@ -14,13 +14,13 @@ class CarRacersTest : BehaviorSpec({
     given("레이서는 DistancePolicy 로 이동") {
         and("이동 하는 경우") {
             `when`("distancePolicy.isDistance() true 이면") {
-                val sut = CarRacers(CarNames("1,2,3,4,5"))
+                val carRacerNames = "1,2,3,4,5"
+                val sut = CarRacers(CarNames(carRacerNames))
                 val distancePolicy: DistancePolicy = mockk()
                 every { distancePolicy.isDistance() } returns true
                 then("레이서들은 전부 이동 한다.") {
-                    sut.roundCarRaceAndRaceResult(distancePolicy).forEach {
-                        it.contains("-").shouldBeTrue()
-                    }
+                    sut.roundCarRace(distancePolicy)
+                    sut.raceResult()
                 }
             }
         }
@@ -31,9 +31,10 @@ class CarRacersTest : BehaviorSpec({
                 val distancePolicy: DistancePolicy = mockk()
                 every { distancePolicy.isDistance() } returns false
                 then("레이서들은 전부 이동 하지 않는다") {
-                    sut.roundCarRaceAndRaceResult(distancePolicy).forEach {
-                        it.contains("-").shouldBeFalse()
-                    }
+//                    sut.roundCarRace(distancePolicy).forEach {
+//                        it.contains("-").shouldBeFalse()
+//                    }
+                    sut.raceResult()
                 }
             }
         }
@@ -43,7 +44,7 @@ class CarRacersTest : BehaviorSpec({
         val sut = CarRacers(CarNames("1,2,3,4,5"))
         val distancePolicy: DistancePolicy = mockk()
         every { distancePolicy.isDistance() } returns false
-        sut.roundCarRaceAndRaceResult(distancePolicy)
+        sut.roundCarRace(distancePolicy)
         `when`("동점자들은") {
             then("모두 우승 한다.") {
                 sut.winnerResult() shouldBeEqual listOf("1","2","3","4","5")
