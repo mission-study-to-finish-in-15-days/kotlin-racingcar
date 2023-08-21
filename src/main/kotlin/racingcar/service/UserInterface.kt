@@ -1,6 +1,6 @@
 package racingcar.service
 
-import java.util.*
+import java.util.Scanner
 
 interface UserInterface {
     fun getInt(message: String): Int
