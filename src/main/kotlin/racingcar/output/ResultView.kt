@@ -10,7 +10,7 @@ object ResultView {
       println("현재 라운드는 ${round+1} 회차 입니다.")
     }
 
-    fun showResult(cars: List<Car>) {
+    fun showRoundResult(cars: List<Car>) {
         cars.forEach{
             showCarName(it.name)
             showCarPosition(it.getPosition())

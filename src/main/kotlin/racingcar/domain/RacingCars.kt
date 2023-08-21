@@ -5,7 +5,7 @@ class RacingCars(
     val cars: List<Car>,
 ) {
 
-    fun racingStart() {
+    fun roundStart() {
         cars.forEach {
             it.move()
         }

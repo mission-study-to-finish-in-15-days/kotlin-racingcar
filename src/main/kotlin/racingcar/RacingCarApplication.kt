@@ -15,8 +15,8 @@ object RacingCarApplication {
         val racingCars = RacingCars(cars)
         repeat(moveNumber.getNumber()){
             ResultView.showCurrentRound(it)
-            racingCars.racingStart()
-            ResultView.showResult(racingCars.cars)
+            racingCars.roundStart()
+            ResultView.showRoundResult(racingCars.cars)
         }
         ResultView.showWinner(racingCars.findWinner())
     }
