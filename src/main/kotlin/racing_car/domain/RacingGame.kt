@@ -12,14 +12,23 @@ class RacingGame(
     }
 
     val cars: List<Car>
-        get() = _cars.map { it.copy() }
+        get() = _cars.map(Car::copy)
 
     val isContinuable: Boolean
         get() = _currentRound < _round
+
+    val isFinish: Boolean
+        get() = !isContinuable
 
     fun move() {
         check(_currentRound < _round) { "시도회수를 초과하였습니다." }
         _cars.forEach(Car::move)
         _currentRound++
+    }
+
+    fun judgeWinners(): List<Car> {
+        check(isFinish) { "아직 경주가 끝나지 않았습니다." }
+        val winningPosition = _cars.maxOf { it.position }
+        return _cars.filter { it.position == winningPosition }.map(Car::copy)
     }
 }

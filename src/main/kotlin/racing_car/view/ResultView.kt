@@ -9,7 +9,16 @@ object ResultView {
     }
 
     fun printPosition(cars: List<Car>) {
-        cars.forEach { println("-".repeat(it.position)) }
+        cars.forEach { car ->
+            val carName = car.name
+            val positionBar = "-".repeat(car.position)
+            println("$carName : $positionBar")
+        }
         println()
+    }
+
+    fun printWinners(winners: List<Car>) {
+        val namesOfWinners = winners.joinToString { it -> it.name }
+        println("$namesOfWinners (이)가 최종 우승했습니다.")
     }
 }
