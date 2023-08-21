@@ -21,7 +21,7 @@ class RacingCars(
 data class Car(
     private var currentPosition: Position = Position(),
     val name: CarName = CarName(),
-    val moveStrategy: MoveStrategy = RandomMoveStrategy(ThreadLocalRandomNumberUtil),
+    val moveStrategy: MoveStrategy = RandomMoveStrategy(ThreadLocalRandomNumberGenerator),
 ) {
     fun move() {
         val movePosition = moveStrategy.move(currentPosition)

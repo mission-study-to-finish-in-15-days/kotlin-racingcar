@@ -5,11 +5,11 @@ fun interface MoveStrategy {
 }
 
 class RandomMoveStrategy(
-    private val randomNumberUtil: RandomNumberUtil,
+    private val randomNumberGenerator: RandomNumberGenerator,
 ): MoveStrategy {
 
     override fun move(currentPosition: Position): Position {
-        val `0~9 사이의 무작위 정수` = randomNumberUtil.getRandomNumber(0, 10)
+        val `0~9 사이의 무작위 정수` = randomNumberGenerator.getNumber(0, 10)
         if(`0~9 사이의 무작위 정수` >= THRESHOLD){
             return currentPosition + MOVE_DISTANCE_STRATEGY
         }
