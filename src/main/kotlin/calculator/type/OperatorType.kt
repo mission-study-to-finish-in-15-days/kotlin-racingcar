@@ -1,4 +1,4 @@
-package racingcar.type
+package calculator.type
 
 enum class OperatorType(val symbol: String) {
     ADD("+"),

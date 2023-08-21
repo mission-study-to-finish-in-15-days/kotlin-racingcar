@@ -1,6 +1,6 @@
-package racingcar.vo
+package calculator.vo
 
-import racingcar.type.OperatorType
+import calculator.type.OperatorType
 
 sealed interface ExpressionToken
 

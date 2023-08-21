@@ -1,1 +1,1 @@
-# kotlin-racingcar
+# kotlin-calculator

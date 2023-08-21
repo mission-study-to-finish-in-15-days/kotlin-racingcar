@@ -1,4 +1,4 @@
-package racingcar.type
+package calculator.type
 
 enum class ExpressionRegex(val regex: Regex) {
     NUMBER(regex = "([1-9][0-9]*)".toRegex()),
