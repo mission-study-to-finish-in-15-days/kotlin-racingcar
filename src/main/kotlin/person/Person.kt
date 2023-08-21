@@ -1,3 +1,5 @@
+package person
+
 @JvmInline
 value class Name(val name: String)
 
