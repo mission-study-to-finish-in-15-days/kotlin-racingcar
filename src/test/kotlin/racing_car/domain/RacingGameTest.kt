@@ -124,8 +124,51 @@ class RacingGameTest : FunSpec({
             it.position shouldBe actualRound
         }
     }
+
+    context("자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.") {
+        val cars = listOf(
+            Car(_name = "w1", _moveStrategy = alwaysMoveStrategy),
+            Car(_name = "w2", _moveStrategy = alwaysMoveStrategy),
+            Car(_name = "l1", _moveStrategy = neverMoveStrategy),
+            Car(_name = "l2", _moveStrategy = neverMoveStrategy),
+            Car(_name = "l3", _moveStrategy = neverMoveStrategy),
+        )
+        val racingGame = RacingGame(
+            _cars = cars,
+            _round = 10,
+        )
+
+        while (racingGame.isContinuable) {
+            racingGame.move()
+        }
+
+        val winners = racingGame.judgeWinners()
+        winners.map { it.name } shouldBe listOf("w1", "w2")
+    }
+
+    context("자동차 경주가 끝나기 전에 우승자를 확인하는 경우 IllegalStateException throw") {
+        val cars = listOf(
+            Car(_name = "w1", _moveStrategy = alwaysMoveStrategy),
+            Car(_name = "w2", _moveStrategy = alwaysMoveStrategy),
+            Car(_name = "l1", _moveStrategy = neverMoveStrategy),
+            Car(_name = "l2", _moveStrategy = neverMoveStrategy),
+            Car(_name = "l3", _moveStrategy = neverMoveStrategy),
+        )
+        val racingGame = RacingGame(
+            _cars = cars,
+            _round = 10,
+        )
+
+        racingGame.move()
+
+        val exception = shouldThrow<IllegalStateException> {
+            racingGame.judgeWinners()
+        }
+        exception.localizedMessage shouldBe "아직 경주가 끝나지 않았습니다."
+    }
 }) {
     companion object {
         val alwaysMoveStrategy = MoveStrategy { true }
+        val neverMoveStrategy = MoveStrategy { false }
     }
 }
