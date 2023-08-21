@@ -1,4 +1,4 @@
-package racingcar.input
+package racingcar.view.input
 
 import racingcar.domain.vo.CarNames
 import racingcar.domain.vo.MoveNumber

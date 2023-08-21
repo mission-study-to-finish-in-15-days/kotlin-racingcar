@@ -4,9 +4,9 @@ import racingcar.domain.CarsFactory
 import racingcar.domain.RacingCars
 import racingcar.domain.vo.CarNames
 import racingcar.domain.vo.MoveNumber
-import racingcar.input.InputView
-import racingcar.input.RacingGameInputSupporter
-import racingcar.output.ResultView
+import racingcar.view.input.InputView
+import racingcar.view.input.RacingGameInputSupporter
+import racingcar.view.output.ResultView
 
 object RacingCarApplication {
     fun gameStart() {
