@@ -38,16 +38,24 @@ value class CarName(
     val value: String = "자동차이름",
 ) {
     init {
-        require(this.value.length <= 5) { "자동차 이름은 다섯자 이하여야 합니다." }
+        require(this.value.length <= CAR_NAME_LIMIT_LENGTH) { "자동차 이름은 다섯자 이하여야 합니다." }
+    }
+
+    companion object{
+        private const val CAR_NAME_LIMIT_LENGTH = 5
     }
 }
 
 
 @JvmInline
 value class Position(
-    val value: Int = 0,
+    val value: Int = FIRST_POSITION,
 ) {
     operator fun plus(addValue: Position): Position {
         return Position(this.value + addValue.value)
+    }
+
+    companion object{
+        private const val FIRST_POSITION = 0
     }
 }
