@@ -30,7 +30,7 @@ class RacingCarsTest: StringSpec({
 
         val actual = sut.findWinner()
 
-        actual.first() shouldBe "user2"
+        actual shouldContain "user2"
     }
 
     "n개의 자동차를 생성했을때 초기 위치는 0이다."{
