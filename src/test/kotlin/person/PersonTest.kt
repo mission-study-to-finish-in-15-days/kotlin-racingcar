@@ -1,4 +1,4 @@
-package step1
+package person
 
 import io.kotest.assertions.assertSoftly
 import io.kotest.assertions.withClue
