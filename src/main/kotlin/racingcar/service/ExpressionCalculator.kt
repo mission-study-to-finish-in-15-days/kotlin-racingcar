@@ -1,11 +1,11 @@
 package racingcar.service
 
-import racingcar.entity.Expression
-import racingcar.entity.ExpressionToken
-import racingcar.entity.NumberToken
-import racingcar.entity.OperatorToken
 import racingcar.type.ExpressionType
 import racingcar.type.OperatorType
+import racingcar.vo.Expression
+import racingcar.vo.ExpressionToken
+import racingcar.vo.NumberToken
+import racingcar.vo.OperatorToken
 
 interface ExpressionCalculator {
     fun isCalculable(expression: Expression): Boolean
@@ -20,17 +20,7 @@ class PostfixExpressionCalculator : ExpressionCalculator {
 
     override fun calculate(expression: Expression): Double {
         val stack: ArrayDeque<ExpressionToken> = expression.tokens
-            .fold(initial = ArrayDeque()) { stack: ArrayDeque<ExpressionToken>, token: ExpressionToken ->
-                when (token) {
-                    is NumberToken -> stack.apply { addLast(token) }
-                    is OperatorToken -> {
-                        val number2: ExpressionToken? = stack.removeLastOrNull()
-                        val number1: ExpressionToken? = stack.removeLastOrNull()
-                        val result: Double = this.evaluate(operator = token, number1 = number1, number2 = number2)
-                        stack.apply { addLast(NumberToken(result)) }
-                    }
-                }
-            }
+            .fold(ArrayDeque()) { stack, token -> stack.calculateToken(token) }
 
         require(stack.size == 1) { "계산이 완료되지 않은 표현식입니다." }
 
@@ -38,6 +28,20 @@ class PostfixExpressionCalculator : ExpressionCalculator {
             ?: throw IllegalArgumentException("계산이 완료되지 않은 표현식입니다.")
 
         return result.value
+    }
+
+    private fun ArrayDeque<ExpressionToken>.calculateToken(token: ExpressionToken): ArrayDeque<ExpressionToken> {
+        when (token) {
+            is NumberToken -> this.addLast(token)
+
+            is OperatorToken -> {
+                val number2 = this.removeLastOrNull()
+                val number1 = this.removeLastOrNull()
+                this.addLast(NumberToken(evaluate(token, number1, number2)))
+            }
+        }
+
+        return this
     }
 
     private fun evaluate(operator: OperatorToken, number1: ExpressionToken?, number2: ExpressionToken?): Double {

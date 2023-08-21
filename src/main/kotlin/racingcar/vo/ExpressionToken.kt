@@ -1,4 +1,4 @@
-package racingcar.entity
+package racingcar.vo
 
 import racingcar.type.OperatorType
 

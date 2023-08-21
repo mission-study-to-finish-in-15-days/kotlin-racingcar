@@ -5,14 +5,14 @@ import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
 import racingcar.service.PostfixExpressionCalculator
-import racingcar.service.PostfixExpressionConvertor
-import racingcar.service.RegexExpressionTokenizer
+import racingcar.service.PostfixToken2ExpressionConvertor
+import racingcar.service.RegexStringTokenizer
 
 class CalculateUseCaseTest : FreeSpec({
 
     val calculateUseCase = CalculateUseCase(
-        expressionTokenizer = RegexExpressionTokenizer(),
-        expressionConvertor = PostfixExpressionConvertor(),
+        stringTokenizer = RegexStringTokenizer(),
+        token2ExpressionConvertor = PostfixToken2ExpressionConvertor(),
         expressionCalculator = PostfixExpressionCalculator(),
     )
 

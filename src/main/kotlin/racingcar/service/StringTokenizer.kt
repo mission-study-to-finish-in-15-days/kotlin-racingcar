@@ -1,24 +1,24 @@
 package racingcar.service
 
-import racingcar.entity.Expression
-import racingcar.entity.RawToken
+import racingcar.type.ExpressionRegex
+import racingcar.vo.RawToken
 
 /**
  * 문자열로 된 표현식을 토큰 단위로 분리한다.
  */
-interface ExpressionTokenizer {
+interface StringTokenizer {
     fun parse(expression: String): List<RawToken>
 }
 
-class RegexExpressionTokenizer : ExpressionTokenizer {
+class RegexStringTokenizer : StringTokenizer {
     override fun parse(expression: String): List<RawToken> {
         val trimmedExpression: String = expression.replace(WHITESPACE_REGEX, "")
 
-        if (trimmedExpression.matches(Expression.EXPRESSION_REGEX) == false) {
+        if (trimmedExpression.matches(ExpressionRegex.EXPRESSION.regex) == false) {
             throw IllegalArgumentException("유효하지 않은 입력입니다.")
         }
 
-        return Expression.TOKEN_REGEX.findAll(input = trimmedExpression)
+        return ExpressionRegex.TOKEN.regex.findAll(input = trimmedExpression)
             .map { RawToken(it.value) }
             .toList()
     }

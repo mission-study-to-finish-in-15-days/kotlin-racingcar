@@ -1,3 +1,3 @@
-package racingcar.entity
+package racingcar.vo
 
 data class RawToken(val value: String)
