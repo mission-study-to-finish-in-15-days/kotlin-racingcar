@@ -15,14 +15,16 @@ class CarNamesTest: AnnotationSpec(){
     @ParameterizedTest
     @MethodSource("racingCarNamesInput")
     fun `자동차의 이름을 쉼표로 구분하여 개수만큼 자동차 이름을 생성한다`(value: String, expected: Int){
-        val actual = CarNames(value)
+        val userNames = value.split(",")
+
+        val actual = CarNames(userNames)
 
         actual.getCarNames().size shouldBe expected
     }
 
     @Test
     fun `쉼표가 아닌경우는 자동차 이름으로 구분되지 않고 5자리가 넘으면 안된다`(){
-        val input = "user1.user2!user3"
+        val input = listOf("user1.user2!user3")
         val carNames = CarNames(input)
 
         val exception = shouldThrow<IllegalArgumentException> {

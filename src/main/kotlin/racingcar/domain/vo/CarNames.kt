@@ -4,11 +4,10 @@ import racingcar.domain.CarName
 
 @JvmInline
 value class CarNames(
-    private val userInputValue: String,
+    private val carNames: List<String>,
 ) {
     fun getCarNames(): List<CarName> {
-        return userInputValue
-            .split(",")
+        return carNames
             .map { CarName(it)}
             .toList()
     }

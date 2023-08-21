@@ -7,7 +7,8 @@ import java.lang.IllegalArgumentException
 object RacingGameInputSupporter {
     fun inputCarNames(): CarNames {
         val userInputValue = readlnOrNull() ?: throw IllegalArgumentException("입력을 다시 시도해주세요.")
-        return CarNames(userInputValue)
+        val userNames = userInputValue.split(",")
+        return CarNames(userNames)
     }
 
     fun inputMoveNumber(): MoveNumber {
