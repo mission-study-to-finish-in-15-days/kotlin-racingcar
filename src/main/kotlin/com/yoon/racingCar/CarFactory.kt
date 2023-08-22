@@ -9,7 +9,7 @@ object CarFactory {
   private const val ENGINE_MAX = 9
 
   fun factory(participationCount: ParticipateCount): List<RacingCar> {
-    check(participationCount.value > 0) { throw IllegalStateException("ParticipationCount more then 0") }
+    require(participationCount.value > 0) { throw IllegalArgumentException("ParticipationCount more then 0") }
 
     return List(participationCount.value) {
       RacingCar(RacingConstructor(engineMin = ENGINE_MIN, engineMax = ENGINE_MAX))

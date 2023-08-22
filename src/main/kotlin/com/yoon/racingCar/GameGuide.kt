@@ -1,6 +1,6 @@
 package com.yoon.racingCar
 
-import com.yoon.racingCar.domain.car.RacingCar
+import com.yoon.racingCar.domain.f1.TrackResult
 
 object GameGuide {
 
@@ -14,10 +14,15 @@ object GameGuide {
     return ParticipateCount(participateCount) to RaceCount(raceCount)
   }
 
-  fun showEnding(gameResult: List<RacingCar>) {
+  fun showEnding(trackResults: List<TrackResult>) {
     println("🏆🏆 FIA Formula One World Championship 🏆🏆")
-    gameResult.forEach { println(it.movingDistance) }
-    println()
+    trackResults.forEach { result ->
+      println("Track${result.track}")
+      result.racingCars.forEach { car ->
+        val trackLine = "-".repeat(car.movingDistance)
+        println(trackLine)
+      }
+    }
   }
 
   private fun readValidInput(prompt: String): Int {

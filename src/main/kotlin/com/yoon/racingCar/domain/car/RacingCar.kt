@@ -5,10 +5,11 @@ data class RacingCar(
   var movingDistance : Int = 0
 ) {
 
-  fun race(threshold: Int) {
+  fun race(threshold: Int) : RacingCar{
     val kilometerPerHour = racingConstructor.drivenControl(threshold)
     if(threshold <= kilometerPerHour){
       movingDistance += kilometerPerHour
     }
+    return this.copy()
   }
 }

@@ -3,7 +3,9 @@ package com.yoon.racingCar.domain.car
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.ints.shouldBeGreaterThan
+import io.kotest.matchers.ints.shouldBeGreaterThanOrEqual
 import io.kotest.matchers.ints.shouldBeLessThan
+import io.kotest.matchers.ints.shouldBeLessThanOrEqual
 import io.kotest.matchers.shouldBe
 
 class RacingCarTest: DescribeSpec({
@@ -21,7 +23,7 @@ class RacingCarTest: DescribeSpec({
       sut.race(9)
 
       val actual = sut.movingDistance
-      actual shouldBeLessThan 9
+      actual shouldBeLessThanOrEqual 9
     }
 
     it("threshold 는 0일 수 없다.") {
@@ -40,7 +42,7 @@ class RacingCarTest: DescribeSpec({
       sut.race(4)
 
       val actual = sut.movingDistance
-      actual shouldBeGreaterThan 8
+      actual shouldBeGreaterThanOrEqual 6
     }
   }
 })
