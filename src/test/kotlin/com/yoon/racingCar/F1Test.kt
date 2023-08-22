@@ -28,7 +28,7 @@ class F1Test{
   fun name2() {
     val racingCar = RacingCar(RacingConstructor(anyMin, anyMax))
 
-    val racingCars = sut.whistle(listOf(racingCar), 3)
+    val racingCars = sut.whistle(listOf(racingCar), RaceCount(3))
 
     racingCars.size shouldBe 1
     racingCars.shouldContainExactly(racingCar)

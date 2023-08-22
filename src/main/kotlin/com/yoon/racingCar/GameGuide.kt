@@ -4,14 +4,14 @@ import com.yoon.racingCar.domain.car.RacingCar
 
 object GameGuide {
 
-  fun entry(): Pair<Int, Int> {
+  fun entry(): Pair<ParticipateCount, RaceCount> {
     println("🏎 2023 FIA Formula One World Championship Start")
     println("Cars are entering the race track.")
 
-    val participateCount = readValidInput("How many drivers are participating?")
-    val trackCount = readValidInput("How many tracks will be raced in this competition?")
+    val participateCount  = readValidInput("How many drivers are participating?")
+    val raceCount = readValidInput("How many tracks will be raced in this competition?")
 
-    return participateCount to trackCount
+    return ParticipateCount(participateCount) to RaceCount(raceCount)
   }
 
   fun showEnding(gameResult: List<RacingCar>) {
