@@ -1,4 +1,0 @@
-package racingCar
-
-class CarTest {
-}
