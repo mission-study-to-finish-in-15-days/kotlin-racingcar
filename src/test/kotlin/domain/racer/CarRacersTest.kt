@@ -4,6 +4,7 @@ import domain.distance.MovePolicy
 import domain.game.CarNames
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.equals.shouldBeEqual
+import io.kotest.matchers.shouldBe
 import io.mockk.every
 import io.mockk.mockk
 
@@ -18,7 +19,9 @@ class CarRacersTest : BehaviorSpec({
                 every { movePolicy.isMove() } returns true
                 then("레이서들은 전부 이동 한다.") {
                     sut.roundCarRace(movePolicy)
-                    sut.raceResult()
+                    sut.raceResult().forEach {
+                        it.distance shouldBe 1
+                    }
                 }
             }
         }
@@ -29,10 +32,9 @@ class CarRacersTest : BehaviorSpec({
                 val movePolicy: MovePolicy = mockk()
                 every { movePolicy.isMove() } returns false
                 then("레이서들은 전부 이동 하지 않는다") {
-//                    sut.roundCarRace(distancePolicy).forEach {
-//                        it.contains("-").shouldBeFalse()
-//                    }
-                    sut.raceResult()
+                    sut.raceResult().forEach {
+                        it.distance shouldBe 0
+                    }
                 }
             }
         }
