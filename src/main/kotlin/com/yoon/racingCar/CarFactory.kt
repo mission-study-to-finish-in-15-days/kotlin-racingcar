@@ -9,16 +9,10 @@ object CarFactory {
   private const val ENGINE_MAX = 9
 
   fun factory(participationCount: Int): List<RacingCar> {
-    check(participationCount > 0) { throw IllegalArgumentException("ParticipationCount more then 0") }
-    val racingCars : MutableList<RacingCar> = mutableListOf()
+    check(participationCount > 0) { throw IllegalStateException("ParticipationCount more then 0") }
 
-    repeat(participationCount) {
-      val racingConstructor = RacingConstructor(ENGINE_MIN, ENGINE_MAX)
-      val racingCar = RacingCar(racingConstructor)
-      racingCars.add(racingCar)
+    return List(participationCount) {
+      RacingCar(RacingConstructor(engineMin = ENGINE_MIN, engineMax = ENGINE_MAX))
     }
-
-    return racingCars.toList()
   }
-
 }
