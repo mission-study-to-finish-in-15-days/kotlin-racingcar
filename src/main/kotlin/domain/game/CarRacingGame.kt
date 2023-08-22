@@ -17,7 +17,7 @@ class CarRacingGame(
         round.forEachRound {
             viewFunction("$it Round")
             carRacers.roundCarRace(movePolicy)
-            carRacers.raceResult().forEach { (name, distance) -> viewFunction("${name} racer: ${distanceDisplay(distance)}") }
+            carRacers.raceResult().forEach { (name, distance) -> viewFunction("$name racer: ${distanceDisplay(distance)}") }
         }
         viewFunction("이번 대회 우승자는 : ${carRacers.winnerResult()}")
     }

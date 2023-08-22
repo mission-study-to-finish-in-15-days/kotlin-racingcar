@@ -30,7 +30,7 @@ object DivideCalculator : Calculable {
 }
 
 @JvmInline
-value class Number(private val value: Int)  {
+value class Number(private val value: Int) {
     operator fun plus(from: Number): Number {
         return Number(this.value + from.value)
     }
@@ -89,9 +89,11 @@ data class SymbolAndNumberQueue(private val inputString: String) {
     }
 
     private fun popNumber(): Number {
-        return Number(symbolAndNumArray
-            .removeAt(0)
-            .digitToInt())
+        return Number(
+            symbolAndNumArray
+                .removeAt(0)
+                .digitToInt()
+        )
     }
 
     val size: Int get() = symbolAndNumArray.size

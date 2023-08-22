@@ -16,7 +16,7 @@ private const val ROUND_INPUT_TEXT = "시도할 횟수는 몇 회인가요?"
 class GameStarterService(
     private val inputView: InputView = FileInputView("input.txt"),
     private val resultView: ResultView = ConsoleResultView,
-): GameStarter {
+) : GameStarter {
     override fun start() {
         val (carCount, roundCount) = introduceInput()
 

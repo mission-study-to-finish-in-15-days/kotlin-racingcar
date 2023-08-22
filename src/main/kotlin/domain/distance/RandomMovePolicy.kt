@@ -2,7 +2,7 @@ package domain.distance
 
 import kotlin.random.Random
 
-object RandomMovePolicy: MovePolicy {
+object RandomMovePolicy : MovePolicy {
     override fun isMove(): Boolean {
         return Random.nextInt(RANDOM_UNTIL_NUMBER) >= RANDOM_DISTANCE_CONDITION_NUMBER
     }

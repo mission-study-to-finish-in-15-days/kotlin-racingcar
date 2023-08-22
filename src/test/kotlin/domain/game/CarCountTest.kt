@@ -9,10 +9,10 @@ class CarCountTest : BehaviorSpec({
 
     given("0 이하의 숫자가 들어오면 Exception 발생") {
         withData(
-            "0","121,123456"
+            "0", "121,123456"
         ) {
             shouldThrow<IllegalArgumentException> {
-                CarNames(it)
+                CarNames.commaParse(it)
             }
         }
     }
@@ -21,7 +21,7 @@ class CarCountTest : BehaviorSpec({
         withData(
             "1,2,3", "1,3,"
         ) {
-            val carNames = CarNames(it)
+            val carNames = CarNames.commaParse(it)
             carNames.shouldNotBeNull()
         }
     }

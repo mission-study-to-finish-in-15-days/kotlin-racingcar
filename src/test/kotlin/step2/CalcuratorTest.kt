@@ -25,7 +25,6 @@ class CalcuratorTest : BehaviorSpec({
         ) { (input, output) ->
             StringCalculator.calculate(input) shouldBe output
         }
-
     }
 
     given("곱셈일 경우") {
@@ -36,9 +35,7 @@ class CalcuratorTest : BehaviorSpec({
         ) { (input, output) ->
             StringCalculator.calculate(input) shouldBe output
         }
-
     }
-
 
     given("나눗셈일 경우") {
         withData(
@@ -84,6 +81,4 @@ class CalcuratorTest : BehaviorSpec({
             }
         }
     }
-
-}) {
-}
+})

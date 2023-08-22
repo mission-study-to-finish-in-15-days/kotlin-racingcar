@@ -6,7 +6,7 @@ import domain.racer.CarRacers
 value class CarNames private constructor(val value: List<String>) {
     init {
         val find = value.find { it.length > 5 }
-        require(find == null) { "$find 유저는 5자를 초과 했습니다. 다시 입력해 주세요."}
+        require(find == null) { "$find 유저는 5자를 초과 했습니다. 다시 입력해 주세요." }
     }
 
     fun createCarRacers(): CarRacers {
