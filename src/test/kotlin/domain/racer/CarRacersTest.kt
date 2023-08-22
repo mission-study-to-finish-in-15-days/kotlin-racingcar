@@ -6,8 +6,10 @@ import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.booleans.shouldBeFalse
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.equals.shouldBeEqual
+import io.mockk.Call
 import io.mockk.every
 import io.mockk.mockk
+import java.util.concurrent.CountDownLatch
 
 class CarRacersTest : BehaviorSpec({
 
@@ -50,5 +52,14 @@ class CarRacersTest : BehaviorSpec({
                 sut.winnerResult() shouldBeEqual listOf("1","2","3","4","5")
             }
         }
+        and("특정 사람만 우승") {
+            var i = 0
+            every { distancePolicy.isDistance() } answers { i++ % 2 == 0 }
+            sut.roundCarRace(distancePolicy)
+            `when`("1,3,5 번만 우승 하는 경우") {
+                sut.winnerResult() shouldBeEqual listOf("1", "3", "5")
+            }
+        }
+
     }
 })
