@@ -1,6 +1,6 @@
 package application
 
-import domain.distance.RandomDistancePolicy
+import domain.distance.RandomMovePolicy
 import domain.game.CarNames
 import domain.game.CarRacingGame
 import domain.game.Round
@@ -21,9 +21,9 @@ class GameStarterService(
         val (carCount, roundCount) = introduceInput()
 
         val carRacingGame = CarRacingGame(
-            carNames = CarNames(carCount),
+            carNames = CarNames.commaParse(carCount),
             round = Round(roundCount),
-            distancePolicy = RandomDistancePolicy,
+            movePolicy = RandomMovePolicy,
             viewFunction = resultView::view
         )
         carRacingGame.start()

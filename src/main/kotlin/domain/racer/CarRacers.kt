@@ -1,16 +1,17 @@
 package domain.racer
 
-import domain.distance.DistancePolicy
+import domain.distance.MovePolicy
 import domain.game.CarNames
+import dto.racer.DisplayCarRacer
 
-data class CarRacers(private val carNames: CarNames) {
-    private val racers = carNames.value.split(",").map { CarRacer(it) }
+class CarRacers(carNames: CarNames) {
+    private val racers = carNames.value.map { CarRacer(it) }
 
-    fun roundCarRace(distancePolicy: DistancePolicy) {
-        racers.forEach { it.distance(distancePolicy) }
+    fun roundCarRace(movePolicy: MovePolicy) {
+        racers.forEach { it.move(movePolicy) }
     }
 
-    fun raceResult(): List<DisplayCarRacer> = racers.map { DisplayCarRacer(it.name, it.distance)}
+    fun raceResult(): List<DisplayCarRacer> = racers.map { DisplayCarRacer(it.name, it.distance) }
 
     fun winnerResult(): List<String> {
         val maxDistanceRacers = racers.sortedByDescending { it.distance }
@@ -25,13 +26,8 @@ data class CarRacer(
     var distance: Int = 0
         private set
 
-    fun distance(distancePolicy: DistancePolicy): Int {
-        if (distancePolicy.isDistance()) distance++
+    fun move(movePolicy: MovePolicy): Int {
+        if (movePolicy.isMove()) distance++
         return distance
     }
 }
-
-data class DisplayCarRacer(
-    val name: String,
-    val distance: Int,
-)
