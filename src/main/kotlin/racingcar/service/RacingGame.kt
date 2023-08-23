@@ -60,7 +60,10 @@ class RacingGame {
     }
 
     fun getGameStatus(): RacingGameStatus {
-        return RacingGameStatus.of(carList = carList)
+        return RacingGameStatus.of(
+            gameState = gameState,
+            carList = carList
+        )
     }
 
     fun getCurrentState(): GameState {

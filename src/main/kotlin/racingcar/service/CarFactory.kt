@@ -14,4 +14,12 @@ class CarFactory {
         require(count in 1..99) { "자동차는 1대 이상이어야 합니다." }
         return (1..count).map { Car.of(movingStrategy = RandomMovingStrategy(), name = namingStrategy.createName()) }
     }
+
+    fun createAll(
+        names: List<String>
+    ): List<Car> {
+        require(names.size in 1..99) { "자동차는 1대 이상이어야 합니다." }
+        return names.map { Car.of(movingStrategy = RandomMovingStrategy(), name = it) }
+    }
+
 }
