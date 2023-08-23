@@ -2,27 +2,23 @@ package domain.game
 
 import domain.distance.MovePolicy
 import domain.racer.CarRacers
-
-private const val DISTANCE_SYMBOL = "-"
+import view.DisplayCarRacer
 
 class CarRacingGame(
     carNames: CarNames,
     private val round: Round,
     private val movePolicy: MovePolicy,
-    private val viewFunction: (String) -> Unit,
 ) {
     private val carRacers: CarRacers = carNames.createCarRacers()
 
-    fun start() {
+    fun startForEachRound(function: (Int, List<DisplayCarRacer>) -> Unit) {
         round.forEachRound {
-            viewFunction("$it Round")
             carRacers.roundCarRace(movePolicy)
-            carRacers.raceResult().forEach { (name, distance) -> viewFunction("$name racer: ${distanceDisplay(distance)}") }
+            function(it, carRacers.raceResult())
         }
-        viewFunction("이번 대회 우승자는 : ${carRacers.winnerResult()}")
     }
 
-    private fun distanceDisplay(distance: Int): String {
-        return IntArray(distance).joinToString("") { DISTANCE_SYMBOL }
+    fun winnerResult(): List<String> {
+        return carRacers.winnerResult()
     }
 }

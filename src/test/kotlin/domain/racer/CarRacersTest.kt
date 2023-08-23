@@ -1,5 +1,6 @@
 package domain.racer
 
+import domain.distance.Distance
 import domain.distance.MovePolicy
 import domain.game.CarNames
 import io.kotest.core.spec.style.BehaviorSpec
@@ -20,7 +21,7 @@ class CarRacersTest : BehaviorSpec({
                 then("레이서들은 전부 이동 한다.") {
                     sut.roundCarRace(movePolicy)
                     sut.raceResult().forEach {
-                        it.distance shouldBe 1
+                        it.distance shouldBe Distance(1)
                     }
                 }
             }
@@ -33,7 +34,7 @@ class CarRacersTest : BehaviorSpec({
                 every { movePolicy.isMove() } returns false
                 then("레이서들은 전부 이동 하지 않는다") {
                     sut.raceResult().forEach {
-                        it.distance shouldBe 0
+                        it.distance shouldBe Distance(0)
                     }
                 }
             }
