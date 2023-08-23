@@ -5,11 +5,11 @@ import step3_simple_racing_car.vo.Position
 
 class RacingCar(
     var position: Position = Position(),
-    private var movingPolicy: MovingPolicy = ForwardMovingPolicy(direction = MovingDirectionType.STOP)
+    val nickName: String,
 ) {
-    fun move() {
+    fun move(movingPolicy: MovingPolicy) {
         val policy = movingPolicy.makePolicy()
         if (policy.getMovingDirection() == MovingDirectionType.STOP) return
-        position = position.moveForward(policy.getMovingCount())
+        position = position.move(policy.getMovingCount())
     }
 }
