@@ -14,11 +14,11 @@ class RacingTest : StringSpec({
     }
 
     "자동차는 매 라운드마다 0이나 1만큼만 움직여야 한다." {
-        val carNumber = 3
+        val carCount = 3
 
-        val racingResult = RacingSimulator.virtualSimulate(carNumber, attemptNumber = 5)
+        val racingResult = RacingSimulator.virtualSimulate(carCount, attemptCount = 5)
 
-        (0 until carNumber).forEach { carIndex ->
+        (0 until carCount).forEach { carIndex ->
             val carPath = getCarPath(racingResult, carIndex)
 
             val isValidRacing = carPath
@@ -31,13 +31,13 @@ class RacingTest : StringSpec({
 
     "자동차 수는 음수가 될 수 없다." {
         shouldThrow<IllegalArgumentException> {
-            RacingSimulator.virtualSimulate(carNumber = -1, attemptNumber = 5)
+            RacingSimulator.virtualSimulate(carCount = -1, attemptCount = 5)
         }
     }
 
     "시도 횟수는 음수가 될 수 없다." {
         shouldThrow<IllegalArgumentException> {
-            RacingSimulator.virtualSimulate(carNumber = 5, attemptNumber = -1)
+            RacingSimulator.virtualSimulate(carCount = 5, attemptCount = -1)
         }
     }
 })

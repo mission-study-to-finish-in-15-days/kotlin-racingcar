@@ -2,19 +2,19 @@ package racing
 
 object RacingSimulator {
     fun interactiveSimulate() {
-        val (carNumber, attemptNumber) = RacingScanner.inputRacing()
-        val result = virtualSimulate(carNumber, attemptNumber)
+        val (carCount, attemptCount) = RacingScanner.inputRacing()
+        val result = virtualSimulate(carCount, attemptCount)
         RacingPrinter.printSimulation(result)
     }
 
-    fun virtualSimulate(carNumber: Int, attemptNumber: Int): List<List<Int>> {
-        require(carNumber >= 0) { "자동차 수는 음수가 될 수 없습니다." }
-        require(attemptNumber >= 0) { "시도 횟수는 음수가 될 수 없습니다." }
+    fun virtualSimulate(carCount: Int, attemptCount: Int): List<List<Int>> {
+        require(carCount >= 0) { "자동차 수는 음수가 될 수 없습니다." }
+        require(attemptCount >= 0) { "시도 횟수는 음수가 될 수 없습니다." }
 
-        val cars = List(carNumber) { Car() }
+        val cars = List(carCount) { Car() }
         val result = mutableListOf<List<Int>>()
 
-        repeat(attemptNumber) {
+        repeat(attemptCount) {
             attemptMoveCars(cars)
             result.add(getCarsPosition(cars))
         }
@@ -29,6 +29,8 @@ object RacingSimulator {
     }
 
     private fun getCarsPosition(cars: List<Car>): List<Int> {
-        return cars.map { it.position }
+        return cars.map {
+            it.position
+        }
     }
 }
