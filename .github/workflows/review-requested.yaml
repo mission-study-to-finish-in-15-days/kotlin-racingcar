@@ -1,0 +1,213 @@
+name: Slack notification when review requested
+
+on:
+  pull_request:
+      types: [opened, ready_for_review]
+
+jobs:
+  ready-request-review-of-6161990:
+    if: github.actor == '6161990'
+    runs-on: ubuntu-latest
+    steps:
+      - name: auto assign assignee & reviewer
+        uses: hkusu/review-assign-action@v1.3.1
+        with:
+          assignees: ${{ github.actor }}
+          reviewers: moon9ua
+
+      - name: slack-send
+        uses: slackapi/slack-github-action@v1.24.0
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        with:
+          payload: |
+            {
+              "channel": "#코틀린-미션-스터디",
+              "username": "코드리뷰 알림봇",
+              "text": "<@U03HF83L742>님, 코드리뷰 요청이 도착했습니다.\nhttps://github.com/mission-study-to-finish-in-15-days/kotlin-racingcar/pull/${{ github.event.pull_request.number }}",
+              "icon_url": "https://img.freepik.com/premium-vector/cute-robot-waving-hand-cartoon-character-science-technology-isolated_138676-3155.jpg?w=2000"
+            }
+
+  ready-request-review-of-JeremyShin:
+    if: github.actor == 'JeremyShin'
+    runs-on: ubuntu-latest
+    steps:
+      - name: auto assign assignee & reviewer
+        uses: hkusu/review-assign-action@v1.3.1
+        with:
+          assignees: ${{ github.actor }}
+          reviewers: kji6252
+
+      - name: slack-send
+        uses: slackapi/slack-github-action@v1.24.0
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        with:
+          payload: |
+            {
+              "channel": "#코틀린-미션-스터디",
+              "username": "코드리뷰 알림봇",
+              "text": "<@U03RJL2EH7G>님, 코드리뷰 요청이 도착했습니다.\nhttps://github.com/mission-study-to-finish-in-15-days/kotlin-racingcar/pull/${{ github.event.pull_request.number }}",
+              "icon_url": "https://img.freepik.com/premium-vector/cute-robot-waving-hand-cartoon-character-science-technology-isolated_138676-3155.jpg?w=2000"
+            }
+
+  ready-request-review-of-JiwonDev:
+    if: github.actor == 'JiwonDev'
+    runs-on: ubuntu-latest
+    steps:
+      - name: auto assign assignee & reviewer
+        uses: hkusu/review-assign-action@v1.3.1
+        with:
+          assignees: ${{ github.actor }}
+          reviewers: JeremyShin
+
+      - name: slack-send
+        uses: slackapi/slack-github-action@v1.24.0
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        with:
+          payload: |
+            {
+              "channel": "#코틀린-미션-스터디",
+              "username": "코드리뷰 알림봇",
+              "text": "<@U055KQ0C9EJ>님, 코드리뷰 요청이 도착했습니다.\nhttps://github.com/mission-study-to-finish-in-15-days/kotlin-racingcar/pull/${{ github.event.pull_request.number }}",
+              "icon_url": "https://img.freepik.com/premium-vector/cute-robot-waving-hand-cartoon-character-science-technology-isolated_138676-3155.jpg?w=2000"
+            }
+
+  ready-request-review-of-Junuu:
+    if: github.actor == 'Junuu'
+    runs-on: ubuntu-latest
+    steps:
+      - name: auto assign assignee & reviewer
+        uses: hkusu/review-assign-action@v1.3.1
+        with:
+          assignees: ${{ github.actor }}
+          reviewers: pado0
+
+      - name: slack-send
+        uses: slackapi/slack-github-action@v1.24.0
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        with:
+          payload: |
+            {
+              "channel": "#코틀린-미션-스터디",
+              "username": "코드리뷰 알림봇",
+              "text": "<@U033L0WCKE1>님, 코드리뷰 요청이 도착했습니다.\nhttps://github.com/mission-study-to-finish-in-15-days/kotlin-racingcar/pull/${{ github.event.pull_request.number }}",
+              "icon_url": "https://img.freepik.com/premium-vector/cute-robot-waving-hand-cartoon-character-science-technology-isolated_138676-3155.jpg?w=2000"
+            }
+
+  ready-request-review-of-khcho902:
+    if: github.actor == 'khcho902'
+    runs-on: ubuntu-latest
+    steps:
+      - name: auto assign assignee & reviewer
+        uses: hkusu/review-assign-action@v1.3.1
+        with:
+          assignees: ${{ github.actor }}
+          reviewers: 6161990
+
+      - name: slack-send
+        uses: slackapi/slack-github-action@v1.24.0
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        with:
+          payload: |
+            {
+              "channel": "#코틀린-미션-스터디",
+              "username": "코드리뷰 알림봇",
+              "text": "<@U04M3J6AHAS>님, 코드리뷰 요청이 도착했습니다.\nhttps://github.com/mission-study-to-finish-in-15-days/kotlin-racingcar/pull/${{ github.event.pull_request.number }}",
+              "icon_url": "https://img.freepik.com/premium-vector/cute-robot-waving-hand-cartoon-character-science-technology-isolated_138676-3155.jpg?w=2000"
+            }
+
+  ready-request-review-of-kji6252:
+    if: github.actor == 'kji6252'
+    runs-on: ubuntu-latest
+    steps:
+      - name: auto assign assignee & reviewer
+        uses: hkusu/review-assign-action@v1.3.1
+        with:
+          assignees: ${{ github.actor }}
+          reviewers: Junuu
+
+      - name: slack-send
+        uses: slackapi/slack-github-action@v1.24.0
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        with:
+          payload: |
+            {
+              "channel": "#코틀린-미션-스터디",
+              "username": "코드리뷰 알림봇",
+              "text": "<@U0446HGG3TK>님, 코드리뷰 요청이 도착했습니다.\nhttps://github.com/mission-study-to-finish-in-15-days/kotlin-racingcar/pull/${{ github.event.pull_request.number }}",
+              "icon_url": "https://img.freepik.com/premium-vector/cute-robot-waving-hand-cartoon-character-science-technology-isolated_138676-3155.jpg?w=2000"
+            }
+
+  ready-request-review-of-moon9ua:
+    if: github.actor == 'moon9ua'
+    runs-on: ubuntu-latest
+    steps:
+      - name: auto assign assignee & reviewer
+        uses: hkusu/review-assign-action@v1.3.1
+        with:
+          assignees: ${{ github.actor }}
+          reviewers: yeoonjae
+
+      - name: slack-send
+        uses: slackapi/slack-github-action@v1.24.0
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        with:
+          payload: |
+            {
+              "channel": "#코틀린-미션-스터디",
+              "username": "코드리뷰 알림봇",
+              "text": "<@U03EHKUTDD5>님, 코드리뷰 요청이 도착했습니다.\nhttps://github.com/mission-study-to-finish-in-15-days/kotlin-racingcar/pull/${{ github.event.pull_request.number }}",
+              "icon_url": "https://img.freepik.com/premium-vector/cute-robot-waving-hand-cartoon-character-science-technology-isolated_138676-3155.jpg?w=2000"
+            }
+
+  ready-request-review-of-pado0:
+    if: github.actor == 'pado0'
+    runs-on: ubuntu-latest
+    steps:
+      - name: auto assign assignee & reviewer
+        uses: hkusu/review-assign-action@v1.3.1
+        with:
+          assignees: ${{ github.actor }}
+          reviewers: khcho902
+
+      - name: slack-send
+        uses: slackapi/slack-github-action@v1.24.0
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        with:
+          payload: |
+            {
+              "channel": "#코틀린-미션-스터디",
+              "username": "코드리뷰 알림봇",
+              "text": "<@U03HTSNCV09>님, 코드리뷰 요청이 도착했습니다.\nhttps://github.com/mission-study-to-finish-in-15-days/kotlin-racingcar/pull/${{ github.event.pull_request.number }}",
+              "icon_url": "https://img.freepik.com/premium-vector/cute-robot-waving-hand-cartoon-character-science-technology-isolated_138676-3155.jpg?w=2000"
+            }
+
+  ready-request-review-of-yeoonjae:
+    if: github.actor == 'yeoonjae'
+    runs-on: ubuntu-latest
+    steps:
+      - name: auto assign assignee & reviewer
+        uses: hkusu/review-assign-action@v1.3.1
+        with:
+          assignees: ${{ github.actor }}
+          reviewers: JiwonDev
+
+      - name: slack-send
+        uses: slackapi/slack-github-action@v1.24.0
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        with:
+          payload: |
+            {
+              "channel": "#코틀린-미션-스터디",
+              "username": "코드리뷰 알림봇",
+              "text": "<@U03EVALAKHB>님, 코드리뷰 요청이 도착했습니다.\nhttps://github.com/mission-study-to-finish-in-15-days/kotlin-racingcar/pull/${{ github.event.pull_request.number }}",
+              "icon_url": "https://img.freepik.com/premium-vector/cute-robot-waving-hand-cartoon-character-science-technology-isolated_138676-3155.jpg?w=2000"
+            }

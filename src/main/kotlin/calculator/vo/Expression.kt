@@ -1,6 +1,6 @@
-package racingcar.vo
+package calculator.vo
 
-import racingcar.type.ExpressionType
+import calculator.type.ExpressionType
 
 data class Expression(
     val type: ExpressionType,

@@ -1,7 +1,7 @@
-package racingcar.service
+package calculator.service
 
-import racingcar.type.ExpressionRegex
-import racingcar.vo.RawToken
+import calculator.type.ExpressionRegex
+import calculator.vo.RawToken
 
 /**
  * 문자열로 된 표현식을 토큰 단위로 분리한다.
