@@ -50,4 +50,10 @@ class CalculatorTest : StringSpec({
             calculator.calculate("1   + 2 / 3 * 10") shouldBe 10
         }
     }
+
+    "0으로 나누었을 때 에러가 발생해야 한다." {
+        shouldThrow<ArithmeticException> {
+            calculator.calculate("1 / 0")
+        }
+    }
 })
