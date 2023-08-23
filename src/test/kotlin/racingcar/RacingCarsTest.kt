@@ -56,7 +56,7 @@ class RacingCarsTest: StringSpec({
     "자동차의 움직이는 전략중 랜덤 전략을 사용할때, 랜덤 전략도 변경할 수 있다 랜덤값을 4로 고정하면 Position이 1 증가한다"{
         val car = Car(
             currentPosition = Position(2),
-            moveStrategy = RandomMoveStrategy(randomNumberGenerator = { _, _ -> 4}
+            moveStrategy = RandomMoveStrategy(randomNumberGenerator = { _ -> 4}
         )
         )
 
@@ -68,7 +68,7 @@ class RacingCarsTest: StringSpec({
     "자동차의 움직이는 전략중 랜덤 전략을 사용할때, 랜덤 전략도 변경할 수 있다 랜덤값을 3로 고정하면 Position이 0 증가한다"{
         val car = Car(
             currentPosition = Position(2),
-            moveStrategy = RandomMoveStrategy(randomNumberGenerator = { _, _ -> 3})
+            moveStrategy = RandomMoveStrategy(randomNumberGenerator = { _ -> 3})
         )
 
         car.move()
@@ -82,7 +82,7 @@ class RacingCarsTest: StringSpec({
  */
 
 object ReturnFixedValueGenerator : RandomNumberGenerator {
-    override fun getNumber(origin: Int, bound: Int): Int {
+    override fun getNumber(range: IntRange): Int {
         return 4
     }
 }
