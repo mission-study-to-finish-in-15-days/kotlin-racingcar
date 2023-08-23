@@ -17,12 +17,27 @@ object GameGuide {
   fun showEnding(trackResults: List<TrackResult>) {
     println("🏆🏆 FIA Formula One World Championship 🏆🏆")
     trackResults.forEach { result ->
-      println("Track${result.track}")
-      result.racingCars.forEach { car ->
-        print("${car.carName}:")
-        val trackLine = "-".repeat(car.movingDistance)
-        println(trackLine)
-      }
+      trackResultViewGenerate(result)
+    }
+      gameResultViewGenerate(trackResults[trackResults.size-1])
+  }
+
+  private fun gameResultViewGenerate(trackResults: TrackResult) {
+    val findFastestCar = findFastestCar(trackResults)
+    println("The fastest cars are $findFastestCar.")
+  }
+
+  fun findFastestCar(trackResult: TrackResult): String {
+    val fastestCars = trackResult.racingCars.filter { it.movingDistance == trackResult.racingCars.maxOf { car -> car.movingDistance } }
+    return fastestCars.joinToString { it.carName }
+  }
+
+  private fun trackResultViewGenerate(result: TrackResult) {
+    println("Track${result.track}")
+    result.racingCars.forEach { car ->
+      print("${car.carName}:")
+      val trackLine = "-".repeat(car.movingDistance)
+      println(trackLine)
     }
   }
 
