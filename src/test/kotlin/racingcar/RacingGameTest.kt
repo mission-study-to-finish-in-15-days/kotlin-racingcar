@@ -7,7 +7,7 @@ import io.kotest.matchers.shouldBe
 import racingcar.entity.Car
 import racingcar.service.RacingGame
 import racingcar.type.GameState
-import racingcar.view.RacingGameView
+import testFixture.testFixture
 
 class RacingGameTest : FreeSpec({
     "RacingGame 은 게임 진행상황에 따라 다른 상태를 가지고 있다" - {
@@ -19,7 +19,14 @@ class RacingGameTest : FreeSpec({
         "게임을 실행할 준비가 되었다면 READY 상태이다." {
             val racingGame = RacingGame()
 
-            racingGame.initialize(cars = listOf(Car(), Car(), Car()), tryCount = 2)
+            racingGame.initialize(
+                cars = listOf(
+                    Car.testFixture(),
+                    Car.testFixture(),
+                    Car.testFixture()
+                ),
+                tryCount = 2
+            )
 
             racingGame.getCurrentState() shouldBe GameState.READY
         }
@@ -27,7 +34,13 @@ class RacingGameTest : FreeSpec({
         "게임을 실행하고 있다면 PLAYING 상태이다." {
             val racingGame = RacingGame()
 
-            racingGame.initialize(cars = listOf(Car(), Car(), Car()), tryCount = 2)
+            racingGame.initialize(
+                cars = listOf(
+                    Car.testFixture(),
+                    Car.testFixture(),
+                    Car.testFixture()
+                ), tryCount = 2
+            )
             racingGame.play()
 
             racingGame.getCurrentState() shouldBe GameState.PLAYING
@@ -36,7 +49,13 @@ class RacingGameTest : FreeSpec({
         "게임의 시도 회수를 다 사용했다면 FINISHED 상태이다." {
             val racingGame = RacingGame()
 
-            racingGame.initialize(cars = listOf(Car(), Car(), Car()), tryCount = 2)
+            racingGame.initialize(
+                cars = listOf(
+                    Car.testFixture(),
+                    Car.testFixture(),
+                    Car.testFixture()
+                ), tryCount = 2
+            )
             racingGame.play()
             racingGame.play()
 
@@ -45,7 +64,13 @@ class RacingGameTest : FreeSpec({
 
         "이미 완료된 게임을 실행하면 예외를 반환한다." {
             val racingGame = RacingGame()
-            racingGame.initialize(cars = listOf(Car(), Car(), Car()), tryCount = 2)
+            racingGame.initialize(
+                cars = listOf(
+                    Car.testFixture(),
+                    Car.testFixture(),
+                    Car.testFixture()
+                ), tryCount = 2
+            )
             racingGame.play()
             racingGame.play()
 
@@ -57,7 +82,13 @@ class RacingGameTest : FreeSpec({
 
         "이미 종료된 게임을 실행하면 예외를 반환한다." {
             val racingGame = RacingGame()
-            racingGame.initialize(cars = listOf(Car(), Car(), Car()), tryCount = 3)
+            racingGame.initialize(
+                cars = listOf(
+                    Car.testFixture(),
+                    Car.testFixture(),
+                    Car.testFixture()
+                ), tryCount = 3
+            )
             racingGame.play()
             racingGame.end()
 
@@ -71,7 +102,8 @@ class RacingGameTest : FreeSpec({
     "사용자는 몇 대의 자동차로 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다." - {
         "게임을 초기화 할 때 자동차 대수와 시도 회수를 정할 수 있다." {
             val game = RacingGame()
-            val cars = listOf(Car(), Car(), Car())
+            val cars =
+                listOf(Car.testFixture(), Car.testFixture(), Car.testFixture())
 
             shouldNotThrowAny {
                 game.initialize(cars = cars, tryCount = 5)
@@ -88,7 +120,8 @@ class RacingGameTest : FreeSpec({
 
         "게임의 시도회수는 1회 이상이어야 한다" {
             val game = RacingGame()
-            val cars = listOf(Car(), Car(), Car())
+            val cars =
+                listOf(Car.testFixture(), Car.testFixture(), Car.testFixture())
 
             shouldThrow<IllegalArgumentException> {
                 game.initialize(cars = cars, tryCount = 0)
@@ -108,35 +141,29 @@ class RacingGameTest : FreeSpec({
     "자동차의 상태를 화면에 출력한다. 어느 시점에 출력할 것인지에 대한 제약은 없다." - {
         "게임에서 원하는 시점에 자동차 위치에 대한 정보를 얻을 수 있다." {
             val game = RacingGame()
-            val cars = listOf(Car(), Car(), Car())
-            val view  = RacingGameView()
+            val cars =
+                listOf(Car.testFixture(), Car.testFixture(), Car.testFixture())
 
             game.initialize(cars = cars, tryCount = 5)
             game.play()
-            val result: String = view.toPrintString(game.getGameStatus())
 
-            result shouldBe """
-                |-
-                |-
-                |-
-            """.trimIndent()
+            game.getGameStatus().carStatues.forEach {
+                it.position shouldBe 1
+            }
         }
 
         "완료된 게임의 자동차 위치에 대한 정보를 얻을 수 있다." {
             val game = RacingGame()
-            val cars = listOf(Car(), Car(), Car())
-            val view  = RacingGameView()
+            val cars =
+                listOf(Car.testFixture(), Car.testFixture(), Car.testFixture())
 
             game.initialize(cars = cars, tryCount = 2)
             game.play()
             game.play()
-            val result: String = view.toPrintString(game.getGameStatus())
 
-            result shouldBe """
-                |--
-                |--
-                |--
-            """.trimIndent()
+            game.getGameStatus().carStatues.forEach {
+                it.position shouldBe 2
+            }
         }
     }
 })

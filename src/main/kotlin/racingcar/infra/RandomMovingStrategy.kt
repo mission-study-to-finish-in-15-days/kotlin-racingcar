@@ -8,7 +8,6 @@ class RandomMovingStrategy(
 
     override fun getNextPosition(position: Int): Int {
         if (isMoving()) return (position + 1)
-
         return position
     }
 
