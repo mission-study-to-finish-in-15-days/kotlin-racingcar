@@ -16,7 +16,7 @@ class CarTest : FunSpec({
             "abcd" to 10,
             "abcde" to 100,
         ) { (name, position) ->
-            val car = Car(_name = name, _position = position)
+            val car = Car(name = name, position = position)
             car.name shouldBe name
             car.position shouldBe position
         }
@@ -29,7 +29,7 @@ class CarTest : FunSpec({
             "abcdeaaaaa"
         ) { name ->
             val exception = shouldThrow<IllegalArgumentException> {
-                Car(_name = name)
+                Car(name = name)
             }
             exception.localizedMessage shouldBe "자동차 이름은 5자를 초과할 수 없다."
         }
@@ -46,7 +46,7 @@ class CarTest : FunSpec({
             1, 5, 12,
         ) { round ->
 
-            val car = Car(_name = "name", _moveStrategy = alwaysMoveStrategy)
+            val car = Car(name = "name", moveStrategy = alwaysMoveStrategy)
             repeat(round) {
                 car.move()
             }
@@ -61,7 +61,7 @@ class CarTest : FunSpec({
             1, 5, 12,
         ) { round ->
 
-            val car = Car(_name = "name", _moveStrategy = neverMoveStrategy)
+            val car = Car(name = "name", moveStrategy = neverMoveStrategy)
             repeat(round) {
                 car.move()
             }
