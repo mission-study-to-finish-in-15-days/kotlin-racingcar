@@ -16,6 +16,8 @@ object RacingPrinter {
     }
 
     private fun printRound(roundResult: List<Int>) {
-        roundResult.forEach { println("-".repeat(it)) }
+        roundResult.forEach {
+            println("-".repeat(it))
+        }
     }
 }
