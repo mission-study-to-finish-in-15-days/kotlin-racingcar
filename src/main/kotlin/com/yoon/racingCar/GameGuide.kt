@@ -27,7 +27,7 @@ object GameGuide {
     println("The fastest cars are $findFastestCar.")
   }
 
-  fun findFastestCar(trackResult: TrackResult): String {
+  private fun findFastestCar(trackResult: TrackResult): String {
     val fastestCars = trackResult.racingCars.filter { it.movingDistance == trackResult.racingCars.maxOf { car -> car.movingDistance } }
     return fastestCars.joinToString { it.carName }
   }
