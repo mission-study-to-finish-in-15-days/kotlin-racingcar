@@ -16,9 +16,7 @@ class CarTest : StringSpec({
 
     "이동 시도를 할 수 있다. (위치값은 1 증가하거나 그대로이다.)" {
         val car = Car()
-        val moved = car.attemptMove()
-
-        if (moved) car.position shouldBe 1
-        else car.position shouldBe 0
+        car.attemptMove()
+        car.position shouldBe 0 or 1
     }
 })

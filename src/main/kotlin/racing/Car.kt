@@ -1,23 +1,17 @@
 package racing
 
-import kotlin.random.Random
-
 class Car(initialPosition: Int = 0) {
     private val positionWrapper = Position(initialPosition)
 
     val position: Int
         get() = positionWrapper.position
 
-    fun attemptMove(): Boolean {
-        val randomNumber = Random.nextInt(MOVE_LOWER_BOUND, MOVE_UPPER_BOUND)
-        var moved = false
+    fun attemptMove() {
+        val randomNumber = (MOVE_LOWER_BOUND..MOVE_UPPER_BOUND).random()
 
         if (randomNumber >= MOVE_THRESHOLD) {
             positionWrapper.go()
-            moved = true
         }
-
-        return moved
     }
 
     companion object {

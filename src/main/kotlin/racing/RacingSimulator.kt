@@ -12,11 +12,9 @@ object RacingSimulator {
         require(attemptCount >= 0) { "시도 횟수는 음수가 될 수 없습니다." }
 
         val cars = List(carCount) { Car() }
-        val result = mutableListOf<List<Int>>()
-
-        repeat(attemptCount) {
+        val result = (1..attemptCount).map {
             attemptMoveCars(cars)
-            result.add(getCarsPosition(cars))
+            getCarsPosition(cars)
         }
 
         return result
