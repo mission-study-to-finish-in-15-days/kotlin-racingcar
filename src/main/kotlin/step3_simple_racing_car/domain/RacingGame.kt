@@ -3,7 +3,7 @@ package step3_simple_racing_car.domain
 import step3_simple_racing_car.type.MovingDirectionType
 
 class RacingGame(
-    private var _movingPolicy: MovingPolicy = RandomForwardMovingPolicy(direction = MovingDirectionType.STOP),
+    private var _RacingRound_movingPolicy: RacingRoundMovingPolicy = RandomForwardRacingRoundMovingPolicy(direction = MovingDirectionType.STOP),
     private val _participants: MutableList<RacingCar> = mutableListOf(),
     private var _movingCount: Int = 0,
     private var _round: Int = 0,
@@ -20,25 +20,25 @@ class RacingGame(
     ) {
         validateParticipants(participants)
         repeat(participants.size) {
-            _participants.add(RacingCar(nickName = participants[it]))
+            _participants.add(RacingCar(nickName = NickName(name = participants[it])))
         }
         this._movingCount = movingCount
     }
 
     // 향후 이동 정책이 변경될 경우 본 메서드를 정책 변경 로직에서 사용한다.
-    fun decideMovingPolicy(movingPolicy: MovingPolicy) {
-        _movingPolicy = movingPolicy
+    fun decideMovingPolicy(racingRoundMovingPolicy: RacingRoundMovingPolicy) {
+        _RacingRound_movingPolicy = racingRoundMovingPolicy
     }
 
     fun move() {
-        _participants.forEach { it.move(movingPolicy = _movingPolicy) }
+        _participants.forEach { it.move(racingRoundMovingPolicy = _RacingRound_movingPolicy) }
         _round += 1
     }
 
     fun judgeWinner(): List<String> {
         validateJudgeWinner()
         val maxPosition = _participants.maxOf { it.position.value }
-        return _participants.filter { it.position.value == maxPosition }.map { it.nickName }
+        return _participants.filter { it.position.value == maxPosition }.map { it.nickName.name }
     }
 
     fun finish() {

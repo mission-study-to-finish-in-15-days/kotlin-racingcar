@@ -2,8 +2,8 @@ package step3_simple_racing_car.domain
 
 import step3_simple_racing_car.type.MovingDirectionType
 
-interface MovingPolicy {
-    fun makePolicy(): MovingPolicy
+interface RacingRoundMovingPolicy {
+    fun makePolicy(): RacingRoundMovingPolicy
 
     fun getMovingDirection(): MovingDirectionType
 
