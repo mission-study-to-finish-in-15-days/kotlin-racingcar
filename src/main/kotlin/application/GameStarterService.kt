@@ -1,7 +1,7 @@
 package application
 
-import domain.distance.RandomDistancePolicy
-import domain.game.CarCount
+import domain.distance.RandomMovePolicy
+import domain.game.CarNames
 import domain.game.CarRacingGame
 import domain.game.Round
 import port.input.GameStarter
@@ -16,24 +16,24 @@ private const val ROUND_INPUT_TEXT = "시도할 횟수는 몇 회인가요?"
 class GameStarterService(
     private val inputView: InputView = FileInputView("input.txt"),
     private val resultView: ResultView = ConsoleResultView,
-): GameStarter {
+) : GameStarter {
     override fun start() {
         val (carCount, roundCount) = introduceInput()
 
         val carRacingGame = CarRacingGame(
-            carCount = CarCount(carCount),
+            carNames = CarNames.commaParse(carCount),
             round = Round(roundCount),
-            distancePolicy = RandomDistancePolicy,
+            movePolicy = RandomMovePolicy,
             viewFunction = resultView::view
         )
         carRacingGame.start()
     }
 
-    private fun introduceInput(): Pair<Int, Int> {
+    private fun introduceInput(): Pair<String, Int> {
         resultView.view(CAR_INPUT_TEXT)
-        val carCount = inputView.input()
+        val carNames = inputView.inputString()
         resultView.view(ROUND_INPUT_TEXT)
-        val roundCount = inputView.input()
-        return Pair(carCount, roundCount)
+        val roundCount = inputView.inputInt()
+        return Pair(carNames, roundCount)
     }
 }

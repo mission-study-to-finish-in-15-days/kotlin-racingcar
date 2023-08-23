@@ -11,7 +11,6 @@ interface ResultView {
     }
 }
 
-
 object ConsoleResultView : ResultView {
     override val outputStream: OutputStream
         get() = System.out

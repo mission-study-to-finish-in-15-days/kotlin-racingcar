@@ -1,11 +1,11 @@
-import java.util.*
+import java.util.Scanner
 import kotlin.random.Random
 
-class NoClassRacingCarMain {
-}
+class NoClassRacingCarMain
 
-fun main(args: Array<String>) {
-    val systemResourceAsStream = ClassLoader.getSystemResourceAsStream("input.txt") ?: throw IllegalArgumentException("input.txt 파일이 존재 하지 않습니다.")
+fun main() {
+    val systemResourceAsStream = ClassLoader.getSystemResourceAsStream("noclass-input.txt")
+        ?: throw IllegalArgumentException("input.txt 파일이 존재 하지 않습니다.")
 //    val scanner = Scanner(System.`in`)
     val scanner = Scanner(systemResourceAsStream)
     println("자동차 대수는 몇 대인가요?")
@@ -27,5 +27,4 @@ fun main(args: Array<String>) {
         }
         println(carDistances.contentToString())
     }
-
 }

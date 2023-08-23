@@ -1,7 +1,6 @@
 package port.output
 
 import io.kotest.core.spec.style.StringSpec
-import port.output.ConsoleResultView
 
 class ConsoleResultViewTest : StringSpec({
 
