@@ -44,7 +44,6 @@ class RacingGameTest : StringSpec({
             sut.ready(participants = participantNames, movingCount = movingCount)
         }
         errorMessage.message shouldBe "참가자는 중복될 수 없습니다."
-
     }
 
     "준비 상태의 자동차는 모두 0의 위치를 갖는다." {
@@ -58,7 +57,6 @@ class RacingGameTest : StringSpec({
         sut.participants.forAll {
             it.position.value shouldBe 0
         }
-
     }
 
     "경기 종료 후 자동차들이 정책에 맞게 이동되었는지 확인한다. - FixedForwardPolicy는 move() 호출 횟수 만큼 이동한다." {
@@ -103,6 +101,5 @@ class RacingGameTest : StringSpec({
             sut.judgeWinner() shouldContainAll participantNames
         }
         errorMessage.message shouldBe "게임이 종료되지 않았습니다."
-
     }
 })

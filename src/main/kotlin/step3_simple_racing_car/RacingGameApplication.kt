@@ -7,7 +7,7 @@ import step3_simple_racing_car.io.GameOutput
 class RacingGameApplication
 
 fun main() {
-    val participantNames = GameOptionInput.inputParticipantNames().split(",")
+    val participantNames = GameOptionInput.inputParticipantNames()
     val movingCount = GameOptionInput.inputMovingCount()
     val game = RacingGame()
 
