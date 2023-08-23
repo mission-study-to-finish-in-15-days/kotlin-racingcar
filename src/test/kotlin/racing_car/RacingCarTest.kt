@@ -73,9 +73,38 @@ class RacingCarTest : FunSpec({
         racingGame.cars.forEach {
             it.position shouldBe 0
         }
-
-
     }
+
+    context("자동차 경주를 시작하지 않으면 경주는 항상 종료되지 않은 상태이다.") {
+
+        val trips = 10
+        val cars = List(10) { Car(alwaysMoveRandomMoveSupporter) }
+        val racingGame = RacingCarGame(_numberOfCars = cars, _numberOfTrips = trips)
+
+        racingGame.isRacingFinished() shouldBe false
+    }
+
+    context("자동차 경주를 시작히면 경주는 종료된 상태이다.") {
+
+        val trips = 10
+        val cars = List(10) { Car(alwaysMoveRandomMoveSupporter) }
+        val racingGame = RacingCarGame(_numberOfCars = cars, _numberOfTrips = trips)
+
+        racingGame.play()
+        racingGame.isRacingFinished() shouldBe true
+    }
+
+    context("경주 완료 후 우승자를 알 수 있다.") {
+        val trips = 10
+        val cars = List(10) { Car(alwaysMoveRandomMoveSupporter) }
+        val racingGame = RacingCarGame(_numberOfCars = cars, _numberOfTrips = trips)
+
+        racingGame.play()
+        val winners = racingGame.getWinner()
+
+        winners.size shouldBe 10
+    }
+
 }) {
     companion object {
         val defaultRacingCarGame = RacingCarGame(
