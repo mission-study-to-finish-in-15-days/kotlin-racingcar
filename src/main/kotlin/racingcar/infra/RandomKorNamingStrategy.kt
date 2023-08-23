@@ -1,6 +1,6 @@
 package racingcar.infra
 
-import racingcar.entity.NamingStrategy
+import racingcar.domain.entity.NamingStrategy
 
 class RandomKorNamingStrategy(private val length: Int) : NamingStrategy {
 
@@ -17,5 +17,4 @@ class RandomKorNamingStrategy(private val length: Int) : NamingStrategy {
         private val lastNames = listOf("아", "은", "훈", "영", "우", "리", "란", "솔", "빈", "람")
         private val adjectives = listOf("귀여운", "착한", "똑똑한", "밝은", "예쁜", "용감한", "활발한", "친절한", "유능한", "재밌는")
     }
-
 }

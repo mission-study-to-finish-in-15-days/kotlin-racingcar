@@ -1,6 +1,6 @@
 package racingcar.infra
 
-import racingcar.entity.MovingStrategy
+import racingcar.domain.entity.MovingStrategy
 
 class RandomMovingStrategy(
     private val randomGenerator: () -> Int = { (0..9).random() },

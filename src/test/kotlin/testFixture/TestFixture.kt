@@ -1,7 +1,7 @@
 package testFixture
 
-import racingcar.entity.Car
-import racingcar.entity.MovingStrategy
+import racingcar.domain.entity.Car
+import racingcar.domain.entity.MovingStrategy
 import racingcar.infra.DefaultMovingStrategy
 
 fun Car.Companion.testFixture(

@@ -1,6 +1,7 @@
-package racingcar.entity
+package racingcar.domain.vo
 
-import racingcar.type.GameState
+import racingcar.domain.entity.Car
+import racingcar.domain.type.GameState
 
 class RacingGameStatus(
     val carStatues: List<CarStatus>,
