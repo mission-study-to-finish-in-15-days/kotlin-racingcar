@@ -32,7 +32,7 @@ class CarTest : FreeSpec({
 
         }
         "자동차의 이름에 5글자를 초과하면 예외를 반환한다." {
-            val names = listOf("names", "longNames", "@!(#&!(*@$", "한글이름긴거지롱", "6글자입니다")
+            val names = listOf("namess", "longNames", "@!(#&!(*@$", "한글이름긴거지롱", "6글자입니다")
 
             names.forAll { name ->
                 shouldThrow<IllegalArgumentException> {
