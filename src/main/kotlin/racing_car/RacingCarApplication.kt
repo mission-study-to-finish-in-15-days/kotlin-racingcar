@@ -9,14 +9,14 @@ class RacingCarApplication {
     fun main() {
         val inputCarsAndTrips = RacingCarInputView.getInputCarsAndTrips()
 
-        val cars = List(inputCarsAndTrips.numberOfCar) { Car() }
+        val cars = inputCarsAndTrips.carNames.map { Car(_name = it) }
         val racingCarGame = RacingCarGame(_numberOfCars = cars, _numberOfTrips = inputCarsAndTrips.numberOfTrip)
-
 
         val result = racingCarGame.play()
         RacingCarOutputView.printResultTitle()
         result.map {
-            RacingCarOutputView.printPosition(it)
+            RacingCarOutputView.printRacingResult(it)
         }
+        RacingCarOutputView.printRacingCarWinners(racingCarGame.getWinner().map { it.name })
     }
 }
