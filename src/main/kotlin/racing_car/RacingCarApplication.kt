@@ -7,16 +7,16 @@ import racing_car.view.output.RacingCarOutputView
 
 class RacingCarApplication {
     fun main() {
-        val (numberOfCars, numberOfTrips) = RacingCarInputView.getInputCarsAndTrips()
+        val inputCarsAndTrips = RacingCarInputView.getInputCarsAndTrips()
 
-        val cars = List(numberOfCars) { Car() }
-        val racingCarGame = RacingCarGame(cars, numberOfTrips)
+        val cars = List(inputCarsAndTrips.numberOfCar) { Car() }
+        val racingCarGame = RacingCarGame(_numberOfCars = cars, _numberOfTrips = inputCarsAndTrips.numberOfTrip)
 
 
         val result = racingCarGame.play()
-        RacingCarOutputView.outputResultTitle()
+        RacingCarOutputView.printResultTitle()
         result.map {
-            RacingCarOutputView.outputPosition(it)
+            RacingCarOutputView.printPosition(it)
         }
     }
 }
