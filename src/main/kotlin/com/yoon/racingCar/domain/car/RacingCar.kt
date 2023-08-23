@@ -1,6 +1,7 @@
 package com.yoon.racingCar.domain.car
 
 data class RacingCar(
+  val carName: String,
   val racingConstructor: RacingConstructor,
   var movingDistance : Int = 0
 ) {

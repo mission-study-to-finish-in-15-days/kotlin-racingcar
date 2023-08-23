@@ -11,7 +11,7 @@ import io.kotest.matchers.shouldBe
 class RacingCarTest: DescribeSpec({
 
   describe("RacingCar 가 생성된다.") {
-    val sut = RacingCar(RacingConstructor(3, 9))
+    val sut = RacingCar("any", RacingConstructor(3, 9))
 
     it("RacingCar 가 생성될 때의 움직인 거리는 0이다") {
       val actual = sut.movingDistance
@@ -35,7 +35,7 @@ class RacingCarTest: DescribeSpec({
   }
 
   describe("RacingCar 가 경주한다.") {
-    val sut = RacingCar(RacingConstructor(3, 9))
+    val sut = RacingCar("any", RacingConstructor(3, 9))
 
     it("RacingCar 가 경주할 때마다 움직인 거리가 늘어간다.") {
       sut.race(4)

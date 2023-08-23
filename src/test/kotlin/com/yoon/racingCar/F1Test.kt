@@ -2,7 +2,6 @@ package com.yoon.racingCar
 
 import com.yoon.racingCar.domain.car.RacingCar
 import com.yoon.racingCar.domain.car.RacingConstructor
-import io.kotest.matchers.collections.shouldContainExactly
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -23,7 +22,7 @@ class F1Test{
   @DisplayName("F1 경기가 끝나고 나면 RaceCount 만큼 경기 결과가 반환된다")
   fun name2() {
     sut = F1(threshold(3), RaceCount(3))
-    val racingCar = RacingCar(RacingConstructor(anyMin, anyMax))
+    val racingCar = RacingCar("any", RacingConstructor(anyMin, anyMax))
 
     val result = sut.whistle(listOf(racingCar))
 
