@@ -6,7 +6,6 @@ sealed interface DistanceDisplay {
     fun display(distance: Distance): Display
 }
 
-
 object DashDistanceDisplay : DistanceDisplay {
     private const val SYMBOL = "-"
     override fun display(distance: Distance): Display {

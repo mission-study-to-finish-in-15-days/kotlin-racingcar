@@ -11,7 +11,7 @@ class DashDistanceDisplayTest : BehaviorSpec({
         `when`("distance 갯수 만큼") {
             val fiveDisplay = sut.display(Distance(5))
             val fourDisplay = sut.display(Distance(4))
-            then("노출 한다."){
+            then("노출 한다.") {
                 fiveDisplay.toString() shouldBe "-----"
                 fourDisplay.toString() shouldBe "----"
             }
