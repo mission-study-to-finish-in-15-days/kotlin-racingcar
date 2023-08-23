@@ -1,5 +1,6 @@
 package racingcar
 
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.ints.shouldBeGreaterThan
@@ -7,6 +8,7 @@ import io.kotest.matchers.shouldBe
 import racingcar.entity.Car
 import racingcar.infra.DefaultMovingStrategy
 import racingcar.infra.RandomMovingStrategy
+import racingcar.service.CarFactory
 
 class CarTest : FreeSpec({
     "자동차는 전진 또는 멈출 수 있다." - {
@@ -65,6 +67,14 @@ class CarTest : FreeSpec({
 
                 car.move()
                 car.position shouldBe currentPosition
+            }
+        }
+    }
+
+    "자동차 생성 개수가 1보다 작거나 99보다 큰 경우 IllegalArgumentException 예외를 반환한다." {
+        listOf(-1, 0, 100, 1000).forAll { carCount ->
+            shouldThrow<IllegalArgumentException> {
+                CarFactory().createAll(carCount)
             }
         }
     }

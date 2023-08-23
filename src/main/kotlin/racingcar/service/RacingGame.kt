@@ -32,12 +32,12 @@ class RacingGame {
         }
     }
 
-    fun isFinished(): Boolean {
-        if (tryCount <= 0) {
-            gameState = GameState.FINISHED
+    fun isContinuable(): Boolean {
+        if (tryCount > 0 && gameState !in listOf(GameState.FINISHED, GameState.END)) {
             return true
         }
 
+        gameState = GameState.FINISHED
         return false
     }
 
@@ -69,6 +69,6 @@ class RacingGame {
 
     private fun isValidCars(cars: List<Car>): Boolean {
         return cars.isNotEmpty() &&
-            cars.distinctBy { it.id }.size == cars.size
+                cars.distinctBy { it.id }.size == cars.size
     }
 }

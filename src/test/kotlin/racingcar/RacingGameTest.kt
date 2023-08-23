@@ -7,6 +7,7 @@ import io.kotest.matchers.shouldBe
 import racingcar.entity.Car
 import racingcar.service.RacingGame
 import racingcar.type.GameState
+import racingcar.view.RacingGameView
 
 class RacingGameTest : FreeSpec({
     "RacingGame 은 게임 진행상황에 따라 다른 상태를 가지고 있다" - {
@@ -108,10 +109,11 @@ class RacingGameTest : FreeSpec({
         "게임에서 원하는 시점에 자동차 위치에 대한 정보를 얻을 수 있다." {
             val game = RacingGame()
             val cars = listOf(Car(), Car(), Car())
+            val view  = RacingGameView()
 
             game.initialize(cars = cars, tryCount = 5)
             game.play()
-            val result: String = game.getGameStatus().toPrintString()
+            val result: String = view.toPrintString(game.getGameStatus())
 
             result shouldBe """
                 |-
@@ -123,11 +125,12 @@ class RacingGameTest : FreeSpec({
         "완료된 게임의 자동차 위치에 대한 정보를 얻을 수 있다." {
             val game = RacingGame()
             val cars = listOf(Car(), Car(), Car())
+            val view  = RacingGameView()
 
             game.initialize(cars = cars, tryCount = 2)
             game.play()
             game.play()
-            val result: String = game.getGameStatus().toPrintString()
+            val result: String = view.toPrintString(game.getGameStatus())
 
             result shouldBe """
                 |--

@@ -1,13 +1,8 @@
 package racingcar.entity
 
 class RacingGameStatus(
-    private val carStatues: List<CarStatus>,
+    val carStatues: List<CarStatus>,
 ) {
-    fun toPrintString(): String {
-        return carStatues.joinToString(separator = "\n") { carStatus ->
-            "|" + "-".repeat(carStatus.position)
-        }
-    }
 
     companion object {
         fun of(carList: List<Car>): RacingGameStatus {
@@ -19,7 +14,7 @@ class RacingGameStatus(
     }
 }
 
-class CarStatus(
+data class CarStatus(
     val id: Long,
     val position: Int,
 )
