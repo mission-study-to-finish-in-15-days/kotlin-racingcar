@@ -14,8 +14,8 @@ class RacingGameTest : FunSpec({
             2, 13, 12, 1000,
         ) { numberOfCars ->
 
-            val cars = List(numberOfCars) { Car(_name = "name") }
-            val racingGame = RacingGame(_cars = cars, _round = 10)
+            val cars = List(numberOfCars) { Car(name = "name") }
+            val racingGame = RacingGame(cars = cars, totalRound = 10)
 
             racingGame.cars.size shouldBe numberOfCars
         }
@@ -26,10 +26,10 @@ class RacingGameTest : FunSpec({
             nameFn = { "numberOfCars : $it" },
             0, 1,
         ) { numberOfCars ->
-            val cars = List(numberOfCars) { Car(_name = "name") }
+            val cars = List(numberOfCars) { Car(name = "name") }
 
             val exception = shouldThrow<IllegalArgumentException> {
-                RacingGame(_cars = cars, _round = 10)
+                RacingGame(cars = cars, totalRound = 10)
             }
 
             exception.localizedMessage shouldBe "경주에 필요한 자동차 대수는 2대 이상입니다."
@@ -42,8 +42,8 @@ class RacingGameTest : FunSpec({
             1, 13, 12, 30,
         ) { round ->
 
-            val cars = List(10) { Car(_name = "name") }
-            val racingGame = RacingGame(_cars = cars, _round = round)
+            val cars = List(10) { Car(name = "name") }
+            val racingGame = RacingGame(cars = cars, totalRound = round)
 
             var actualRound = 0
             while (racingGame.isContinuable) {
@@ -62,8 +62,8 @@ class RacingGameTest : FunSpec({
             6, 10,
         ) { actualRound ->
 
-            val cars = List(10) { Car(_name = "name") }
-            val racingGame = RacingGame(_cars = cars, _round = round)
+            val cars = List(10) { Car(name = "name") }
+            val racingGame = RacingGame(cars = cars, totalRound = round)
 
             val exception = shouldThrow<IllegalStateException> {
                 for (i in 1..actualRound) {
@@ -81,8 +81,8 @@ class RacingGameTest : FunSpec({
             0, -1, -13, -30,
         ) { round ->
             val exception = shouldThrow<IllegalArgumentException> {
-                val cars = List(10) { Car(_name = "name") }
-                RacingGame(_cars = cars, _round = round)
+                val cars = List(10) { Car(name = "name") }
+                RacingGame(cars = cars, totalRound = round)
             }
 
             exception.localizedMessage shouldBe "경주는 1번 이상 시도되어야합니다."
@@ -92,8 +92,8 @@ class RacingGameTest : FunSpec({
     context("자동차 경주에 포함된 자동차들이 올바르게 이동한다.") {
 
         val round = 10
-        val cars = List(10) { Car(_name = "name", _moveStrategy = alwaysMoveStrategy) }
-        val racingGame = RacingGame(_cars = cars, _round = round)
+        val cars = List(10) { Car(name = "name", moveStrategy = alwaysMoveStrategy) }
+        val racingGame = RacingGame(cars = cars, totalRound = round)
 
         for (i in 1..round) {
             racingGame.move()
@@ -107,8 +107,8 @@ class RacingGameTest : FunSpec({
     context("부정행위가 통하지 않는다.(racingGame 외부에서 자동차를 변경시키지 못한다.") {
         val actualRound = 5
         val racingGame = RacingGame(
-            _cars = List(10) { Car(_name = "name", _moveStrategy = alwaysMoveStrategy) },
-            _round = 10
+            cars = List(10) { Car(name = "name", moveStrategy = alwaysMoveStrategy) },
+            totalRound = 10
         )
         for (i in 1..actualRound) {
             racingGame.move()
@@ -127,15 +127,15 @@ class RacingGameTest : FunSpec({
 
     context("자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.") {
         val cars = listOf(
-            Car(_name = "w1", _moveStrategy = alwaysMoveStrategy),
-            Car(_name = "w2", _moveStrategy = alwaysMoveStrategy),
-            Car(_name = "l1", _moveStrategy = neverMoveStrategy),
-            Car(_name = "l2", _moveStrategy = neverMoveStrategy),
-            Car(_name = "l3", _moveStrategy = neverMoveStrategy),
+            Car(name = "w1", moveStrategy = alwaysMoveStrategy),
+            Car(name = "w2", moveStrategy = alwaysMoveStrategy),
+            Car(name = "l1", moveStrategy = neverMoveStrategy),
+            Car(name = "l2", moveStrategy = neverMoveStrategy),
+            Car(name = "l3", moveStrategy = neverMoveStrategy),
         )
         val racingGame = RacingGame(
-            _cars = cars,
-            _round = 10,
+            cars = cars,
+            totalRound = 10,
         )
 
         while (racingGame.isContinuable) {
@@ -148,15 +148,15 @@ class RacingGameTest : FunSpec({
 
     context("자동차 경주가 끝나기 전에 우승자를 확인하는 경우 IllegalStateException throw") {
         val cars = listOf(
-            Car(_name = "w1", _moveStrategy = alwaysMoveStrategy),
-            Car(_name = "w2", _moveStrategy = alwaysMoveStrategy),
-            Car(_name = "l1", _moveStrategy = neverMoveStrategy),
-            Car(_name = "l2", _moveStrategy = neverMoveStrategy),
-            Car(_name = "l3", _moveStrategy = neverMoveStrategy),
+            Car(name = "w1", moveStrategy = alwaysMoveStrategy),
+            Car(name = "w2", moveStrategy = alwaysMoveStrategy),
+            Car(name = "l1", moveStrategy = neverMoveStrategy),
+            Car(name = "l2", moveStrategy = neverMoveStrategy),
+            Car(name = "l3", moveStrategy = neverMoveStrategy),
         )
         val racingGame = RacingGame(
-            _cars = cars,
-            _round = 10,
+            cars = cars,
+            totalRound = 10,
         )
 
         racingGame.move()

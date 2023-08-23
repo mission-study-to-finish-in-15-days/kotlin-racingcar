@@ -6,8 +6,8 @@ import racing_car.view.ResultView
 
 fun main() {
     val racingGame = RacingGame(
-        _cars = InputView.inputCars(),
-        _round = InputView.inputRacingRound(),
+        cars = InputView.inputCars(),
+        totalRound = InputView.inputRacingRound(),
     )
 
     ResultView.printResultTitle()
