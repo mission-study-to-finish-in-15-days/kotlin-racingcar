@@ -1,8 +1,9 @@
 package domain.racer
 
+import domain.distance.Distance
 import domain.distance.MovePolicy
 import domain.game.CarNames
-import dto.racer.DisplayCarRacer
+import view.DisplayCarRacer
 
 class CarRacers(carNames: CarNames) {
     private val racers = carNames.value.map { CarRacer(it) }
@@ -11,7 +12,7 @@ class CarRacers(carNames: CarNames) {
         racers.forEach { it.move(movePolicy) }
     }
 
-    fun raceResult(): List<DisplayCarRacer> = racers.map { DisplayCarRacer(it.name, it.distance) }
+    fun raceResult(): List<DisplayCarRacer> = racers.map { DisplayCarRacer(it.name, Distance(it.distance)) }
 
     fun winnerResult(): List<String> {
         val maxDistanceRacers = racers.sortedByDescending { it.distance }
