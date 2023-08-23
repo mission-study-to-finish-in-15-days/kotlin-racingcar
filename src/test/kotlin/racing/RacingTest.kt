@@ -15,20 +15,23 @@ class RacingTest : StringSpec({
 
     "자동차는 매 라운드마다 0이나 1만큼만 움직여야 한다." {
         val carNumber = 3
-        val attemptNumber = 5
 
-        val racingResult = RacingSimulator.virtualSimulate(carNumber, attemptNumber)
+        val racingResult = RacingSimulator.virtualSimulate(carNumber, attemptNumber = 5)
 
-        (1..carNumber).forEach {
-            val carPath = getCarPath(racingResult, it - 1)
-            val isValidRacing = carPath.zipWithNext { a, b -> b - a }.all { isValidMove(it) }
+        (0 until carNumber).forEach { carIndex ->
+            val carPath = getCarPath(racingResult, carIndex)
+
+            val isValidRacing = carPath
+                .zipWithNext { a, b -> b - a }
+                .all { diff -> isValidMove(diff) }
+
             isValidRacing shouldBe true
         }
     }
 
     "자동차 수는 음수가 될 수 없다." {
         shouldThrow<IllegalArgumentException> {
-            RacingSimulator.virtualSimulate(-1, 5)
+            RacingSimulator.virtualSimulate(carNumber = -1, attemptNumber = 5)
         }
     }
 
