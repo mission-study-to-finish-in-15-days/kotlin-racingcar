@@ -8,6 +8,9 @@ object RacingSimulator {
     }
 
     fun virtualSimulate(carNumber: Int, attemptNumber: Int): List<List<Int>> {
+        require(carNumber >= 0) { "자동차 수는 음수가 될 수 없습니다." }
+        require(attemptNumber >= 0) { "시도 횟수는 음수가 될 수 없습니다." }
+
         val cars = List(carNumber) { Car() }
         val result = mutableListOf<List<Int>>()
 
