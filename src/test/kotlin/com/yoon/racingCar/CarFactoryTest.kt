@@ -10,7 +10,7 @@ class CarFactoryTest{
   @Test
   @DisplayName("참가자 수만큼 Racing Car 가 생성된다.")
   fun name() {
-    val actual = CarFactory.factory(ParticipateCount(3))
+    val actual = CarFactory.factory(Participate(listOf("페라리", "메르세대스", "레드불")))
 
     actual.size shouldBe 3
   }
@@ -19,7 +19,7 @@ class CarFactoryTest{
   @DisplayName("참가자 수가 1보다 작을 경우 예외가 발생한다.")
   fun name2() {
     val exception = shouldThrow<IllegalArgumentException> {
-      CarFactory.factory(ParticipateCount(-1))
+      CarFactory.factory(Participate(listOf()))
     }
     exception.localizedMessage shouldBe "ParticipationCount more then 0"
   }
