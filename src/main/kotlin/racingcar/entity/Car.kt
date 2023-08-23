@@ -21,7 +21,6 @@ class Car private constructor(
         if (javaClass != other?.javaClass) return false
 
         other as Car
-
         return id == other.id
     }
 
@@ -37,12 +36,9 @@ class Car private constructor(
             name: String,
             movingStrategy: MovingStrategy = DefaultMovingStrategy()
         ): Car {
-            if (name.length > 5)
-                throw IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.")
-            if (name.isBlank())
-                throw IllegalArgumentException("자동차 이름은 빈 값이거나 공백이 일 수 없습니다.")
-            if (name.contains("\\s".toRegex()))
-                throw IllegalArgumentException("자동차 이름은 공백이 포함되지 않아야 합니다.")
+            if (name.length > 5) throw IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.")
+            if (name.isBlank()) throw IllegalArgumentException("자동차 이름은 빈 값이거나 공백이 일 수 없습니다.")
+            if (name.contains("\\s".toRegex())) throw IllegalArgumentException("자동차 이름은 공백이 포함되지 않아야 합니다.")
 
             return Car(
                 name = name,

@@ -17,11 +17,35 @@ class RacingGameApplication(
     fun playRacingGame() {
         val game = RacingGame()
 
+        initialize(game)
+
+        playing(game)
+
+        showResult(game)
+
+        game.end()
+    }
+
+    private fun showResult(game: RacingGame) {
+        val winnerStatues: List<CarStatus>? = game.getGameStatus().getWinnersOrNull()
+
+        if (winnerStatues == null) {
+            userInterface.print(racingGameView.getMessage(ERROR_GAME_MESSAGE))
+            return
+        }
+
+        userInterface.print(
+            racingGameView.getMessage(RESULT_GAME_DONE_MESSAGE, winnerStatues.joinToString { it.name })
+        )
+    }
+
+    private fun initialize(game: RacingGame) {
         val carNames: List<String> = userInterface.getStrings(racingGameView.getMessage(REQUEST_CAR_NAME_MESSAGE))
         val tryCount: Int = userInterface.getInt(racingGameView.getMessage(REQUEST_TRY_COUNT_MESSAGE))
-
         game.initialize(cars = carFactory.createAll(carNames), tryCount = tryCount)
+    }
 
+    private fun playing(game: RacingGame) {
         userInterface.print(racingGameView.getMessage(RESULT_GAME_START_MESSAGE))
 
         while (game.isContinuable()) {
@@ -30,20 +54,6 @@ class RacingGameApplication(
                 .let { status: RacingGameStatus -> racingGameView.toPrintString(status) }
                 .let { string: String -> userInterface.print(string) }
         }
-
-
-        val winnerStatues: List<CarStatus>? = game.getGameStatus().getWinnersOrNull()
-
-        if (winnerStatues == null) {
-            userInterface.print(racingGameView.getMessage(ERROR_GAME_MESSAGE))
-            game.end()
-            return
-        }
-
-        userInterface.print(
-            racingGameView.getMessage(RESULT_GAME_DONE_MESSAGE, winnerStatues.joinToString { it.name })
-        )
-        game.end()
     }
 }
 

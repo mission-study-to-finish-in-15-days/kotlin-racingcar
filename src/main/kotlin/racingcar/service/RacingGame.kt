@@ -12,30 +12,18 @@ class RacingGame {
     private var gameState: GameState = GameState.PENDING
 
     fun play() {
-        if (gameState == GameState.PENDING) {
-            throw IllegalStateException("게임이 초기화되지 않았습니다.")
-        }
-
-        if (gameState in listOf(GameState.FINISHED, GameState.END)) {
-            throw IllegalStateException("게임이 이미 종료되었습니다.")
-        }
-
-        if (gameState != GameState.PLAYING) {
-            gameState = GameState.PLAYING
-        }
+        if (gameState == GameState.PENDING) throw IllegalStateException("게임이 초기화되지 않았습니다.")
+        if (gameState in listOf(GameState.FINISHED, GameState.END)) throw IllegalStateException("게임이 이미 종료되었습니다.")
+        if (gameState != GameState.PLAYING) gameState = GameState.PLAYING
 
         carList.forEach { it.move() }
         tryCount--
 
-        if (tryCount <= 0) {
-            gameState = GameState.FINISHED
-        }
+        if (tryCount <= 0) gameState = GameState.FINISHED
     }
 
     fun isContinuable(): Boolean {
-        if (tryCount > 0 && gameState !in listOf(GameState.FINISHED, GameState.END)) {
-            return true
-        }
+        if (tryCount > 0 && gameState !in listOf(GameState.FINISHED, GameState.END)) return true
 
         gameState = GameState.FINISHED
         return false
@@ -46,13 +34,8 @@ class RacingGame {
     }
 
     fun initialize(cars: List<Car>, tryCount: Int) {
-        if (!isValidCars(cars)) {
-            throw IllegalArgumentException("RacingGame 초기설정이 잘못되었습니다.")
-        }
-
-        if (tryCount < 0) {
-            throw IllegalArgumentException("RacingGame 초기설정이 잘못되었습니다.")
-        }
+        if (!isValidCars(cars)) throw IllegalArgumentException("RacingGame 초기설정이 잘못되었습니다.")
+        if (tryCount < 0) throw IllegalArgumentException("RacingGame 초기설정이 잘못되었습니다.")
 
         this.carList = cars
         this.tryCount = tryCount
