@@ -1,4 +1,4 @@
-package racingcar.infra
+package racingcar.adapter.domain
 
 import racingcar.domain.entity.MovingStrategy
 

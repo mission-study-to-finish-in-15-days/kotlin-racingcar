@@ -2,7 +2,7 @@ package testFixture
 
 import racingcar.domain.entity.Car
 import racingcar.domain.entity.MovingStrategy
-import racingcar.infra.DefaultMovingStrategy
+import racingcar.adapter.domain.DefaultMovingStrategy
 
 fun Car.Companion.testFixture(
     name: String = "기본이름",

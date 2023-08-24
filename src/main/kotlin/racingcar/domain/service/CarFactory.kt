@@ -2,8 +2,8 @@ package racingcar.domain.service
 
 import racingcar.domain.entity.Car
 import racingcar.domain.entity.NamingStrategy
-import racingcar.infra.RandomKorNamingStrategy
-import racingcar.infra.RandomMovingStrategy
+import racingcar.adapter.domain.RandomKorNamingStrategy
+import racingcar.adapter.domain.RandomMovingStrategy
 
 class CarFactory {
 

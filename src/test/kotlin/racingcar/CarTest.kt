@@ -8,8 +8,8 @@ import io.kotest.matchers.ints.shouldBeGreaterThan
 import io.kotest.matchers.shouldBe
 import racingcar.domain.entity.Car
 import racingcar.domain.service.CarFactory
-import racingcar.infra.DefaultMovingStrategy
-import racingcar.infra.RandomMovingStrategy
+import racingcar.adapter.domain.DefaultMovingStrategy
+import racingcar.adapter.domain.RandomMovingStrategy
 import testFixture.testFixture
 
 class CarTest : FreeSpec({

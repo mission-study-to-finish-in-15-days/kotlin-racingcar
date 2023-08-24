@@ -1,13 +1,9 @@
 package racingcar.controller
 
-import racingcar.domain.service.CarFactory
 import racingcar.domain.service.RacingGameService
 import racingcar.domain.vo.GameId
 import racingcar.domain.vo.GameResult
 import racingcar.domain.vo.RacingGameStatus
-import racingcar.infra.ConsoleUserInterface
-import racingcar.infra.InMemoryRacingGameRepository
-import racingcar.infra.StringRacingGameView
 import racingcar.view.MessageCode.*
 import racingcar.view.RacingGameView
 import racingcar.view.UserInterface

@@ -1,4 +1,4 @@
-package racingcar.infra
+package racingcar.adapter.view
 
 import racingcar.domain.vo.CarStatus
 import racingcar.domain.vo.RacingGameStatus

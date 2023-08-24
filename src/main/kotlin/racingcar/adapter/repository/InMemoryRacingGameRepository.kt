@@ -1,4 +1,4 @@
-package racingcar.infra
+package racingcar.adapter.repository
 
 import racingcar.domain.entity.RacingGame
 import racingcar.domain.service.RacingGameRepository

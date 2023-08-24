@@ -1,4 +1,4 @@
-package racingcar.infra
+package racingcar.adapter.view
 
 import racingcar.view.ViewModel
 import racingcar.view.ViewModel.ViewType

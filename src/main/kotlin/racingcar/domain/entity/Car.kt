@@ -1,6 +1,6 @@
 package racingcar.domain.entity
 
-import racingcar.infra.DefaultMovingStrategy
+import racingcar.adapter.domain.DefaultMovingStrategy
 import java.util.concurrent.atomic.AtomicLong
 
 class Car private constructor(
