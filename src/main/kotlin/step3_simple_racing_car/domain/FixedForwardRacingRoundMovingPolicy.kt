@@ -2,11 +2,11 @@ package step3_simple_racing_car.domain
 
 import step3_simple_racing_car.type.MovingDirectionType
 
-class FixedForwardMovingPolicy(
+class FixedForwardRacingRoundMovingPolicy(
     val direction: MovingDirectionType,
     private val movingCount: Int = 1,
-) : MovingPolicy {
-    override fun makePolicy() = FixedForwardMovingPolicy(
+) : RacingRoundMovingPolicy {
+    override fun makePolicy() = FixedForwardRacingRoundMovingPolicy(
         direction = MovingDirectionType.FORWARD,
         movingCount = movingCount
     )
