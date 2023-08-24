@@ -1,4 +1,4 @@
-package racingcar.output
+package racingcar.view.output
 
 import racingcar.domain.Car
 import racingcar.domain.CarName

@@ -1,4 +1,4 @@
-package racingcar.input
+package racingcar.view.input
 
 object InputView {
 
