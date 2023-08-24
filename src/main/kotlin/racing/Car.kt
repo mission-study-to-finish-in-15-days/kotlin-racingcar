@@ -29,6 +29,6 @@ value class CarPosition(val position: Int = 0)
 @JvmInline
 value class CarName(val name: String) {
     init {
-        require(name.length <= 5) { "자동차 이름은 5자를 초과할 수 없습니다." }
+        require(name.length in 1..5) { "자동차 이름은 1글자 이상, 5글자 이하여야 합니다." }
     }
 }
