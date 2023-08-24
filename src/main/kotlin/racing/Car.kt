@@ -1,28 +1,34 @@
 package racing
 
-class Car(initialPosition: Int = 0) {
-    private val positionWrapper = Position(initialPosition)
+class Car(initialPosition: Int = 0, name: String = "자동차") {
+    private var positionWrapper = CarPosition(initialPosition)
+    private val nameWrapper = CarName(name)
 
     val position: Int
         get() = positionWrapper.position
 
-    fun attemptMove() {
-        val randomNumber = (MOVE_LOWER_BOUND..MOVE_UPPER_BOUND).random()
+    val name: String
+        get() = nameWrapper.name
 
-        if (randomNumber >= MOVE_THRESHOLD) {
-            positionWrapper.go()
-        }
+    fun attemptMove() {
+        moveByDecision(CarMoveJudge.decideMove())
     }
 
-    companion object {
-        private const val MOVE_LOWER_BOUND = 0
-        private const val MOVE_UPPER_BOUND = 10
-        private const val MOVE_THRESHOLD = 4
+    fun moveByDecision(willMove: Boolean) {
+        if (willMove) move()
+    }
+
+    private fun move() {
+        positionWrapper = CarPosition(position + 1)
     }
 }
 
-data class Position(var position: Int = 0) {
-    fun go() {
-        position += 1
+@JvmInline
+value class CarPosition(val position: Int = 0)
+
+@JvmInline
+value class CarName(val name: String) {
+    init {
+        require(name.length in 1..5) { "자동차 이름은 1글자 이상, 5글자 이하여야 합니다." }
     }
 }

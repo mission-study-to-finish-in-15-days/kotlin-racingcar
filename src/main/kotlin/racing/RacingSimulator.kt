@@ -2,22 +2,31 @@ package racing
 
 object RacingSimulator {
     fun interactiveSimulate() {
-        val (carCount, attemptCount) = RacingScanner.inputRacing()
-        val result = virtualSimulate(carCount, attemptCount)
+        val racingInput = RacingScanner.inputRacing()
+        val result = virtualSimulate(racingInput)
         RacingPrinter.printSimulation(result)
     }
 
-    fun virtualSimulate(carCount: Int, attemptCount: Int): List<List<Int>> {
-        require(carCount >= 0) { "자동차 수는 음수가 될 수 없습니다." }
-        require(attemptCount >= 0) { "시도 횟수는 음수가 될 수 없습니다." }
+    fun interactiveSimulateWithCarName() {
+        val racingInput = RacingScanner.inputRacingWithCarName()
+        val result = virtualSimulate(racingInput)
+        RacingPrinter.printSimulationWithName(result)
+    }
 
-        val cars = List(carCount) { Car() }
+    fun virtualSimulate(racingInput: RacingInput): RacingResult {
+        val (_, attemptCount, _) = racingInput
+        val cars = createCars(racingInput)
         val result = (1..attemptCount).map {
             attemptMoveCars(cars)
-            getCarsPosition(cars)
+            getRoundResult(cars)
         }
+        return RacingResult(result, cars)
+    }
 
-        return result
+    private fun createCars(racingInput: RacingInput): List<Car> {
+        val (carCount, _, carNames) = racingInput
+        if (carNames == null) return List(carCount) { Car() }
+        return carNames.map { Car(name = it) }
     }
 
     private fun attemptMoveCars(cars: List<Car>) {
@@ -26,9 +35,37 @@ object RacingSimulator {
         }
     }
 
-    private fun getCarsPosition(cars: List<Car>): List<Int> {
-        return cars.map {
+    private fun getRoundResult(cars: List<Car>): RacingRoundResult {
+        return RacingRoundResult(cars.map {
             it.position
-        }
+        })
     }
 }
+
+data class RacingResult(
+    private val _roundResults: List<RacingRoundResult>,
+    private val _cars: List<Car>,
+) {
+    val roundResults
+        get() = _roundResults.map { it }
+
+    val carNames
+        get() = _cars.map { it.name }
+
+    val winnerNames
+        get() = _roundResults
+            .last()
+            .value
+            .mapIndexed { index, i ->
+                if (i == winnerDistance) carNames[index]
+                else null
+            }
+            .filterNotNull()
+
+    private val winnerDistance = _roundResults
+        .last()
+        .value
+        .max()
+}
+
+data class RacingRoundResult(val value: List<Int>)
