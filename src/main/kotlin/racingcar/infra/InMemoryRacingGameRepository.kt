@@ -13,7 +13,7 @@ class InMemoryRacingGameRepository : RacingGameRepository {
         return data[gameId]
     }
 
-    override fun create(): RacingGame {
+    override fun save(): RacingGame {
         val createdGame = RacingGame()
 
         val previousValue: RacingGame? = data.putIfAbsent(/* key = */ createdGame.id, /* value = */ createdGame)

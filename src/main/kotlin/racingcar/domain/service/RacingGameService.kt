@@ -11,7 +11,7 @@ class RacingGameService(
     private val racingGameRepository: RacingGameRepository,
 ) {
     fun createGame(): GameId {
-        val game: RacingGame = racingGameRepository.create()
+        val game: RacingGame = racingGameRepository.save()
 
         return game.id
     }

@@ -5,5 +5,5 @@ import racingcar.domain.vo.GameId
 
 interface RacingGameRepository {
     fun findById(gameId: GameId): RacingGame?
-    fun create(): RacingGame
+    fun save(): RacingGame
 }
