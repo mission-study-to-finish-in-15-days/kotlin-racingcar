@@ -11,17 +11,15 @@ class Car(initialPosition: Int = 0, name: String = "자동차") {
         get() = nameWrapper.name
 
     fun attemptMove() {
-        val randomNumber = (MOVE_LOWER_BOUND..MOVE_UPPER_BOUND).random() // TODO: 로직 분리
-
-        if (randomNumber >= MOVE_THRESHOLD) {
-            positionWrapper = CarPosition(position + 1)
-        }
+        moveByDecision(CarMoveJudge.decideMove())
     }
 
-    companion object {
-        private const val MOVE_LOWER_BOUND = 0
-        private const val MOVE_UPPER_BOUND = 10
-        private const val MOVE_THRESHOLD = 4
+    fun moveByDecision(willMove: Boolean) {
+        if (willMove) move()
+    }
+
+    private fun move() {
+        positionWrapper = CarPosition(position + 1)
     }
 }
 

@@ -15,12 +15,6 @@ class CarTest : StringSpec({
         car.position shouldBe 0
     }
 
-    "이동 시도를 할 수 있다. (위치값은 1 증가하거나 그대로이다.)" {
-        val car = Car()
-        car.attemptMove()
-        car.position shouldBe 0 or 1 // TODO: 틀린 문법
-    }
-
     "이름을 부여할 수 있다." {
         val car = Car(name = "티코")
         car.name shouldBe "티코"
@@ -35,5 +29,15 @@ class CarTest : StringSpec({
         shouldThrow<IllegalArgumentException> {
             Car(name = "여섯글자이름")
         }
+    }
+
+    "이동 시도를 할 수 있다." {
+        val car = Car()
+
+        val willMove = CarMoveJudge.decideMove()
+        car.moveByDecision(willMove)
+
+        if (willMove) car.position shouldBe 1
+        else car.position shouldBe 0
     }
 })
