@@ -1,4 +1,4 @@
-package racingcar.type
+package racingcar.domain.type
 
 enum class GameState(private val description: String) {
     PENDING("게임 생성됨"),

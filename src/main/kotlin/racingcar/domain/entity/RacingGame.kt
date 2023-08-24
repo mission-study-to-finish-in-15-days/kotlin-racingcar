@@ -1,12 +1,13 @@
-package racingcar.service
+package racingcar.domain.entity
 
-import racingcar.entity.Car
-import racingcar.entity.RacingGameStatus
-import racingcar.type.GameState
+import racingcar.domain.type.GameState
+import racingcar.domain.vo.GameId
+import racingcar.domain.vo.RacingGameStatus
+import java.util.concurrent.atomic.AtomicLong
 import kotlin.properties.Delegates
 
 class RacingGame {
-
+    val id: GameId = GameId(idCounter.incrementAndGet())
     private var carList: List<Car> by Delegates.notNull()
     private var tryCount: Int by Delegates.notNull()
     private var gameState: GameState = GameState.PENDING
@@ -45,7 +46,7 @@ class RacingGame {
     fun getGameStatus(): RacingGameStatus {
         return RacingGameStatus.of(
             gameState = gameState,
-            carList = carList
+            carList = carList,
         )
     }
 
@@ -56,5 +57,23 @@ class RacingGame {
     private fun isValidCars(cars: List<Car>): Boolean {
         return cars.isNotEmpty() &&
                 cars.distinctBy { it.id }.size == cars.size
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as RacingGame
+
+        return id == other.id
+    }
+
+    override fun hashCode(): Int {
+        return id.hashCode()
+    }
+
+
+    companion object {
+        private val idCounter: AtomicLong = AtomicLong(0)
     }
 }

@@ -4,9 +4,9 @@ import io.kotest.assertions.throwables.shouldNotThrowAny
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
-import racingcar.entity.Car
-import racingcar.service.RacingGame
-import racingcar.type.GameState
+import racingcar.domain.entity.Car
+import racingcar.domain.entity.RacingGame
+import racingcar.domain.type.GameState
 import testFixture.testFixture
 
 class RacingGameTest : FreeSpec({
@@ -23,9 +23,9 @@ class RacingGameTest : FreeSpec({
                 cars = listOf(
                     Car.testFixture(),
                     Car.testFixture(),
-                    Car.testFixture()
+                    Car.testFixture(),
                 ),
-                tryCount = 2
+                tryCount = 2,
             )
 
             racingGame.getCurrentState() shouldBe GameState.READY
@@ -38,8 +38,9 @@ class RacingGameTest : FreeSpec({
                 cars = listOf(
                     Car.testFixture(),
                     Car.testFixture(),
-                    Car.testFixture()
-                ), tryCount = 2
+                    Car.testFixture(),
+                ),
+                tryCount = 2,
             )
             racingGame.play()
 
@@ -53,8 +54,9 @@ class RacingGameTest : FreeSpec({
                 cars = listOf(
                     Car.testFixture(),
                     Car.testFixture(),
-                    Car.testFixture()
-                ), tryCount = 2
+                    Car.testFixture(),
+                ),
+                tryCount = 2,
             )
             racingGame.play()
             racingGame.play()
@@ -68,8 +70,9 @@ class RacingGameTest : FreeSpec({
                 cars = listOf(
                     Car.testFixture(),
                     Car.testFixture(),
-                    Car.testFixture()
-                ), tryCount = 2
+                    Car.testFixture(),
+                ),
+                tryCount = 2,
             )
             racingGame.play()
             racingGame.play()
@@ -86,8 +89,9 @@ class RacingGameTest : FreeSpec({
                 cars = listOf(
                     Car.testFixture(),
                     Car.testFixture(),
-                    Car.testFixture()
-                ), tryCount = 3
+                    Car.testFixture(),
+                ),
+                tryCount = 3,
             )
             racingGame.play()
             racingGame.end()

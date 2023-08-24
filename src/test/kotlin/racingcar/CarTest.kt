@@ -6,10 +6,10 @@ import io.kotest.core.spec.style.FreeSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.ints.shouldBeGreaterThan
 import io.kotest.matchers.shouldBe
-import racingcar.entity.Car
-import racingcar.infra.DefaultMovingStrategy
-import racingcar.infra.RandomMovingStrategy
-import racingcar.service.CarFactory
+import racingcar.domain.entity.Car
+import racingcar.domain.service.CarFactory
+import racingcar.adapter.domain.DefaultMovingStrategy
+import racingcar.adapter.domain.RandomMovingStrategy
 import testFixture.testFixture
 
 class CarTest : FreeSpec({
@@ -29,7 +29,6 @@ class CarTest : FreeSpec({
             cars.forAll { car ->
                 car.name shouldBe name
             }
-
         }
         "자동차의 이름에 5글자를 초과하면 예외를 반환한다." {
             val names = listOf("namess", "longNames", "@!(#&!(*@$", "한글이름긴거지롱", "6글자입니다")

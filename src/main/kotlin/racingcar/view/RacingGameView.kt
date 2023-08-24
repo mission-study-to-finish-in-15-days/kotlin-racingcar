@@ -1,21 +1,12 @@
 package racingcar.view
 
-import racingcar.entity.RacingGameStatus
+import racingcar.domain.vo.CarStatus
+import racingcar.domain.vo.RacingGameStatus
 
-class RacingGameView {
+interface RacingGameView {
+    fun getView(racingGameStatus: RacingGameStatus): ViewModel
 
-    fun toPrintString(racingGameStatus: RacingGameStatus): String {
-        return racingGameStatus.carStatues.joinToString(separator = "\n") {
-            "${it.name} : " + "-".repeat(it.position)
-        }
-    }
+    fun getView(code: MessageCode): ViewModel
 
-    fun getMessage(code: MessageCode, vararg args: String): String {
-        if (code.argCount != args.size)
-            throw IllegalArgumentException("Invalid message argument count")
-
-        return code.message.format(*args)
-    }
-
+    fun getView(winners: List<CarStatus>): ViewModel
 }
-
