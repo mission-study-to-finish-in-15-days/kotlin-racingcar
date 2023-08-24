@@ -31,13 +31,6 @@ class RacingTest : StringSpec({
             isValidRacing shouldBe true
         }
     }
-
-    "test" {
-        val racingInput = RacingInput(carCount = 3, attemptCount = 5, carNames = listOf("티코", "마티즈", "자전거"))
-        val racingResult = RacingSimulator.virtualSimulate(racingInput)
-
-        println(racingResult.winnerNames)
-    }
 }) {
     companion object {
         fun isValidMove(distance: Int): Boolean {
