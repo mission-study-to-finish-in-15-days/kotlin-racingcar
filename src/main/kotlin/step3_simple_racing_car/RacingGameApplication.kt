@@ -10,19 +10,19 @@ import step3_simple_racing_car.io.GameOutput
 class RacingGameApplication
 
 fun main() {
-    val participantNames = GameOptionInput.inputParticipantNames()
-    val movingCount = GameOptionInput.inputMovingCount()
+    val participantNames: List<String> = GameOptionInput.inputParticipantNames()
+    val movingCount: Int = GameOptionInput.inputMovingCount()
 
-    val participants = participantNames.map { RacingCar(nickName = NickName(it)) }
-    val cars = RacingCars.ready(participants = participants)
+    val participants: List<RacingCar> = participantNames.map { RacingCar(nickName = NickName(it)) }
+    val cars: RacingCars = RacingCars.ready(participants = participants)
 
-    val game = RacingGame()
+    val game: RacingGame = RacingGame()
     repeat(movingCount) {
         game.move(cars)
         GameOutput.printGameResult(cars)
     }
 
-    val winners = game.judgeWinner(cars, movingCount)
+    val winners: List<String> = game.judgeWinner(cars, movingCount)
 
     GameOutput.printWinners(winners)
     game.finish()

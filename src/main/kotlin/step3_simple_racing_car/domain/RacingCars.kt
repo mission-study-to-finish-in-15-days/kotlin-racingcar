@@ -1,6 +1,6 @@
 package step3_simple_racing_car.domain
 
-class  RacingCars(
+class RacingCars(
     private val _cars: MutableList<RacingCar> = mutableListOf(),
 ) {
     init {
@@ -10,7 +10,7 @@ class  RacingCars(
     val cars: List<RacingCar>
         get() = _cars
 
-    companion object{
+    companion object {
         fun ready(participants: List<RacingCar>): RacingCars {
             return RacingCars(participants.toMutableList())
         }

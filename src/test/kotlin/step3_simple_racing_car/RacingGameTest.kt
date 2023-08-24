@@ -5,7 +5,11 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.collections.shouldContainAll
 import io.kotest.matchers.shouldBe
-import step3_simple_racing_car.domain.*
+import step3_simple_racing_car.domain.FixedForwardRacingRoundMovingPolicy
+import step3_simple_racing_car.domain.NickName
+import step3_simple_racing_car.domain.RacingCar
+import step3_simple_racing_car.domain.RacingCars
+import step3_simple_racing_car.domain.RacingGame
 import step3_simple_racing_car.type.MovingDirectionType
 
 class RacingGameTest : StringSpec({
@@ -73,7 +77,6 @@ class RacingGameTest : StringSpec({
         val cars = RacingCars.ready(participants = participants)
         val sut = RacingGame()
 
-
         sut.decideMovingPolicy(FixedForwardRacingRoundMovingPolicy(direction = MovingDirectionType.STOP))
         repeat(movingCount) { sut.move(participants = cars) }
 
@@ -87,7 +90,6 @@ class RacingGameTest : StringSpec({
         val movingCount = 3
         val cars = RacingCars.ready(participants = participants)
         val sut = RacingGame()
-
 
         sut.decideMovingPolicy(FixedForwardRacingRoundMovingPolicy(direction = MovingDirectionType.STOP))
         repeat(movingCount) { sut.move(participants = cars) }
